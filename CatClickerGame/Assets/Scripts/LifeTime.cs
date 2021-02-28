@@ -12,15 +12,16 @@ public class LifeTime : MonoBehaviour
     public float timeSpeed;
 
 
-    int timeYear;
-    int timeMonth;
+    public int timeYear;
+    public int timeMonth=0;
     int timeDay;
     public int timeHour;
-    
-    
+
+
     void Start()
     {
-        LimitTime = 0f;        
+        LimitTime = 0f;
+        timeDay = 1;
     }
 
     void Update()
@@ -50,8 +51,18 @@ public class LifeTime : MonoBehaviour
 
         timeHour = (int)ingameTime % 24;
         timeDay = (int)ingameTime / 24;
-        timeMonth = timeDay / 30;
-        timeYear = timeMonth / 12;
+
+        if (timeDay > 30)
+        {
+            timeMonth = timeDay / 30;
+            timeDay = timeDay % 30;
+        }
+
+        if (timeMonth > 12)
+        {
+            timeYear = timeMonth / 12;
+            timeMonth = timeMonth % 12;
+        }
     }
 
 

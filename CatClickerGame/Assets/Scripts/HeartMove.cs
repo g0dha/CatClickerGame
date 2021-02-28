@@ -12,7 +12,7 @@ public class HeartMove : MonoBehaviour
     {
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        Destroy(this.gameObject, 5f);
+        Destroy(this.gameObject, 1f);
     }
 
     // Update is called once per frame

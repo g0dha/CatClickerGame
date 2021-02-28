@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject prefabFoodDish;
     public int food_lifeTime;
-       
+      
     
 
 
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
 
@@ -74,13 +74,10 @@ public class GameManager : MonoBehaviour
     {
         if (heart >= heartIncreasePrice)
         {
-
             heart -= heartIncreasePrice;
             heartIncreaseLevel += 1;
             heartIncreaseAmount += heartIncreaseLevel * 2;
             heartIncreasePrice += heartIncreaseLevel * 10;
-
-
         }
     }
 
@@ -145,6 +142,8 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    
 
 
 }

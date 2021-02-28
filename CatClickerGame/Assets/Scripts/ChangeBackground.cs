@@ -50,7 +50,7 @@ public class ChangeBackground : MonoBehaviour
             }
             else if (nowTime == 20||nowTime==0) {
                 if ((GameObject.Find(prefabSky2.name + "(Clone)") == false) && (GameObject.Find(prefabSky3.name + "(Clone)") == false))
-                {
+                {                    
                     ChangeSprite_Background_3();
                 }
                 else if ((GameObject.Find(prefabSky2.name + "(Clone)") == true) && (GameObject.Find(prefabSky3.name + "(Clone)") == false))

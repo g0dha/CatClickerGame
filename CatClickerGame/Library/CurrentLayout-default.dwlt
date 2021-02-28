@@ -456,20 +456,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\gkwjd\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Git\\CatClickerGame\\CatClickerGame"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d03a0000
-    m_LastClickedID: 15056
-    m_ExpandedIDs: 00000000d03a000000ca9a3b
+    m_SelectedIDs: b03b0000
+    m_LastClickedID: 15280
+    m_ExpandedIDs: 00000000a43b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -497,7 +497,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d03a0000
+    m_ExpandedIDs: 00000000a43b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000944d0000f836000038e8ffff683900000000000004eaffff1a3a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -622,7 +622,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 24fbffff
+      m_ExpandedIDs: 5cfbffff26390000423a0000523a00007e3a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -682,9 +682,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 713.6394, y: 536.6281, z: -352.95673}
+    m_Target: {x: 494.6468, y: 576.2535, z: -1232.625}
     speed: 2
-    m_Value: {x: 713.6394, y: 536.6281, z: -352.95673}
+    m_Value: {x: 494.6468, y: 576.2535, z: -1232.625}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -734,9 +734,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 882.8296
+    m_Target: 752.32227
     speed: 2
-    m_Value: 882.8296
+    m_Value: 752.32227
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -820,7 +820,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 1
+    m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -833,20 +833,20 @@ MonoBehaviour:
       y: 21
       width: 403
       height: 631
-    m_Scale: {x: 0.33958334, y: 0.33958334}
-    m_Translation: {x: 201.5, y: 315.5}
+    m_Scale: {x: 0.32864583, y: 0.32864583}
+    m_Translation: {x: 201.50002, y: 315.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -593.3742
-      y: -929.0798
-      width: 1186.7484
-      height: 1858.1595
+      x: -613.1221
+      y: -960
+      width: 1226.2441
+      height: 1920
     m_MinimalGUI: 1
-  m_defaultScale: 0.33958334
+  m_defaultScale: 0.32864583
   m_LastWindowPixelSize: {x: 403, y: 652}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
