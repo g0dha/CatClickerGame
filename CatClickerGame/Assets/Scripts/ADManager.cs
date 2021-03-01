@@ -1,52 +1,106 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Advertisements;
+using GoogleMobileAds.Api;
 
 public class ADManager : MonoBehaviour
 {
-    public Text coinText;
-    public int coin = 0;
+	RewardBasedVideoAd ad;
+	[SerializeField] string appId;
+	[SerializeField] string unitId;
+	[SerializeField] bool isTest;
+	[SerializeField] string deviceId;
 
 
-    //광고 보여주기
-    public void ShowAD()
-    {
-        if (Advertisement.IsReady())
-        {
-            Advertisement.Show();
-        }
-    }
+	void Start()
+	{
+		
+		MobileAds.Initialize(appId);
+		ad = RewardBasedVideoAd.Instance;
 
+		//광고요청이 성공적으로 로드되면 호출됩니다.
+		ad.OnAdLoaded += OnAdLoaded;
 
-    //보상형광고 보여주기
-    public void ShowReward()
-    {
-        if (Advertisement.IsReady("rewardedVideo"))
-        {
-            ShowOptions options = new ShowOptions { resultCallback = ResultAds };
-            Advertisement.Show("rewardedVideo", options);
-        }
-    }
+		//광고요청을 로드하지 못했을 때 호출됩니다.
+		ad.OnAdFailedToLoad += OnAdFailedToLoad;
 
+		//광고가 표시될 때 호출됩니다.
+		ad.OnAdOpening += OnAdOpening;
 
-    //광고 실행 후 결과
-    void ResultAds(ShowResult result)
-    {
-        switch (result)
-        {
-            case ShowResult.Failed:
-                Debug.LogError("The ad failed to be show");
-                break;
-            case ShowResult.Skipped:
-                Debug.Log("The ad was skipped before reaching the end");
-                break;
-            case ShowResult.Finished:
-                coin += 100;
-                coinText.text = coin.ToString();
-                Debug.Log("The ad was successfully shown");
-                break;
-        }
-    }
+		//광고가 재생되기 시작하면 호출됩니다.
+		ad.OnAdStarted += OnAdStarted;
+
+		//사용자가 비디오 시청을 통해 보상을 받을 때 호출됩니다.
+		ad.OnAdRewarded += OnAdRewarded;
+
+		//광고가 닫힐 때 호출됩니다.
+		ad.OnAdClosed += OnAdClosed;
+
+		//광고클릭으로 인해 사용자가 애플리케이션을 종료한 경우 호출됩니다.
+		ad.OnAdLeavingApplication += OnAdLeavingApplication;
+
+		LoadAd();
+	}
+
+	void LoadAd()
+	{
+		AdRequest request = new AdRequest.Builder().Build();
+		if (isTest)
+		{
+			if (deviceId.Length > 0)
+				request = new AdRequest.Builder().AddTestDevice(AdRequest.TestDeviceSimulator).AddTestDevice(deviceId).Build();
+			else
+				unitId = "ca-app-pub-3940256099942544/5224354917"; //테스트 유닛 ID
+
+		}
+		ad.LoadAd(request, unitId);
+	}
+
+	public void OnBtnViewAdClicked()
+	{
+		if (ad.IsLoaded())
+		{
+			Debug.Log("View Ad");
+			
+		}
+		else
+		{
+			Debug.Log("Ad is Not Loaded");
+			LoadAd();
+		}
+	}
+
+	void OnAdLoaded(object sender, EventArgs args)
+	{
+		Debug.Log("OnAdLoaded");
+	}
+
+	void OnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
+	{
+		Debug.Log("OnAdFailedToLoad");
+	}
+
+	void OnAdOpening(object sender, EventArgs e)
+	{
+		Debug.Log("OnAdOpening");
+	}
+
+	void OnAdStarted(object sender, EventArgs e)
+	{
+		Debug.Log("OnAdStarted");
+	}
+
+	void OnAdRewarded(object sender, Reward e)
+	{
+		Debug.Log("OnAdRewarded");
+	}
+
+	void OnAdClosed(object sender, EventArgs e)
+	{
+		Debug.Log("OnAdClosed");
+		LoadAd();
+	}
+	void OnAdLeavingApplication(object sender, EventArgs e)
+	{
+		Debug.Log("OnAdLeavingApplication");
+	}
 }
