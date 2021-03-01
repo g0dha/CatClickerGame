@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
 
     void ButtonActiveCheck()
     {
-        if (heart >= foodPrice)
+        if (heart >= foodPrice && (GameObject.Find(prefabFoodDish.name + "(Clone)") == false))
         {
             foodButton.interactable = true;
         }
