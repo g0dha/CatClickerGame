@@ -14,7 +14,7 @@ public class LifeTime : MonoBehaviour
 
     public int timeYear;
     public int timeMonth=0;
-    int timeDay;
+    public int timeDay;
     public int timeHour;
 
 

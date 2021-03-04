@@ -19,7 +19,7 @@
       1. 아기 : 시작 캐릭터. 
       2. 어린이 : 1단계 성장. 6개월 이상(누적 플레이타임 12시간)
       3. 성묘 : 2단계 성장(성장 끝). 12개월 이상(누적 플레이타임 48시간...)
-   3. 광고보기
+   3. **광고보기**
       1. 높은 재화 획득 가능, 특정 값 사이에서 랜덤 or 특정 값
    4. 훈련
       1. 앉아
@@ -47,13 +47,13 @@
 
 #### 고양이 성장 및 이벤트 정리
 
-|                | 아기고양이       | 어린이고양이          | 어른고양이          |
-| -------------- | ---------------- | --------------------- | ------------------- |
-| 누적플레이타임 | 0 ~6개월         | 6~12개월              | 12개월~             |
-| 특정조건       | 없음             | 미정                  | 미정                |
-| 이벤트         | 첫 목욕(4개월)   | 중성화선택(7개월이상) | 종합검진(6개월마다) |
-|                | 젖니빠짐(6개월)  |                       |                     |
-|                | 예방접종(50일경) |                       |                     |
+|                    | **아기고양이**   | **어린이고양이**      | **어른고양이**      |
+| ------------------ | ---------------- | --------------------- | ------------------- |
+| **누적플레이타임** | **0 ~6개월**     | **6~12개월**          | **12개월~**         |
+| 특정조건           | 없음             | 미정                  | 미정                |
+| 이벤트             | 첫 목욕(4개월)   | 중성화선택(7개월이상) | 종합검진(6개월마다) |
+|                    | 젖니빠짐(6개월)  |                       |                     |
+|                    | 예방접종(50일경) |                       |                     |
 
 #### 업그레이드
 
@@ -66,29 +66,32 @@
 
 #### 오토클릭 종류 - 5초에 1번씩 획득
 
-| 종류         | 금액 | 성능 | 위치        | 기타              |
-| ------------ | ---- | ---- | ----------- | ----------------- |
-| 스크래쳐     |      |      | 가운데      |                   |
-| 미캉상자     |      |      | 왼쪽        |                   |
-| 낚싯대장난감 |      |      | 오른쪽 아래 | [놀아주기] 활성화 |
-| 캣타워       |      |      | 오른쪽      |                   |
+| 종류             | 금액 | 성능 | 위치            | 기타                  |
+| ---------------- | ---- | ---- | --------------- | --------------------- |
+| **스크래쳐**     |      |      | **가운데**      |                       |
+| **미캉상자**     |      |      | **왼쪽**        |                       |
+| **낚싯대장난감** |      |      | **오른쪽 아래** | **[놀아주기] 활성화** |
+| **캣타워**       |      |      | **오른쪽**      |                       |
 
 
 
 #### 스크립트 정리
 
-|            | 스크립트         | 변수                                                         | 함수                                                         | 게임오브젝트                                                 | UI                                                           | 기타                         |
-| ---------- | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------- |
-| 배경       |                  |                                                              |                                                              | Background<br />Background_room<br />Image_dish              | Panel_Top(PT) <br />Panel_Button(PB)                         |                              |
-| 배경변화   | ChangeBackgorund | public GameObject prefabSky1;<br />public GameObject prefabSky2;<br />public GameObject prefabSky3;<br />public int nowTime;<br />LifeTime lifetime; | Start() <br />Update() <br />IEnumerator _ChangeBackground()<br />ChangeSprite_Background_1() <br />ChangeSprite_Background_2() <br />ChangeSprite_Background_3() | Background                                                   |                                                              | 시간에 따라 배경변화         |
-| 캐릭터     | HeartMove        | public Vector2 point;                                        | Start() <br />Update()                                       |                                                              |                                                              |                              |
-| 성장       | ChangeCat        | public GameObject prefabCat1;<br/>    public GameObject prefabCat2;<br/>    public GameObject prefabCat3;<br/><br/>    LifeTime lifetime; | Start()<br />Update()<br />_ChangeCat()<br />ChangeSprite_Cat_1()<br />ChangeSprite_Cat_2()<br />ChangeSprite_Cat_3() | Cat                                                          |                                                              |                              |
-| GM         | GameManager      | public long heart;<br />public long heartIncreaseAmount;<br />public Text textHeart; <br />public GameObject prefabHeart; | Start() <br />Update() <br />ShowInfo() <br />HeartIncrease() | GameManager                                                  |                                                              |                              |
-| 시간계산   | LifeTime         | public float LimitTime;<br />public float ingameTime;<br />public Text textTimer;<br />public float timeSpeed; <br />int timeYear;<br />int timeMonth;<br />int timeDay;<br />int timeHour; | Start() <br />Update() <br />addLifeTime() <br />CalTime() <br />ShowInfo() |                                                              | Text_timer(PT) <br />Image_itmer_space(PT)                   |                              |
-| 먹이주기   | GameManager      | public long foodPrice;<br />public Button foodButton;<br />public GameObject prefabFoodDish;<br />public int food_lifeTime; | ButtonActiveCheck() <br />feedPrice()<br />ChangeSprite_Food() |                                                              | Button_food(PB)                                              | 10초뒤에 먹이(이미지) 사라짐 |
-| 업그레이드 | GameManager      | public long heart;<br />public long heartIncreaseAmount;<br />public long heartIncreaseLevel;<br />public long heartIncreasePrice;<br />public Text textHeart;public Text textHeartIncreasePrice;<br />public Text textHeartUpgradePrice;<br />public Button HeartIncreaseButton; | HeartIncrease() <br />HeartIncreaseLevelUpgrade()  <br />HeartIncreaseUpdatePanelText() <br />HeartIncreaseUpdatePriceText() <br />ButtonActiveCheck() |                                                              | Button_HeartIncrease(PB) <br />Panel_HeartIncreasePriceUpgrade |                              |
-| 장난감     | ToyManager       | public long ToyCreatePrice;<br/>    public long ToyIncreaseAmount;<br/>    public long ToyIncreaseLevel;<br/>    public long ToyIncreasePrice;<br/>    public string ToyName;<br/><br/>    public Text textToyIncreasePrice;<br/>    public Text textToyUpgradePrice;<br/>    public Button ToyIncreaseButton;<br/><br/>    public GameObject prefabToy;<br/><br/><br/>    GameManager gm;<br/><br/>    public Vector2 point; | Start()<br />Update()<br />IEnumerator autoClick()<br />ToyCreateButton()<br />public void ToyIncreaseLevelUpgrade()<br />ToyIncreaseUpdatePanelText()<br /> | ToyManager_Box<br />ToyManager_Scratcher<br />ToyManager_CatTower<br />ToyManager_Toy | Panel_Toy<br />Button_Toy(PB)                                |                              |
-| 고양이관리 | CatManager       | ToyManager toy;<br/>    GameManager gm;<br/><br/>    public int PlayPrice;<br/>    public Button PlayButton;<br/>    public Text textPlay;<br/>    public Image imagePlay;<br/>    public float PlaylerpSpeed;<br/>public int TouchPrice;<br/>    public Button TouchButton;<br/>    public Text textTouch;<br/>    public int WashPrice;<br/>    public Button WashButton;<br/>    public Text textWash;<br/>    public Image imageWash;<br/>    public float WashlerpSpeed;<br/><br/>    public Button HungryButton;<br/>    public Image imageHungry;<br/>    public float HungrylerpSpeed;<br/><br/>    public float lerpSpeed; | Start()<br />Update()<br />ButtonActiveCheck()<br />_PlayBtton()<br />_TouchBtton()<br />_WashBtton()<br />_HungryBtton()<br />FunnyStatus()<br />WashStatus()<br />HungryStatus() | CatManager                                                   | Panel_Management<br />Panel_Status<br />Button_Management(PB)<br />Button_Food(PB) |                              |
+|               | 스크립트         | 변수                                                         | 함수                                                         | 게임오브젝트                                                 | UI                                                           | 기타                         |
+| ------------- | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------- |
+| 배경          |                  |                                                              |                                                              | Background<br />Background_room<br />Image_dish              | Panel_Top(PT) <br />Panel_Button(PB)                         |                              |
+| 배경변화      | ChangeBackgorund | public GameObject prefabSky1;<br />public GameObject prefabSky2;<br />public GameObject prefabSky3;<br />public int nowTime;<br />LifeTime lifetime; | Start() <br />Update() <br />IEnumerator _ChangeBackground()<br />ChangeSprite_Background_1() <br />ChangeSprite_Background_2() <br />ChangeSprite_Background_3() | Background                                                   |                                                              | 시간에 따라 배경변화         |
+| 캐릭터        | HeartMove        | public Vector2 point;                                        | Start() <br />Update()                                       |                                                              |                                                              |                              |
+| 성장          | ChangeCat        | public GameObject prefabCat1;<br/>    public GameObject prefabCat2;<br/>    public GameObject prefabCat3;<br/><br/>    LifeTime lifetime; | Start()<br />Update()<br />_ChangeCat()<br />ChangeSprite_Cat_1()<br />ChangeSprite_Cat_2()<br />ChangeSprite_Cat_3() | Cat                                                          |                                                              |                              |
+| GM            | GameManager      | public long heart;<br />public long heartIncreaseAmount;<br />public Text textHeart; <br />public GameObject prefabHeart; | Start() <br />Update() <br />ShowInfo() <br />HeartIncrease() | GameManager                                                  |                                                              |                              |
+| 시간계산      | LifeTime         | public float LimitTime;<br />public float ingameTime;<br />public Text textTimer;<br />public float timeSpeed; <br />int timeYear;<br />int timeMonth;<br />int timeDay;<br />int timeHour; | Start() <br />Update() <br />addLifeTime() <br />CalTime() <br />ShowInfo() |                                                              | Text_timer(PT) <br />Image_itmer_space(PT)                   |                              |
+| 먹이주기      | GameManager      | public long foodPrice;<br />public Button foodButton;<br />public GameObject prefabFoodDish;<br />public int food_lifeTime; | ButtonActiveCheck() <br />feedPrice()<br />ChangeSprite_Food() |                                                              | Button_food(PB)                                              | 10초뒤에 먹이(이미지) 사라짐 |
+| 업그레이드    | GameManager      | public long heart;<br />public long heartIncreaseAmount;<br />public long heartIncreaseLevel;<br />public long heartIncreasePrice;<br />public Text textHeart;public Text textHeartIncreasePrice;<br />public Text textHeartUpgradePrice;<br />public Button HeartIncreaseButton; | HeartIncrease() <br />HeartIncreaseLevelUpgrade()  <br />HeartIncreaseUpdatePanelText() <br />HeartIncreaseUpdatePriceText() <br />ButtonActiveCheck() |                                                              | Button_HeartIncrease(PB) <br />Panel_HeartIncreasePriceUpgrade |                              |
+| 장난감        | ToyManager       | public long ToyCreatePrice;<br/>    public long ToyIncreaseAmount;<br/>    public long ToyIncreaseLevel;<br/>    public long ToyIncreasePrice;<br/>    public string ToyName;<br/><br/>    public Text textToyIncreasePrice;<br/>    public Text textToyUpgradePrice;<br/>    public Button ToyIncreaseButton;<br/><br/>    public GameObject prefabToy;<br/><br/><br/>    GameManager gm;<br/><br/>    public Vector2 point; | Start()<br />Update()<br />IEnumerator autoClick()<br />ToyCreateButton()<br />public void ToyIncreaseLevelUpgrade()<br />ToyIncreaseUpdatePanelText()<br /> | ToyManager_Box<br />ToyManager_Scratcher<br />ToyManager_CatTower<br />ToyManager_Toy | Panel_Toy<br />Button_Toy(PB)                                |                              |
+| 고양이관리    | CatManager       | ToyManager toy;<br/>    GameManager gm;<br/><br/>    public int PlayPrice;<br/>    public Button PlayButton;<br/>    public Text textPlay;<br/>    public Image imagePlay;<br/>    public float PlaylerpSpeed;<br/>public int TouchPrice;<br/>    public Button TouchButton;<br/>    public Text textTouch;<br/>    public int WashPrice;<br/>    public Button WashButton;<br/>    public Text textWash;<br/>    public Image imageWash;<br/>    public float WashlerpSpeed;<br/><br/>    public Button HungryButton;<br/>    public Image imageHungry;<br/>    public float HungrylerpSpeed;<br/><br/>    public float lerpSpeed; | Start()<br />Update()<br />ButtonActiveCheck()<br />_PlayBtton()<br />_TouchBtton()<br />_WashBtton()<br />_HungryBtton()<br />FunnyStatus()<br />WashStatus()<br />HungryStatus() | CatManager                                                   | Panel_Management<br />Panel_Status<br />Button_Management(PB)<br />Button_Food(PB) |                              |
+| 광고넣기      | ADManager        |                                                              | Start()<br />AD_Initialize()<br />AD_Request<br />Show_RewardVideo<br /> | ADManager                                                    |                                                              | 리워드 광고                  |
+| 광고 불러오기 | GameManager      | public Button adButton;<br/>    public float leftTime;<br/>    public float backup_leftTime;<br/>    public Text textleftTime;<br/>    ADManager adm; | Start()<br />ButtonActiveCheck()<br />showad()<br />IEnumerator rewardVideo()<br />IEnumerator decreaseTime() |                                                              | Button_Ad(PB)                                                |                              |
+| 이벤트처리    | EvnetManager     | GameManager gm;<br/>    LifeTime lifetime;<br/>    ADManager adm;<br/><br/>    public GameObject Event_Popup;<br/>    int FirstEvent_RandomTime_1;<br/>    int FirstEvent_RandomTime_2;<br/>    public int RandomTime_1;    <br/>    public int RandomTime_2;    <br/>    public Button button_Yes;<br/>    public Button button_No;<br/><br/>    public Text text_Bath;<br/>    public Text text_Hospiter;<br/>    public Text text_ToothLose;<br/>    public Text text_RandomEvent; | Start()<br />Update()<br />_EventManagement()<br />Event_Bath()<br />Event_Hospiter()<br />Event_ToothLose()<br />Event_RandomEvent_1()<br />Event_RandomEvent_2<br />showad() | EventManager                                                 | Panel_Event                                                  |                              |
 
 
 
@@ -118,4 +121,5 @@
 |                          | ToyIncreaseAmount   | 1       |                                     |
 |                          | ToyIncreasePirce    | 10      |                                     |
 | **(PT)Text_timer**       | TimeSpeed           | 20      | 몇초당 1시간(인게임시간)으로 할 지  |
+| **ADManager**            | backup_leftTime     | 60      | 다음광고까지 걸리는 시간(초)        |
 

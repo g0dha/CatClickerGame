@@ -1,106 +1,116 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using GoogleMobileAds.Api;
+
+
 
 public class ADManager : MonoBehaviour
 {
-	RewardBasedVideoAd ad;
-	[SerializeField] string appId;
-	[SerializeField] string unitId;
-	[SerializeField] bool isTest;
-	[SerializeField] string deviceId;
+    RewardBasedVideoAd m_AD_RewardVideo;
+    
+    
+    // AdMob 에서 발급된 AppID
+    string m_App_Id = "ca-app-pub-3379886564047452~7923375790";
+    // AdMob 에서 각 광고단위로 발급된 UnitID 중 리워드광고 ID
+    //string m_Ad_UnitId_Reward = "ca-app-pub-3379886564047452/5206353743";
+    string m_Ad_UnitId_Reward = "ca-app-pub-3940256099942544/5224354917";   //TEST ID
 
 
-	void Start()
-	{
-		
-		MobileAds.Initialize(appId);
-		ad = RewardBasedVideoAd.Instance;
+    void Start()
+    {        
 
-		//광고요청이 성공적으로 로드되면 호출됩니다.
-		ad.OnAdLoaded += OnAdLoaded;
+        AD_Initialize();
 
-		//광고요청을 로드하지 못했을 때 호출됩니다.
-		ad.OnAdFailedToLoad += OnAdFailedToLoad;
+    }
 
-		//광고가 표시될 때 호출됩니다.
-		ad.OnAdOpening += OnAdOpening;
 
-		//광고가 재생되기 시작하면 호출됩니다.
-		ad.OnAdStarted += OnAdStarted;
+    void AD_Initialize()
+    {
 
-		//사용자가 비디오 시청을 통해 보상을 받을 때 호출됩니다.
-		ad.OnAdRewarded += OnAdRewarded;
+        // 앱ID 로 초기화
+        MobileAds.Initialize(m_App_Id);
 
-		//광고가 닫힐 때 호출됩니다.
-		ad.OnAdClosed += OnAdClosed;
+        // 리워드광고를 받을 수 있게 준비
+        m_AD_RewardVideo = RewardBasedVideoAd.Instance;
 
-		//광고클릭으로 인해 사용자가 애플리케이션을 종료한 경우 호출됩니다.
-		ad.OnAdLeavingApplication += OnAdLeavingApplication;
+        m_AD_RewardVideo.OnAdLoaded += this.H_RewardVideoLoad;
+        m_AD_RewardVideo.OnAdFailedToLoad += this.H_RewardVideoFailedToLoad;
+        m_AD_RewardVideo.OnAdStarted += this.H_RewardVideoStart;
+        m_AD_RewardVideo.OnAdOpening += this.H_RewardVideoOpen;
+        m_AD_RewardVideo.OnAdClosed += this.H_RewardVideoClose;
+        m_AD_RewardVideo.OnAdRewarded += this.H_RewardVideoReward;
+        m_AD_RewardVideo.OnAdLeavingApplication += this.H_RewardVideoLeftApplication;
 
-		LoadAd();
-	}
+        AD_Request();
+    }
 
-	void LoadAd()
-	{
-		AdRequest request = new AdRequest.Builder().Build();
-		if (isTest)
-		{
-			if (deviceId.Length > 0)
-				request = new AdRequest.Builder().AddTestDevice(AdRequest.TestDeviceSimulator).AddTestDevice(deviceId).Build();
-			else
-				unitId = "ca-app-pub-3940256099942544/5224354917"; //테스트 유닛 ID
+    void AD_Request()
+    {
 
-		}
-		ad.LoadAd(request, unitId);
-	}
+        // 광고 요청 조건 자료구조 생성
+        AdRequest t_Request = new AdRequest.Builder().AddTestDevice("6969CEE4E18C4D85A3900F9E3D0B2DE2").Build();
+        //AdRequest t_Request = new AdRequest.Builder().Build();
+        // 리워드광고에 대한 광고 정보 요청
+        m_AD_RewardVideo.LoadAd(t_Request, m_Ad_UnitId_Reward);
+    }
 
-	public void OnBtnViewAdClicked()
-	{
-		if (ad.IsLoaded())
-		{
-			Debug.Log("View Ad");
-			
-		}
-		else
-		{
-			Debug.Log("Ad is Not Loaded");
-			LoadAd();
-		}
-	}
+    public void Show_RewardVideo()
+    {
 
-	void OnAdLoaded(object sender, EventArgs args)
-	{
-		Debug.Log("OnAdLoaded");
-	}
+        
+        if (m_AD_RewardVideo.IsLoaded())
+        {
+            // 준비된 광고 표시(노출)
+            m_AD_RewardVideo.Show();
+        }
+    }
 
-	void OnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
-	{
-		Debug.Log("OnAdFailedToLoad");
-	}
+    
 
-	void OnAdOpening(object sender, EventArgs e)
-	{
-		Debug.Log("OnAdOpening");
-	}
+    // 광고 로드가 완료되면 실행될 함수
+    public void H_RewardVideoLoad(object sender, EventArgs args)
+    {
+    }
+    // 광고 로드가 실패하면 실행될 함수
+    public void H_RewardVideoFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
+    }
 
-	void OnAdStarted(object sender, EventArgs e)
-	{
-		Debug.Log("OnAdStarted");
-	}
+    // 광고가 시작되면 실행될 함수
+    public void H_RewardVideoStart(object sender, EventArgs args)
+    {
+    }
 
-	void OnAdRewarded(object sender, Reward e)
-	{
-		Debug.Log("OnAdRewarded");
-	}
+    // 광고가 오픈(노출)되면 실행될 함수
+    public void H_RewardVideoOpen(object sender, EventArgs args)
+    {
+    }
 
-	void OnAdClosed(object sender, EventArgs e)
-	{
-		Debug.Log("OnAdClosed");
-		LoadAd();
-	}
-	void OnAdLeavingApplication(object sender, EventArgs e)
-	{
-		Debug.Log("OnAdLeavingApplication");
-	}
+    // 광고가 오픈 후 닫히면 실행될 함수
+    public void H_RewardVideoClose(object sender, EventArgs args)
+    {
+        AD_Request();
+    }
+
+    // 리워드 광고 조건을 만족한 경우 실행되는 함수
+    public void H_RewardVideoReward(object sender, Reward args)
+    {
+        string type = args.Type;        //리워드 상품
+        double amount = args.Amount;    //리워드 수량
+
+        //MonoBehaviour.print(" H_RewardVideoReward event received for " + amount.ToString() + "" + type);
+
+
+    }
+
+    // 광고 실행 중에 어플리케이션이 강제로 종료되는 경우 실행되는 함수
+    public void H_RewardVideoLeftApplication(object sender, EventArgs args)
+    {
+    }
+
+
+
 }

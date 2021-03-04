@@ -51,7 +51,7 @@ public class CatManager : MonoBehaviour
 
         HungryButton = gm.foodButton;
 
-}
+    }
 
 
     void Update()

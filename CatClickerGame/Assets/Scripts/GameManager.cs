@@ -22,8 +22,14 @@ public class GameManager : MonoBehaviour
 
     public GameObject prefabFoodDish;
     public int food_lifeTime;
-      
-    
+
+    public Button adButton;
+    public float leftTime;
+    public float backup_leftTime;
+    public Text textleftTime;
+
+    ADManager adm;
+
 
 
 
@@ -31,12 +37,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        adm = GameObject.Find("ADManager").GetComponent<ADManager>();
+        leftTime = 0f;
         
     }
 
 
     void Update()
-    {
+    {        
         ShowInfo();
 
         HeartIncrease(); 
@@ -45,7 +53,13 @@ public class GameManager : MonoBehaviour
         
         ButtonActiveCheck();
 
+        
+
+
     }
+
+    
+   
 
     // #####################################################################################################################
 
@@ -105,7 +119,7 @@ public class GameManager : MonoBehaviour
             foodButton.interactable = false;
         }
 
-       if (heart >= heartIncreasePrice)
+        if (heart >= heartIncreasePrice)
         {
             HeartIncreaseButton.interactable = true;
         }
@@ -113,6 +127,17 @@ public class GameManager : MonoBehaviour
         {
             HeartIncreaseButton.interactable = false;
         }
+        
+        if (leftTime >0f)
+        {
+            adButton.interactable = false;
+        }
+        else
+        {
+            adButton.interactable = true;
+            textleftTime.text = "광고보기";
+        }
+       
     }
 
 
@@ -128,7 +153,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-
      void ChangeSprite_Food()
     {
         if (GameObject.Find(prefabFoodDish.name + "(Clone)") == false)
@@ -143,7 +167,44 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
 
+
+    public void showad()
+    {
+        StartCoroutine("rewardVideo");
+    }
+
+    IEnumerator rewardVideo()
+    {
+        if (adButton.interactable == true)
+        {
+            adm.Show_RewardVideo();
+            leftTime = backup_leftTime;
+
+            StartCoroutine("decreaseTime");
+
+
+            yield return null;         
+        }
+        else
+        {
+            yield return null;
+        }
+    }
+    
+    IEnumerator decreaseTime()
+    {
+        while (leftTime >0)
+        {
+            //adButton.interactable = false;
+            leftTime -= Time.deltaTime;
+            textleftTime.text = Mathf.Round(leftTime).ToString();
+            yield return null;
+        }
+        
+
+    }
+
+   
 
 }
