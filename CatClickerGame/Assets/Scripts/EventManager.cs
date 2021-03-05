@@ -13,6 +13,10 @@ public class EventManager : MonoBehaviour
     LifeTime lifetime;
     ADManager adm;
 
+    List<string> EventList;
+    int ListLength;
+    public int RandomNumber;
+
     public GameObject Event_Popup;
     int FirstEvent_RandomTime_1;
     int FirstEvent_RandomTime_2;
@@ -36,11 +40,15 @@ public class EventManager : MonoBehaviour
         lifetime = GameObject.Find("Text_timer").GetComponent<LifeTime>();
         adm = GameObject.Find("ADManager").GetComponent<ADManager>();
 
+        EventList = new List<string>();
+
         FirstEvent_RandomTime_1 = Random.Range(5, 15);
         RandomTime_1 = FirstEvent_RandomTime_1;
 
         FirstEvent_RandomTime_2 = Random.Range(16, 30);
         RandomTime_2 = FirstEvent_RandomTime_2;
+
+        arrlist_EventText();
 
     }
 
@@ -71,7 +79,32 @@ public class EventManager : MonoBehaviour
 
 
     ##################################################################################################################### */
+    void arrlist_EventText()
+    {
+        //EventList.Add("");
+        EventList.Add("벌레를 잡았다?!");
+        EventList.Add("수염을 주웠다!");
+        EventList.Add("헤어볼을 토했다..");
+        EventList.Add("화분을 부셨다!");
+        EventList.Add("빈 허공을 바라봅니다.");
+        EventList.Add("냉장고 위에 올라갔습니다.");
+        EventList.Add("세탁기 안에서 발견되었습니다..?");
+        EventList.Add("밥그릇을 엎었습니다.");
+        EventList.Add("물그릇을 엎었습니다.");
+        EventList.Add("휴지를 다 풀어져있습니다.");
+        EventList.Add("장난감을 파괴했습니다.");
+        EventList.Add("집사 명치를 밟고 지나갑니다...");
+        EventList.Add("물을 찍어 먹고 있습니다...?");
+        EventList.Add("침대 밑에서 \n머리끈 무더기를 발견했습니다.");
+        EventList.Add("집사를 핥다가 갑자기 때렸습니다..?!");
+        EventList.Add("노트북의 전원을 꺼버렸습니다.");
 
+
+
+        ListLength = EventList.Count;
+        RandomNumber = Random.Range(0, ListLength);
+
+    }
 
 
     void _EventManagement()
@@ -93,12 +126,12 @@ public class EventManager : MonoBehaviour
                 Event_ToothLose();
             }
 
-            if (lifetime.timeDay == RandomTime_1)                                                 //랜덤일 0시
+            if (lifetime.timeDay == RandomTime_1)                                               //랜덤일 0시
             {
                 Event_RandomEvent_1();
             }
 
-            if (lifetime.timeDay == RandomTime_2)                                                 //랜덤일 0시
+            if (lifetime.timeDay == RandomTime_2)                                               //랜덤일 0시
             {
                 Event_RandomEvent_2();
             }
@@ -129,18 +162,21 @@ public class EventManager : MonoBehaviour
 
     void Event_RandomEvent_1()
     {
-        text_RandomEvent.text = "랜덤이벤트1 발생!";
+
+        text_RandomEvent.text = EventList[RandomNumber-1];
         Event_Popup.SetActive(true);
 
         RandomTime_1 = Random.Range(1, 15);
+        RandomNumber = Random.Range(0, ListLength);
 
     }
     void Event_RandomEvent_2()
     {
-        text_RandomEvent.text = "랜덤이벤트2 발생!";
+        text_RandomEvent.text = EventList[RandomNumber-1];
         Event_Popup.SetActive(true);
 
         RandomTime_2 = Random.Range(16, 30);
+        RandomNumber = Random.Range(0, ListLength);
 
     }
 

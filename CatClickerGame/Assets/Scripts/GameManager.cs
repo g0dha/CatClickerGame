@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public float backup_leftTime;
     public Text textleftTime;
 
+    public GameObject Panel_Exit;
+
     ADManager adm;
 
 
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
         
         ButtonActiveCheck();
 
-        
+        ExitGame();
 
 
     }
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject() == false)
+            if (!EventSystem.current.IsPointerOverGameObject(0))
             {
                 heart += heartIncreaseAmount;
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -106,7 +108,7 @@ public class GameManager : MonoBehaviour
         textHeartUpgradePrice.text = heartIncreasePrice.ToString();
     }
 
-
+    // #####################################################################################################################
 
     void ButtonActiveCheck()
     {
@@ -140,6 +142,7 @@ public class GameManager : MonoBehaviour
        
     }
 
+    // #####################################################################################################################
 
     public void feedPrice()
     {
@@ -167,7 +170,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-
+    // #####################################################################################################################
 
     public void showad()
     {
@@ -200,11 +203,37 @@ public class GameManager : MonoBehaviour
             leftTime -= Time.deltaTime;
             textleftTime.text = Mathf.Round(leftTime).ToString();
             yield return null;
-        }
-        
+        }       
 
     }
 
-   
+    // #####################################################################################################################
+
+    void ExitGame()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = 0f;     //시간정지
+                Panel_Exit.SetActive(true);
+            }
+        }
+    }
+
+    public void Exit_Yes()
+    {
+        Application.Quit();
+    }
+
+    public void Exit_No()
+    {
+        Time.timeScale = 1f;
+        Panel_Exit.SetActive(false);
+    }
+
+    // #####################################################################################################################
+
+
 
 }

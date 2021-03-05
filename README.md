@@ -21,6 +21,7 @@
       3. 성묘 : 2단계 성장(성장 끝). 12개월 이상(누적 플레이타임 48시간...)
    3. **광고보기**
       1. 높은 재화 획득 가능, 특정 값 사이에서 랜덤 or 특정 값
+      2. **랜덤 이벤트 발생 시 yes를 보면 광고 재생, 리워드 지급**
    4. 훈련
       1. 앉아
       2. 기다려
@@ -33,27 +34,29 @@
    2. 인게임화면
    3. 종료화면
 
-8. 
-
-9. **스테이터스**
+8. **스테이터스**
 
    1. **배고픔 : 밥 주면 회복**
-
    2. **깨끗함 : 냥빨**
-
    3. **재밌음 : 놀아주기, 쓰다듬기**
 
-      
+9. 추가할 내용
+
+   1. 이름, 생일 지어주기
+   2. 움직이는 모션 추가
+   3. 리워드 재화로 할 수 있는 것
+   
+   
 
 #### 고양이 성장 및 이벤트 정리
 
-|                    | **아기고양이**   | **어린이고양이**      | **어른고양이**      |
-| ------------------ | ---------------- | --------------------- | ------------------- |
-| **누적플레이타임** | **0 ~6개월**     | **6~12개월**          | **12개월~**         |
-| 특정조건           | 없음             | 미정                  | 미정                |
-| 이벤트             | 첫 목욕(4개월)   | 중성화선택(7개월이상) | 종합검진(6개월마다) |
-|                    | 젖니빠짐(6개월)  |                       |                     |
-|                    | 예방접종(50일경) |                       |                     |
+|                    | **아기고양이**       | **어린이고양이**      | **어른고양이**          |
+| ------------------ | -------------------- | --------------------- | ----------------------- |
+| **누적플레이타임** | **0 ~6개월**         | **6~12개월**          | **12개월~**             |
+| 특정조건           | 없음                 | 미정                  | 미정                    |
+| 이벤트             | **첫 목욕(4개월)**   | 중성화선택(7개월이상) | **종합검진(6개월마다)** |
+|                    | **젖니빠짐(6개월)**  |                       |                         |
+|                    | **예방접종(50일경)** |                       |                         |
 
 #### 업그레이드
 
@@ -91,7 +94,9 @@
 | 고양이관리    | CatManager       | ToyManager toy;<br/>    GameManager gm;<br/><br/>    public int PlayPrice;<br/>    public Button PlayButton;<br/>    public Text textPlay;<br/>    public Image imagePlay;<br/>    public float PlaylerpSpeed;<br/>public int TouchPrice;<br/>    public Button TouchButton;<br/>    public Text textTouch;<br/>    public int WashPrice;<br/>    public Button WashButton;<br/>    public Text textWash;<br/>    public Image imageWash;<br/>    public float WashlerpSpeed;<br/><br/>    public Button HungryButton;<br/>    public Image imageHungry;<br/>    public float HungrylerpSpeed;<br/><br/>    public float lerpSpeed; | Start()<br />Update()<br />ButtonActiveCheck()<br />_PlayBtton()<br />_TouchBtton()<br />_WashBtton()<br />_HungryBtton()<br />FunnyStatus()<br />WashStatus()<br />HungryStatus() | CatManager                                                   | Panel_Management<br />Panel_Status<br />Button_Management(PB)<br />Button_Food(PB) |                              |
 | 광고넣기      | ADManager        |                                                              | Start()<br />AD_Initialize()<br />AD_Request<br />Show_RewardVideo<br /> | ADManager                                                    |                                                              | 리워드 광고                  |
 | 광고 불러오기 | GameManager      | public Button adButton;<br/>    public float leftTime;<br/>    public float backup_leftTime;<br/>    public Text textleftTime;<br/>    ADManager adm; | Start()<br />ButtonActiveCheck()<br />showad()<br />IEnumerator rewardVideo()<br />IEnumerator decreaseTime() |                                                              | Button_Ad(PB)                                                |                              |
-| 이벤트처리    | EvnetManager     | GameManager gm;<br/>    LifeTime lifetime;<br/>    ADManager adm;<br/><br/>    public GameObject Event_Popup;<br/>    int FirstEvent_RandomTime_1;<br/>    int FirstEvent_RandomTime_2;<br/>    public int RandomTime_1;    <br/>    public int RandomTime_2;    <br/>    public Button button_Yes;<br/>    public Button button_No;<br/><br/>    public Text text_Bath;<br/>    public Text text_Hospiter;<br/>    public Text text_ToothLose;<br/>    public Text text_RandomEvent; | Start()<br />Update()<br />_EventManagement()<br />Event_Bath()<br />Event_Hospiter()<br />Event_ToothLose()<br />Event_RandomEvent_1()<br />Event_RandomEvent_2<br />showad() | EventManager                                                 | Panel_Event                                                  |                              |
+| 이벤트처리    | EvnetManager     | GameManager gm;<br/>    LifeTime lifetime;<br/>    ADManager adm;<br/><br/>List<string> EventList;<br/>    int ListLength;<br/>    public int RandomNumber;<br />    public GameObject Event_Popup;<br/>    int FirstEvent_RandomTime_1;<br/>    int FirstEvent_RandomTime_2;<br/>    public int RandomTime_1;    <br/>    public int RandomTime_2;    <br/>    public Button button_Yes;<br/>    public Button button_No;<br/><br/>    public Text text_Bath;<br/>    public Text text_Hospiter;<br/>    public Text text_ToothLose;<br/>    public Text text_RandomEvent; | Start()<br />Update()<br />arrlist_EventText()<br />_EventManagement()<br />Event_Bath()<br />Event_Hospiter()<br />Event_ToothLose()<br />Event_RandomEvent_1()<br />Event_RandomEvent_2<br />showad() | EventManager                                                 | Panel_Event                                                  | 이벤트내용 추가하기          |
+| 화면전환      | GameManager      | public GameObject Panel_Exit;                                | Update()<br />ExitGame()<br />Exit_Yes()<br />Exit_No()      | Title<br />Background                                        | Button_Start<br />Image_catface                              | Scene0                       |
+|               | StartScene       | public Vector2 point;<br/>    public Vector2 EndPosition;<br/><br/>    public float DownSpeed;<br/>    public float alpha;<br/><br/>    public GameObject button_Start;<br/>    public GameObject CatFace; | Start()<br />Update()<br />IEnumerator MoveTitle()<br />Pop_Image()<br />Pop_Button()<br />ChangePlayGameScene() |                                                              | Panel_Exit                                                   | Scene1                       |
 
 
 
@@ -120,6 +125,6 @@
 | **ToyManager_Toy**       | ToyCreatePrice      | 10      |                                     |
 |                          | ToyIncreaseAmount   | 1       |                                     |
 |                          | ToyIncreasePirce    | 10      |                                     |
-| **(PT)Text_timer**       | TimeSpeed           | 20      | 몇초당 1시간(인게임시간)으로 할 지  |
-| **ADManager**            | backup_leftTime     | 60      | 다음광고까지 걸리는 시간(초)        |
+| **(PT)Text_timer**       | ~~TimeSpeed~~       | ~~8~~   | 몇초당 1시간(인게임시간)으로 할 지  |
+| **ADManager**            | ~~backup_leftTime~~ | ~~300~~ | 다음광고까지 걸리는 시간(초)        |
 

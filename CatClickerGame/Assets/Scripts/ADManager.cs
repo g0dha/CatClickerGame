@@ -18,11 +18,16 @@ public class ADManager : MonoBehaviour
     //string m_Ad_UnitId_Reward = "ca-app-pub-3379886564047452/5206353743";
     string m_Ad_UnitId_Reward = "ca-app-pub-3940256099942544/5224354917";   //TEST ID
 
+    public int reward;
+    public Text text_reward;
+
 
     void Start()
     {        
-
+        reward = 0;
+        text_reward.text = reward.ToString();
         AD_Initialize();
+        
 
     }
 
@@ -87,6 +92,7 @@ public class ADManager : MonoBehaviour
     // 광고가 오픈(노출)되면 실행될 함수
     public void H_RewardVideoOpen(object sender, EventArgs args)
     {
+        
     }
 
     // 광고가 오픈 후 닫히면 실행될 함수
@@ -101,8 +107,9 @@ public class ADManager : MonoBehaviour
         string type = args.Type;        //리워드 상품
         double amount = args.Amount;    //리워드 수량
 
-        //MonoBehaviour.print(" H_RewardVideoReward event received for " + amount.ToString() + "" + type);
+        reward += 1;
 
+        text_reward.text = reward.ToString();
 
     }
 

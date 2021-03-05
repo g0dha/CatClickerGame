@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - GameManager
     - HeartMove
     - LifeTime
+    - StartScene
     - ToyManager
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
@@ -43,7 +44,60 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/0_Start.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11428}
+    - Class: 114
+      Script: {instanceID: 11452}
+    - Class: 114
+      Script: {instanceID: 11788}
+    - Class: 114
+      Script: {instanceID: 11850}
+    - Class: 114
+      Script: {instanceID: 12648}
+    - Class: 114
+      Script: {instanceID: 13426}
+    - Class: 114
+      Script: {instanceID: 14404}
+    - Class: 114
+      Script: {instanceID: 14608}
+    - Class: 114
+      Script: {instanceID: 15118}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/1_Playing.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -79,8 +133,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12828}
     - Class: 114
-      Script: {instanceID: 13426}
-    - Class: 114
       Script: {instanceID: 13466}
     - Class: 114
       Script: {instanceID: 13548}
@@ -91,9 +143,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14404}
     - Class: 114
-      Script: {instanceID: 15114}
+      Script: {instanceID: 14914}
     - Class: 114
-      Script: {instanceID: 35752}
+      Script: {instanceID: 15118}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -157,7 +209,7 @@ ScriptsOnlyBuild:
     className: HeartMove
   - hash:
       serializedVersion: 2
-      Hash: d1c4bf0a1157afc78b7ae406aa9ded85
+      Hash: cbbdea0fd90d1b23b8302e2f2ae09346
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -535,7 +587,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 2b9b0f94729ee1a3e37ce90817783f53
+      Hash: 645efcda09f33cb558df66e4ca56af9b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LifeTime
@@ -565,7 +617,7 @@ ScriptsOnlyBuild:
     className: ApplicationQuit
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: d9dab0f61442fbba3835d94426e5731d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ADManager
@@ -583,6 +635,12 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
+      Hash: c0ddcdbb5bee51394de024c0d06db861
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StartScene
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -593,6 +651,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 3dd8d710582eabfb3bcfbd8b8c031b6a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EventManager
   - hash:
       serializedVersion: 2
       Hash: 8cd1cbba27f3cb1717254f668e9e0d5a
@@ -701,13 +765,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: b3f157ae14ff0bf7a51b107fa183964f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: EventManager
   platform: 13
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_27.apk
+  - Assets/Scenes/0_Start.unity
+  - Assets/Scenes/1_Playing.unity
+  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_32.apk
