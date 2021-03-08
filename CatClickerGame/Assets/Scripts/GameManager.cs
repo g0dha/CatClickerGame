@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public long foodPrice;
     public Button foodButton;
+    public Text textFoodPrice;
 
     public GameObject prefabFoodDish;
     public int food_lifeTime;
@@ -54,6 +55,8 @@ public class GameManager : MonoBehaviour
         HeartIncreaseUpdatePriceText();
         
         ButtonActiveCheck();
+
+        _textFoodPrice();
 
         ExitGame();
 
@@ -92,8 +95,8 @@ public class GameManager : MonoBehaviour
         {
             heart -= heartIncreasePrice;
             heartIncreaseLevel += 1;
-            heartIncreaseAmount += heartIncreaseLevel * 2;
-            heartIncreasePrice += heartIncreaseLevel * 10;
+            heartIncreaseAmount += (long)(heartIncreaseLevel * 3.3);
+            heartIncreasePrice += (long)Mathf.Pow(3,heartIncreaseLevel)*5;
         }
     }
 
@@ -149,7 +152,7 @@ public class GameManager : MonoBehaviour
         if (heart >= foodPrice && (GameObject.Find(prefabFoodDish.name + "(Clone)") == false))
         {
             heart -= foodPrice;
-            foodPrice = heartIncreaseLevel * 10;
+            foodPrice = 100 * heartIncreaseLevel;
             ChangeSprite_Food();
         }
 
@@ -168,6 +171,11 @@ public class GameManager : MonoBehaviour
             Destroy(GameObject.Find(prefabFoodDish.name + "(Clone)"), food_lifeTime);
         }
 
+    }
+
+    void _textFoodPrice()
+    {
+        textFoodPrice.text = "밥 <" + foodPrice + ">";
     }
 
     // #####################################################################################################################

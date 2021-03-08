@@ -5,7 +5,7 @@
 
 3. 카테고리 : 클리커게임, 육성, 도트픽셀
 
-4. 재화 : 하트
+4. 재화 : 하트, 다이아
 
 5. 시간
    1. **낮(6시~15시)/저녁(15시~20시)/밤(20시~6시)**
@@ -15,7 +15,7 @@
    1. **하트모으기 : 패널을 제외한 화면을 터치할 시 하트 획득**
       1. **클릭시 1하트 획득 ➡ 클릭시 더 많은 하트 획득가능 (업그레이드)**
       2. **오토 획득 ➡ 캣타워 등 설치시 오토 획득 (업그레이드 가능)**
-   2. 고양이 성장 : **시간누적** + 조건 달성시 성장
+   2. 고양이 성장 : **시간누적** + 조건? 달성시 성장
       1. 아기 : 시작 캐릭터. 
       2. 어린이 : 1단계 성장. 6개월 이상(누적 플레이타임 12시간)
       3. 성묘 : 2단계 성장(성장 끝). 12개월 이상(누적 플레이타임 48시간...)
@@ -30,9 +30,9 @@
    
 7. 씬
 
-   1. 시작화면
-   2. 인게임화면
-   3. 종료화면
+   1. ~~시작화면~~
+   2. 인트로영상
+   3. 인게임화면
 
 8. **스테이터스**
 
@@ -42,9 +42,10 @@
 
 9. 추가할 내용
 
-   1. 이름, 생일 지어주기
-   2. 움직이는 모션 추가
-   3. 리워드 재화로 할 수 있는 것
+   1. ~~값 지정~~
+   2. 이름, 생일 지어주기 + 인트로(주워오기)
+   3. 움직이는 모션 추가
+   4. 리워드 재화로 할 수 있는 것
    
    
 
@@ -102,29 +103,33 @@
 
 #### 조정해야 할 변수 값 정리
 
-| 게임오브젝트             | 변수 **명**         | 변수 값 | 설명                                |
-| ------------------------ | ------------------- | ------- | ----------------------------------- |
-| **GameManager**          | HeartIncreaseAmount | 1       | 수식                                |
-|                          | HeartIncreasePrice  | 10      | 수식                                |
-|                          | FoodPirce           | 10      | 수식                                |
-|                          | Food_lifeTime       | 10      | food프리팹이 사라지는데 걸리는 시간 |
-| **CatManager**           | PlayPrice           | 10      |                                     |
-|                          | TouchPirce          | 10      |                                     |
-|                          | WashPirce           | 10      |                                     |
-|                          | HungrylerpSpeed     |         | 수식조정(*0.5)                      |
-|                          | LerpSpeed           | 100     | bar 증감 속도 조절                  |
-| **ToyManager_Box**       | ToyCreatePrice      | 10      |                                     |
-|                          | ToyIncreaseAmount   | 1       |                                     |
-|                          | ToyIncreasePirce    | 10      |                                     |
-| **ToyManager_Scratcher** | ToyCreatePrice      | 10      |                                     |
-|                          | ToyIncreaseAmount   | 1       |                                     |
-|                          | ToyIncreasePirce    | 10      |                                     |
-| **ToyManager_CatTower**  | ToyCreatePrice      | 10      |                                     |
-|                          | ToyIncreaseAmount   | 1       |                                     |
-|                          | ToyIncreasePirce    | 10      |                                     |
-| **ToyManager_Toy**       | ToyCreatePrice      | 10      |                                     |
-|                          | ToyIncreaseAmount   | 1       |                                     |
-|                          | ToyIncreasePirce    | 10      |                                     |
-| **(PT)Text_timer**       | ~~TimeSpeed~~       | ~~8~~   | 몇초당 1시간(인게임시간)으로 할 지  |
-| **ADManager**            | ~~backup_leftTime~~ | ~~300~~ | 다음광고까지 걸리는 시간(초)        |
+| 게임오브젝트                 | 변수 **명**             | 변수 값   | 설명                                              |
+| ---------------------------- | ----------------------- | --------- | ------------------------------------------------- |
+| **GameManager**              | ~~HeartIncreaseAmount~~ | ~~수식~~  | ~~heartIncreaseLevel * 3.3~~                      |
+|                              | ~~HeartIncreasePrice~~  | ~~수식~~  | ~~Mathf.Pow(3,heartIncreaseLevel)*5~~             |
+|                              | ~~FoodPirce~~           | ~~수식~~  | ~~100*HeartIncreaseLevel~~                        |
+|                              | ~~Food_lifeTime~~       | ~~30~~    | ~~food프리팹이 사라지는데 걸리는 시간~~           |
+| **CatManager**               | ~~PlayPrice~~           | ~~100~~   |                                                   |
+|                              | ~~TouchPirce~~          | ~~100~~   |                                                   |
+|                              | ~~WashPirce~~           | ~~300~~   |                                                   |
+|                              | ~~HungrylerpSpeed~~     | ~~수식~~  | ~~lerpSpeed*0.6~~                                 |
+|                              | ~~LerpSpeed~~           | ~~100~~   | ~~bar 증감 속도 조절~~                            |
+| **ToyManager_Toy**           | ~~ToyCreatePrice~~      | ~~100~~   |                                                   |
+|                              | ~~alpha~~               | ~~3~~     | ~~alpha : 가격 차이를 두기 위한 값~~              |
+|                              | ~~ToyIncreaseAmount~~   | ~~수식~~  | ~~ToyIncreaseLevel* 10 *alpha~~                   |
+|                              | ~~ToyIncreasePirce~~    | ~~수식~~  | ~~Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha~~ |
+| ~~**ToyManager_Scratcher**~~ | ~~ToyCreatePrice~~      | ~~500~~   |                                                   |
+|                              | ~~alpha~~               | ~~9~~     |                                                   |
+|                              | ~~ToyIncreaseAmount~~   | ~~수식~~  | ~~ToyIncreaseLevel* 10 *alpha~~                   |
+|                              | ~~ToyIncreasePirce~~    | ~~수식~~  | ~~Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha~~ |
+| ~~**ToyManager_Box**~~       | ~~ToyCreatePrice~~      | ~~1500~~  |                                                   |
+|                              | ~~alpha~~               | ~~21~~    |                                                   |
+|                              | ~~ToyIncreaseAmount~~   | ~~수식~~  | ~~ToyIncreaseLevel* 10 *alpha~~                   |
+|                              | ~~ToyIncreasePirce~~    | ~~수식~~  | ~~Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha~~ |
+| ~~**ToyManager_CatTower**~~  | ~~ToyCreatePrice~~      | ~~10000~~ |                                                   |
+|                              | ~~alpha~~               | ~~30~~    |                                                   |
+|                              | ~~ToyIncreaseAmount~~   | ~~수식~~  | ~~ToyIncreaseLevel* 10 *alpha~~                   |
+|                              | ~~ToyIncreasePirce~~    | ~~수식~~  | ~~Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha~~ |
+| **(PT)Text_timer**           | ~~TimeSpeed~~           | ~~8~~     | ~~몇초당 1시간(인게임시간)으로 할 지~~            |
+| ~~**ADManager**~~            | ~~backup_leftTime~~     | ~~300~~   | ~~다음광고까지 걸리는 시간(초)~~                  |
 

@@ -307,7 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a362d4a5334b1634192bd73a6b730562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToyCreatePrice: 10
+  alpha: 21
+  ToyCreatePrice: 1500
   ToyIncreaseAmount: 1
   ToyIncreaseLevel: 1
   ToyIncreasePrice: 10
@@ -330,7 +331,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &85527046
 GameObject:
@@ -366,7 +367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -441.99997, y: -112.00006}
+  m_AnchoredPosition: {x: -441, y: 425}
   m_SizeDelta: {x: 689.41455, y: 226.65607}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &85527048
@@ -675,7 +676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -436.49, y: 425}
+  m_AnchoredPosition: {x: -441, y: -113.33}
   m_SizeDelta: {x: 689.41455, y: 226.65607}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115438102
@@ -2510,7 +2511,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -2974,11 +2975,12 @@ MonoBehaviour:
   HeartIncreaseButton: {fileID: 1561001997}
   prefabHeart: {fileID: 2229186380317570685, guid: c1ae4d5473ace4b4dac1a5fc78eedab6,
     type: 3}
-  foodPrice: 10
+  foodPrice: 100
   foodButton: {fileID: 367903374}
+  textFoodPrice: {fileID: 755822908}
   prefabFoodDish: {fileID: 7958421082321079235, guid: fea29b206b54981479fa94a39e28a7ea,
     type: 3}
-  food_lifeTime: 10
+  food_lifeTime: 30
   adButton: {fileID: 562322495}
   leftTime: 0
   backup_leftTime: 300
@@ -3456,7 +3458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a362d4a5334b1634192bd73a6b730562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToyCreatePrice: 10
+  alpha: 3
+  ToyCreatePrice: 100
   ToyIncreaseAmount: 1
   ToyIncreaseLevel: 1
   ToyIncreasePrice: 10
@@ -3479,7 +3482,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &803643721
 GameObject:
@@ -3510,7 +3513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a362d4a5334b1634192bd73a6b730562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToyCreatePrice: 10
+  alpha: 30
+  ToyCreatePrice: 10000
   ToyIncreaseAmount: 1
   ToyIncreaseLevel: 1
   ToyIncreasePrice: 10
@@ -3533,7 +3537,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &829865266
 GameObject:
@@ -3888,7 +3892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -442, y: -380}
+  m_AnchoredPosition: {x: -441, y: 157}
   m_SizeDelta: {x: 689.41907, y: 255.14648}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970100820
@@ -5265,8 +5269,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d6aa3c6d1815f4c8eb7e9c3ade2f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 0
-  text_reward: {fileID: 646849522}
+  reward_dia: 0
+  text_reward_dia: {fileID: 646849522}
+  RandomValue_dia: 0
+  RandomValue_heart: 0
 --- !u!4 &1428876669
 Transform:
   m_ObjectHideFlags: 0
@@ -5448,7 +5454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -436.49, y: 157}
+  m_AnchoredPosition: {x: -441, y: -380}
   m_SizeDelta: {x: 689.41907, y: 255.14648}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445307526
@@ -6234,15 +6240,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98bf51f339b8d8c458614e6c59b182e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayPrice: 10
+  PlayPrice: 100
   PlayButton: {fileID: 588695630}
   textPlay: {fileID: 1601284045}
   imagePlay: {fileID: 1582354321}
   PlaylerpSpeed: 0
-  TouchPrice: 10
+  TouchPrice: 100
   TouchButton: {fileID: 347485564}
   textTouch: {fileID: 304827145}
-  WashPrice: 10
+  WashPrice: 300
   WashButton: {fileID: 1740140967}
   textWash: {fileID: 917630174}
   imageWash: {fileID: 1389958370}
@@ -7389,7 +7395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 326, y: 0.00012994}
+  m_AnchoredPosition: {x: 314.8, y: 0.00012994}
   m_SizeDelta: {x: 95.287674, y: 95.287674}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1792673325
@@ -7590,7 +7596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a362d4a5334b1634192bd73a6b730562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToyCreatePrice: 10
+  alpha: 9
+  ToyCreatePrice: 500
   ToyIncreaseAmount: 1
   ToyIncreaseLevel: 1
   ToyIncreasePrice: 10
@@ -7613,7 +7620,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1928891880
 GameObject:

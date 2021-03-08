@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ToyManager : MonoBehaviour
 {
-    
+    public int alpha;
     public long ToyCreatePrice;
     public long ToyIncreaseAmount;
     public long ToyIncreaseLevel;
@@ -78,8 +78,8 @@ public class ToyManager : MonoBehaviour
             {
                 gm.heart -= ToyIncreasePrice;
                 ToyIncreaseLevel += 1;
-                ToyIncreaseAmount += ToyIncreaseLevel * 2;
-                ToyIncreasePrice += ToyIncreaseLevel * 10;
+                ToyIncreaseAmount += ToyIncreaseLevel* 10 *alpha;
+                ToyIncreasePrice += (long)(Mathf.Pow(2,ToyIncreaseLevel)*alpha*alpha);
 
             }
 
@@ -96,7 +96,7 @@ public class ToyManager : MonoBehaviour
     {
         if (GameObject.Find(prefabToy.name + "(Clone)") == false)
         {
-            textToyUpgradePrice.text = "설치<" + ToyIncreasePrice.ToString() + ">";
+            textToyUpgradePrice.text = "설치 <" + ToyCreatePrice.ToString() + ">";
         }
 
         if (GameObject.Find(prefabToy.name + "(Clone)") == true)
@@ -109,23 +109,27 @@ public class ToyManager : MonoBehaviour
 
     void ButtonActiveCheck()
     {
-        if (gm.heart >= ToyCreatePrice)
+        if (GameObject.Find(prefabToy.name + "(Clone)") == false)
         {
-            ToyIncreaseButton.interactable = true;
+            if (gm.heart >= ToyCreatePrice)
+            {
+                ToyIncreaseButton.interactable = true;
+            }
+            else
+            {
+                ToyIncreaseButton.interactable = false;
+            }
         }
         else
         {
-            ToyIncreaseButton.interactable = false;
-        }
-
-
-        if (gm.heart >= ToyIncreasePrice)
-        {
-            ToyIncreaseButton.interactable = true;
-        }
-        else
-        {
-            ToyIncreaseButton.interactable = false;
+            if (gm.heart >= ToyIncreasePrice)
+            {
+                ToyIncreaseButton.interactable = true;
+            }
+            else
+            {
+                ToyIncreaseButton.interactable = false;
+            }
         }
     }
 

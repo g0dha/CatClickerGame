@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 using GoogleMobileAds.Api;
 
 
@@ -18,14 +19,20 @@ public class ADManager : MonoBehaviour
     //string m_Ad_UnitId_Reward = "ca-app-pub-3379886564047452/5206353743";
     string m_Ad_UnitId_Reward = "ca-app-pub-3940256099942544/5224354917";   //TEST ID
 
-    public int reward;
-    public Text text_reward;
+    public int reward_dia;
+    public Text text_reward_dia;
+    public int RandomValue_dia;
+    public int RandomValue_heart;
+    GameManager gm;
+
 
 
     void Start()
     {        
-        reward = 0;
-        text_reward.text = reward.ToString();
+        reward_dia = 0;
+        text_reward_dia.text = reward_dia.ToString();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         AD_Initialize();
         
 
@@ -107,9 +114,12 @@ public class ADManager : MonoBehaviour
         string type = args.Type;        //리워드 상품
         double amount = args.Amount;    //리워드 수량
 
-        reward += 1;
+        RandomValue_dia = Random.Range(1, 5);
+        reward_dia += RandomValue_dia;
+        text_reward_dia.text = reward_dia.ToString();
 
-        text_reward.text = reward.ToString();
+        RandomValue_heart = Random.Range(1000, 30000);
+        gm.heart += Random.Range(1, 5);
 
     }
 

@@ -209,7 +209,7 @@ ScriptsOnlyBuild:
     className: HeartMove
   - hash:
       serializedVersion: 2
-      Hash: cbbdea0fd90d1b23b8302e2f2ae09346
+      Hash: 47cd2d626bcb4f50d794d98e855dff45
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -443,7 +443,7 @@ ScriptsOnlyBuild:
     className: Countdown
   - hash:
       serializedVersion: 2
-      Hash: e25a38af8a2844fa4e3455b687f4917c
+      Hash: ef825e30ac71de709c1a1e3d0adae006
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ToyManager
@@ -617,7 +617,7 @@ ScriptsOnlyBuild:
     className: ApplicationQuit
   - hash:
       serializedVersion: 2
-      Hash: d9dab0f61442fbba3835d94426e5731d
+      Hash: a360e449ca6b4aeea582b88fa7385451
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ADManager
@@ -769,4 +769,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/0_Start.unity
   - Assets/Scenes/1_Playing.unity
-  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_32.apk
+  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_33.apk
