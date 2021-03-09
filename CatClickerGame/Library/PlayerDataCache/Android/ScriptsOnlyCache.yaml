@@ -8,6 +8,7 @@ ScriptsOnlyBuild:
     - EventManager
     - GameManager
     - HeartMove
+    - Intro_animation
     - LifeTime
     - StartScene
     - ToyManager
@@ -42,8 +43,62 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
     - UnityEngine.UI.Text
   sceneClasses:
+    Assets/Scenes/0.1_intro.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11428}
+    - Class: 114
+      Script: {instanceID: 11452}
+    - Class: 114
+      Script: {instanceID: 11788}
+    - Class: 114
+      Script: {instanceID: 11850}
+    - Class: 114
+      Script: {instanceID: 12648}
+    - Class: 114
+      Script: {instanceID: 13414}
+    - Class: 114
+      Script: {instanceID: 13856}
+    - Class: 114
+      Script: {instanceID: 14408}
+    - Class: 114
+      Script: {instanceID: 15122}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/Scenes/0_Start.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -72,13 +127,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12648}
     - Class: 114
-      Script: {instanceID: 13426}
+      Script: {instanceID: 13430}
     - Class: 114
-      Script: {instanceID: 14404}
+      Script: {instanceID: 14408}
     - Class: 114
-      Script: {instanceID: 14608}
+      Script: {instanceID: 14612}
     - Class: 114
-      Script: {instanceID: 15118}
+      Script: {instanceID: 15122}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -133,19 +188,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12828}
     - Class: 114
-      Script: {instanceID: 13466}
+      Script: {instanceID: 13470}
     - Class: 114
-      Script: {instanceID: 13548}
+      Script: {instanceID: 13552}
     - Class: 114
-      Script: {instanceID: 14182}
+      Script: {instanceID: 14186}
     - Class: 114
-      Script: {instanceID: 14388}
+      Script: {instanceID: 14392}
     - Class: 114
-      Script: {instanceID: 14404}
+      Script: {instanceID: 14408}
     - Class: 114
-      Script: {instanceID: 14914}
+      Script: {instanceID: 14918}
     - Class: 114
-      Script: {instanceID: 15118}
+      Script: {instanceID: 15122}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -449,6 +504,12 @@ ScriptsOnlyBuild:
     className: ToyManager
   - hash:
       serializedVersion: 2
+      Hash: 9c95913b769fd5aa8260de6bab4d2cfb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FixedResolution
+  - hash:
+      serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -483,6 +544,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
+  - hash:
+      serializedVersion: 2
+      Hash: b530059c576f92077e30b5bfcb19942e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Intro_animation
   - hash:
       serializedVersion: 2
       Hash: 6fb512c6733e02f441372611e6f94f11
@@ -769,4 +836,5 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/0_Start.unity
   - Assets/Scenes/1_Playing.unity
-  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_33.apk
+  - Assets/Scenes/0.1_intro.unity
+  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_34.apk

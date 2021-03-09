@@ -64,7 +64,7 @@ public class StartScene : MonoBehaviour
 
     public void ChangePlayGameScene()
     {
-        SceneManager.LoadScene("1_Playing");
+        SceneManager.LoadScene("0.1_intro");
     }
 
 
