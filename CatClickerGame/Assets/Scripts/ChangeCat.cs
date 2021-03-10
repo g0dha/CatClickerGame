@@ -14,7 +14,7 @@ public class ChangeCat : MonoBehaviour
 
     void Start()
     {
-        lifetime = GameObject.Find("Text_timer").GetComponent<LifeTime>();        
+        lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();        
     }
 
     void Update()

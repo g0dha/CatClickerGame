@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +32,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject Panel_Exit;
 
+    public Text CatName;
+    public Text CatInfo;
+
     ADManager adm;
+    Intro_animation introinfo;
 
 
 
@@ -41,6 +46,18 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         adm = GameObject.Find("ADManager").GetComponent<ADManager>();
+        introinfo = GameObject.Find("IntroManager").GetComponent<Intro_animation>();
+
+        //CatName.text = introinfo.text_CatName.ToString(); 
+        /*if (introinfo.Gender_value == 1)
+        {
+            CatGender.text = "수컷";
+        }
+        else if (introinfo.Gender_value == 2)
+        {
+            CatGender.text = "암컷";
+        }*/
+        CatInfo.text = introinfo.textCatInfo.ToString();
         leftTime = 0f;
         
     }
@@ -231,6 +248,7 @@ public class GameManager : MonoBehaviour
 
     public void Exit_Yes()
     {
+        //PlayerPrefs.SetString("SaveLastTime", System.DateTime.Now.ToString());
         Application.Quit();
     }
 

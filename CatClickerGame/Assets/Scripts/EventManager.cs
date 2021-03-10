@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class EventManager : MonoBehaviour
 {
-    
+
 
     GameManager gm;
     LifeTime lifetime;
@@ -20,8 +21,10 @@ public class EventManager : MonoBehaviour
     public GameObject Event_Popup;
     int FirstEvent_RandomTime_1;
     int FirstEvent_RandomTime_2;
-    public int RandomTime_1;    //1일~15일
-    public int RandomTime_2;    //16일~30    //너무 텀이 긴것 같으면 더 추가하기
+    int FirstEvent_RandomTime_3;
+    public int RandomTime_1;    //0~20분
+    public int RandomTime_2;    //21~40분
+    public int RandomTime_3;    //41~59분
 
     public Button button_Yes;
     public Button button_No;
@@ -37,16 +40,19 @@ public class EventManager : MonoBehaviour
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        lifetime = GameObject.Find("Text_timer").GetComponent<LifeTime>();
+        lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();
         adm = GameObject.Find("ADManager").GetComponent<ADManager>();
 
         EventList = new List<string>();
 
-        FirstEvent_RandomTime_1 = Random.Range(5, 15);
+        FirstEvent_RandomTime_1 = Random.Range(5, 20);
         RandomTime_1 = FirstEvent_RandomTime_1;
 
-        FirstEvent_RandomTime_2 = Random.Range(16, 30);
+        FirstEvent_RandomTime_2 = Random.Range(21, 40);
         RandomTime_2 = FirstEvent_RandomTime_2;
+
+        FirstEvent_RandomTime_3 = Random.Range(41, 59);
+        RandomTime_3 = FirstEvent_RandomTime_3;
 
         arrlist_EventText();
 
@@ -106,82 +112,118 @@ public class EventManager : MonoBehaviour
 
     }
 
-
     void _EventManagement()
     {
         if (Event_Popup.activeSelf == false)
         {
-            if (lifetime.timeMonth == 4&&lifetime.timeDay == 5 && lifetime.timeHour == 13)      //4월 5일 13시
+            if (lifetime.dt.ToString("MMddHH") == "040513")
             {
                 Event_Bath();
             }
-
-            if (lifetime.timeMonth == 1 && lifetime.timeDay == 15 && lifetime.timeHour == 9)    //1월 15일 9시
+            if (lifetime.dt.ToString("MMddHH") == "011509")
             {
                 Event_Hospiter();
             }
-
-            if (lifetime.timeMonth == 6 && lifetime.timeDay == 1&&lifetime.timeHour == 19)      //6월 1일 19시
+            if (lifetime.dt.ToString("MMddHH") == "060119")
             {
                 Event_ToothLose();
             }
-
-            if (lifetime.timeDay == RandomTime_1)                                               //랜덤일 0시
+            if (lifetime.dt.ToString("HH") == RandomTime_1.ToString())
             {
                 Event_RandomEvent_1();
             }
-
-            if (lifetime.timeDay == RandomTime_2)                                               //랜덤일 0시
+            if (lifetime.dt.ToString("HH") == RandomTime_2.ToString())
             {
                 Event_RandomEvent_2();
             }
+            if (lifetime.dt.ToString("HH") == RandomTime_3.ToString())
+            {
+                Event_RandomEvent_3();
+            }
         }
-        
-            
-        
-
     }
 
-    void Event_Bath()
-    {
-        text_Bath.text = "목욕 하는날!";
-        Event_Popup.SetActive(true);
-    }
+        /*void _EventManagement()
+        {
+            if (Event_Popup.activeSelf == false)
+            {
+                if (lifetime.timeMonth == 4&&lifetime.timeDay == 5 && lifetime.timeHour == 13)      //4월 5일 13시
+                {
+                    Event_Bath();
+                }
 
-    void Event_Hospiter()
-    {
-        text_Hospiter.text = "첫 건강검전 받는날!";
-        Event_Popup.SetActive(true);
-    }
+                if (lifetime.timeMonth == 1 && lifetime.timeDay == 15 && lifetime.timeHour == 9)    //1월 15일 9시
+                {
+                    Event_Hospiter();
+                }
 
-    void Event_ToothLose()
-    {
-        text_ToothLose.text = "빠진 젖니를 발견했습니다";
-        Event_Popup.SetActive(true);
-    }
+                if (lifetime.timeMonth == 6 && lifetime.timeDay == 1&&lifetime.timeHour == 19)      //6월 1일 19시
+                {
+                    Event_ToothLose();
+                }
 
-    void Event_RandomEvent_1()
-    {
+                if (lifetime.timeDay == RandomTime_1)                                               //랜덤일 0시
+                {
+                    Event_RandomEvent_1();
+                }
 
-        text_RandomEvent.text = EventList[RandomNumber-1];
-        Event_Popup.SetActive(true);
+                if (lifetime.timeDay == RandomTime_2)                                               //랜덤일 0시
+                {
+                    Event_RandomEvent_2();
+                }
+            }
+        }
+        */
 
-        RandomTime_1 = Random.Range(1, 15);
-        RandomNumber = Random.Range(0, ListLength);
+        void Event_Bath()
+        {
+            text_Bath.text = "목욕 하는날!";
+            Event_Popup.SetActive(true);
+        }
 
-    }
-    void Event_RandomEvent_2()
-    {
-        text_RandomEvent.text = EventList[RandomNumber-1];
-        Event_Popup.SetActive(true);
+        void Event_Hospiter()
+        {
+            text_Hospiter.text = "첫 건강검전 받는날!";
+            Event_Popup.SetActive(true);
+        }
 
-        RandomTime_2 = Random.Range(16, 30);
-        RandomNumber = Random.Range(0, ListLength);
+        void Event_ToothLose()
+        {
+            text_ToothLose.text = "빠진 젖니를 발견했습니다";
+            Event_Popup.SetActive(true);
+        }
 
-    }
+        void Event_RandomEvent_1()
+        {
+
+            text_RandomEvent.text = EventList[RandomNumber - 1];
+            Event_Popup.SetActive(true);
+
+            RandomTime_1 = Random.Range(0, 20);
+            RandomNumber = Random.Range(0, ListLength);
+
+        }
+        void Event_RandomEvent_2()
+        {
+            text_RandomEvent.text = EventList[RandomNumber - 1];
+            Event_Popup.SetActive(true);
+
+            RandomTime_2 = Random.Range(21, 40);
+            RandomNumber = Random.Range(0, ListLength);
+
+        }
+        void Event_RandomEvent_3()
+        {
+            text_RandomEvent.text = EventList[RandomNumber - 1];
+            Event_Popup.SetActive(true);
+
+            RandomTime_3 = Random.Range(41, 59);
+            RandomNumber = Random.Range(0, ListLength);
+
+        }
 
 
-
+    
 
 
     public void showad()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ChangeBackground : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ChangeBackground : MonoBehaviour
 
     void Start()
     {
-        lifetime = GameObject.Find("Text_timer").GetComponent<LifeTime>();
+        lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();
 
         StartCoroutine("_ChangeBackground");
 
@@ -24,7 +25,7 @@ public class ChangeBackground : MonoBehaviour
 
     void Update()
     {
-        nowTime = lifetime.timeHour;
+        nowTime = lifetime.timeHour; //현재 몇시인지
     }
 
     IEnumerator _ChangeBackground()

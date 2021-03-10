@@ -16,12 +16,10 @@ public class Intro_animation : MonoBehaviour
 
     public GameObject PanelName;
     public InputField textName;
-    public static string text_CatName;
+    public string text_CatName;
 
-    public GameObject PanelSex;
-    //public Button button_male;
-    //public Button button_female;
-    public int sex_value;
+    public GameObject PanelGender;
+    public int Gender_value;
 
     public GameObject PanelInfo;
     public Text textCatInfo;
@@ -45,6 +43,7 @@ public class Intro_animation : MonoBehaviour
         PopInfo();
 
         text_CatName = textName.text;
+       
     }
 
     IEnumerator _changeLight()
@@ -88,30 +87,30 @@ public class Intro_animation : MonoBehaviour
     }
     
 
-    public void StroySex()
+    public void StroyGender()
     {
-        PanelSex.SetActive(true);
+        PanelGender.SetActive(true);
     }
 
     public void _button_male()
     {
-        sex_value = 1;
+        Gender_value = 1;
         PanelInfo.SetActive(true);
     }
 
     public void _button_female()
     {
-        sex_value = 2;
+        Gender_value = 2;
         PanelInfo.SetActive(true);
     }
 
     void PopInfo()
     {        
-        if (sex_value == 1)
+        if (Gender_value == 1)
         {
             textCatInfo.text = text_CatName+" / 수컷";
         }
-        else if (sex_value == 2)
+        else if (Gender_value == 2)
         {
             textCatInfo.text = text_CatName+" / 암컷";
         }

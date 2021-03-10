@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 57162077}
   - component: {fileID: 57162076}
   m_Layer: 5
-  m_Name: Panel_Sex
+  m_Name: Panel_Gender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,8 +451,8 @@ MonoBehaviour:
   speech: {fileID: 638732908}
   PanelName: {fileID: 2131640087}
   textName: {fileID: 534872637}
-  PanelSex: {fileID: 57162074}
-  sex_value: 0
+  PanelGender: {fileID: 57162074}
+  Gender_value: 0
   PanelInfo: {fileID: 1449378176}
   textCatInfo: {fileID: 412710782}
 --- !u!4 &190481775
