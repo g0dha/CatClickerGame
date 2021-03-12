@@ -176,4 +176,45 @@ public class CatManager : MonoBehaviour
     {
         imageHungry.fillAmount = Mathf.Lerp(1f, 0f, HungrylerpSpeed);
     }
+
+    // #####################################################################################################################
+
+    void Save()
+    {
+        SaveData saveData = new SaveData();
+
+        saveData.PlayPrice = PlayPrice;
+        saveData.PlaylerpSpeed = PlaylerpSpeed;
+        saveData.TouchPrice = TouchPrice;
+        saveData.WashPrice = WashPrice;
+        saveData.WashlerpSpeed = WashlerpSpeed;
+        saveData.HungrylerpSpeed = HungrylerpSpeed;
+        saveData.lerpSpeed = lerpSpeed;
+
+    string path = Application.persistentDataPath + "/save.xml";
+        XmlManager.XmlSave<SaveData>(saveData, path);
+    }
+
+    void Load()
+    {
+        SaveData saveData = new SaveData();
+        string path = Application.persistentDataPath + "/save.xml";
+        saveData = XmlManager.XmlLoad<SaveData>(path);
+
+        PlayPrice = saveData.PlayPrice;
+        PlaylerpSpeed = saveData.PlaylerpSpeed;
+        TouchPrice = saveData.TouchPrice;
+        WashPrice = saveData.WashPrice;
+        WashlerpSpeed = saveData.WashlerpSpeed;
+        HungrylerpSpeed = saveData.HungrylerpSpeed;
+        lerpSpeed = saveData.lerpSpeed;
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
+    // #####################################################################################################################
 }

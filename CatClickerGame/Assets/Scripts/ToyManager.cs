@@ -141,4 +141,43 @@ public class ToyManager : MonoBehaviour
     }
 
 
+    // #####################################################################################################################
+
+    void Save()
+    {
+        SaveData saveData = new SaveData();
+
+        saveData.alpha = alpha;
+        saveData.ToyCreatePrice = ToyCreatePrice;
+        saveData.ToyIncreaseAmount = ToyIncreaseAmount;
+        saveData.ToyIncreaseLevel = ToyIncreaseLevel;
+        saveData.ToyIncreasePrice = ToyIncreasePrice;
+        saveData.ToyName = ToyName;
+
+        string path = Application.persistentDataPath + "/save.xml";
+        XmlManager.XmlSave<SaveData>(saveData, path);
+    }
+
+    void Load()
+    {
+        SaveData saveData = new SaveData();
+        string path = Application.persistentDataPath + "/save.xml";
+        saveData = XmlManager.XmlLoad<SaveData>(path);
+
+        alpha = saveData.alpha;
+        ToyCreatePrice = saveData.ToyCreatePrice;
+        ToyIncreaseAmount = saveData.ToyIncreaseAmount;
+        ToyIncreaseLevel = saveData.ToyIncreaseLevel;
+        ToyIncreasePrice = saveData.ToyIncreasePrice;
+        ToyName = saveData.ToyName;
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
+    // #####################################################################################################################
+
 }

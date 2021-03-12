@@ -74,13 +74,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12648}
     - Class: 114
-      Script: {instanceID: 13414}
+      Script: {instanceID: 13412}
     - Class: 114
-      Script: {instanceID: 13856}
+      Script: {instanceID: 13854}
     - Class: 114
-      Script: {instanceID: 14408}
+      Script: {instanceID: 14406}
     - Class: 114
-      Script: {instanceID: 15122}
+      Script: {instanceID: 15120}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -127,13 +127,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12648}
     - Class: 114
-      Script: {instanceID: 13430}
+      Script: {instanceID: 13428}
     - Class: 114
-      Script: {instanceID: 14408}
+      Script: {instanceID: 14406}
     - Class: 114
-      Script: {instanceID: 14612}
+      Script: {instanceID: 14610}
     - Class: 114
-      Script: {instanceID: 15122}
+      Script: {instanceID: 15120}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -188,19 +188,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12828}
     - Class: 114
-      Script: {instanceID: 13470}
+      Script: {instanceID: 13468}
     - Class: 114
-      Script: {instanceID: 13552}
+      Script: {instanceID: 13550}
     - Class: 114
-      Script: {instanceID: 14186}
+      Script: {instanceID: 14184}
     - Class: 114
-      Script: {instanceID: 14392}
+      Script: {instanceID: 14390}
     - Class: 114
-      Script: {instanceID: 14408}
+      Script: {instanceID: 14406}
     - Class: 114
-      Script: {instanceID: 14918}
+      Script: {instanceID: 14916}
     - Class: 114
-      Script: {instanceID: 15122}
+      Script: {instanceID: 15120}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -264,7 +264,7 @@ ScriptsOnlyBuild:
     className: HeartMove
   - hash:
       serializedVersion: 2
-      Hash: 47cd2d626bcb4f50d794d98e855dff45
+      Hash: 12d6cd64edd2b8e796cde7af14727c32
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -504,12 +504,6 @@ ScriptsOnlyBuild:
     className: ToyManager
   - hash:
       serializedVersion: 2
-      Hash: 9c95913b769fd5aa8260de6bab4d2cfb
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FixedResolution
-  - hash:
-      serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -546,7 +540,7 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: b530059c576f92077e30b5bfcb19942e
+      Hash: 116a16c9fb8fe305e9d0a5a25bbfac97
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Intro_animation
@@ -570,13 +564,13 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 9bb84cc2f4e7331498f5cba6f52ad2d0
+      Hash: 7b00f9eb8839d962cd29f91ee0a7e80f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChangeCat
   - hash:
       serializedVersion: 2
-      Hash: 239a594513c9cff68ab54b7b70af959d
+      Hash: 05451a185dc64428e3fb309bedc77e63
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChangeBackground
@@ -654,7 +648,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 645efcda09f33cb558df66e4ca56af9b
+      Hash: 761d3ea8b3506512e66290a25f450501
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LifeTime
@@ -720,7 +714,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 3dd8d710582eabfb3bcfbd8b8c031b6a
+      Hash: 3e05603d408f08c2f39a35b438d1e822
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EventManager
@@ -837,4 +831,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/0_Start.unity
   - Assets/Scenes/1_Playing.unity
   - Assets/Scenes/0.1_intro.unity
-  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_34.apk
+  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_38.apk

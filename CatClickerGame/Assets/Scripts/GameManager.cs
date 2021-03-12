@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     public Text CatInfo;
 
     ADManager adm;
-    Intro_animation introinfo;
 
 
 
@@ -45,19 +44,28 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        adm = GameObject.Find("ADManager").GetComponent<ADManager>();
-        introinfo = GameObject.Find("IntroManager").GetComponent<Intro_animation>();
 
-        //CatName.text = introinfo.text_CatName.ToString(); 
-        /*if (introinfo.Gender_value == 1)
+        string path = Application.persistentDataPath + "/save.xml";
+        if (System.IO.File.Exists(path))
         {
-            CatGender.text = "수컷";
+            Load();
         }
-        else if (introinfo.Gender_value == 2)
+
+
+        PlayerPrefs.SetString("GameStartTime", System.DateTime.Now.ToString());
+
+        adm = GameObject.Find("ADManager").GetComponent<ADManager>();
+
+        if (PlayerPrefs.GetInt("Gender") == 1)
         {
-            CatGender.text = "암컷";
-        }*/
-        CatInfo.text = introinfo.textCatInfo.ToString();
+            CatInfo.text = PlayerPrefs.GetString("Name") + "  /  수컷";
+        }
+        else if (PlayerPrefs.GetInt("Gender") == 2)
+        {
+            CatInfo.text = PlayerPrefs.GetString("Name")+ "  /  암컷";
+        }
+
+
         leftTime = 0f;
         
     }
@@ -248,7 +256,6 @@ public class GameManager : MonoBehaviour
 
     public void Exit_Yes()
     {
-        //PlayerPrefs.SetString("SaveLastTime", System.DateTime.Now.ToString());
         Application.Quit();
     }
 
@@ -258,8 +265,52 @@ public class GameManager : MonoBehaviour
         Panel_Exit.SetActive(false);
     }
 
+
     // #####################################################################################################################
 
+    void Save()
+    {
+        SaveData saveData = new SaveData();
 
+        saveData.heart = heart;
+        saveData.heartIncreaseAmount = heartIncreaseAmount;
+        saveData.heartIncreaseLevel = heartIncreaseLevel;
+        saveData.heartIncreasePrice = heartIncreasePrice;
+
+        saveData.foodPrice = foodPrice;
+        saveData.food_lifeTime = food_lifeTime;
+
+        saveData.leftTime = leftTime;
+        saveData.backup_leftTime = backup_leftTime;
+
+        string path = Application.persistentDataPath + "/save.xml";
+        XmlManager.XmlSave<SaveData>(saveData, path);
+    }
+
+    void Load()
+    {
+        SaveData saveData = new SaveData();
+        string path = Application.persistentDataPath + "/save.xml";
+        saveData = XmlManager.XmlLoad<SaveData>(path);
+
+        heart = saveData.heart;
+        heartIncreaseAmount = saveData.heartIncreaseAmount;
+        heartIncreaseLevel = saveData.heartIncreaseLevel;
+        heartIncreasePrice = saveData.heartIncreasePrice;
+
+        foodPrice = saveData.foodPrice;
+        food_lifeTime = saveData.food_lifeTime;
+
+        leftTime = saveData.leftTime;
+        backup_leftTime = saveData.backup_leftTime;
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
+    // #####################################################################################################################
 
 }

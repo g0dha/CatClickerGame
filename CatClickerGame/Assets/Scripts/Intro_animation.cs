@@ -16,7 +16,6 @@ public class Intro_animation : MonoBehaviour
 
     public GameObject PanelName;
     public InputField textName;
-    public string text_CatName;
 
     public GameObject PanelGender;
     public int Gender_value;
@@ -27,7 +26,6 @@ public class Intro_animation : MonoBehaviour
 
     void Start()
     {
-        //speech.SetActive(false);
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[0];
 
@@ -39,11 +37,10 @@ public class Intro_animation : MonoBehaviour
     {
         StopTime += Time.deltaTime;
         PopSpeech();
-        //PopPanelName();
         PopInfo();
 
-        text_CatName = textName.text;
-       
+        PlayerPrefs.SetString("Name", textName.text);
+        PlayerPrefs.SetInt("Gender", Gender_value);
     }
 
     IEnumerator _changeLight()
@@ -82,7 +79,6 @@ public class Intro_animation : MonoBehaviour
         if (StopTime >= 8.5f)
         {
             PanelName.SetActive(true);
-            //text_CatName = textName;
         }      
     }
     
@@ -108,11 +104,11 @@ public class Intro_animation : MonoBehaviour
     {        
         if (Gender_value == 1)
         {
-            textCatInfo.text = text_CatName+" / 수컷";
+            textCatInfo.text = PlayerPrefs.GetString("Name") + " / 수컷";
         }
         else if (Gender_value == 2)
         {
-            textCatInfo.text = text_CatName+" / 암컷";
+            textCatInfo.text = PlayerPrefs.GetString("Name") + " / 암컷";
         }
     }
 

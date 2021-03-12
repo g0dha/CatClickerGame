@@ -24,11 +24,10 @@ public class LifeTime : MonoBehaviour
     public Text text_Date;
     public Text text_PlayTime;
 
-    //string lastTime = PlayerPrefs.GetString("SaveLastTime");
-    //DateTime lastDateTime;
-    //TimeSpan conpareTime;
-
-
+    DateTime startDate;
+    DateTime now;
+    public double PlayTime;
+    string StartDate;
 
     String LastTime;
 
@@ -39,87 +38,31 @@ public class LifeTime : MonoBehaviour
         timeDay = dt.Day;
         timeHour = dt.Hour;
 
-        //GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        //PlayerPrefs.SetString("SaveLastTime", System.DateTime.Now.ToString());
-        //lastDateTime = DateTime.Parse(lastTime);
-        //conpareTime = dt - lastDateTime;
+        
+        StartDate = (string)PlayerPrefs.GetString("GameStartTime");
+        
+        DateTime startDate = Convert.ToDateTime(StartDate);
+        Debug.Log(startDate);
 
     }
 
     void Update()
     {
         text_Date.text = dt.ToString("yyyy년 MM월 dd일\nHH시 mm분");
+        DateTime now = Convert.ToDateTime(dt);
+        _PlayTime();
 
     }
 
     void _PlayTime()
     {
+        PlayTime = (now - startDate).TotalDays;
+
+        text_PlayTime.text = "D + " +PlayTime.ToString();
+
 
     }
 
 
-
-
-
-    /*
-    public float LimitTime;
-    public float ingameTime;
-    public Text textTimer;
-    public float timeSpeed;
-
-
-    public int timeYear;
-    public int timeMonth=0;
-    public int timeDay;
-    public int timeHour;
-
-
-    void Start()
-    {
-        LimitTime = 0f;
-        timeDay = 1;
-    }
-
-    void Update()
-    {
-        addLifeTime();
-        CalTime();
-        ShowInfo();
-
-    }
-
-
-
-    void addLifeTime()
-    {
-        LimitTime += Time.deltaTime;
-    }
-
-    void ShowInfo()
-    {
-        textTimer.text = timeYear + "년 " + timeMonth + "월 " + timeDay + "일 " + timeHour + "시";
-
-    }
-
-    void CalTime()
-    {
-        ingameTime = LimitTime / timeSpeed;
-
-        timeHour = (int)ingameTime % 24;
-        timeDay = (int)ingameTime / 24;
-
-        if (timeDay > 30)
-        {
-            timeMonth = timeDay / 30;
-            timeDay = timeDay % 30;
-        }
-
-        if (timeMonth > 12)
-        {
-            timeYear = timeMonth / 12;
-            timeMonth = timeMonth % 12;
-        }
-    }
-    */
 
 }

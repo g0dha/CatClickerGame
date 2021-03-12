@@ -128,6 +128,33 @@ public class ADManager : MonoBehaviour
     {
     }
 
+    // #####################################################################################################################
 
+    void Save()
+    {
+        SaveData saveData = new SaveData();
+
+        saveData.reward_dia = reward_dia;
+
+        string path = Application.persistentDataPath + "/save.xml";
+        XmlManager.XmlSave<SaveData>(saveData, path);
+    }
+
+    void Load()
+    {
+        SaveData saveData = new SaveData();
+        string path = Application.persistentDataPath + "/save.xml";
+        saveData = XmlManager.XmlLoad<SaveData>(path);
+
+        reward_dia = saveData.reward_dia;
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
+    // #####################################################################################################################
 
 }

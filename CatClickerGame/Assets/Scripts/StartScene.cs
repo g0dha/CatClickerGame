@@ -64,7 +64,16 @@ public class StartScene : MonoBehaviour
 
     public void ChangePlayGameScene()
     {
-        SceneManager.LoadScene("0.1_intro");
+        if ((PlayerPrefs.HasKey("Name")==true))
+        {
+            SceneManager.LoadScene("1_Playing");
+        }
+        else if ((PlayerPrefs.HasKey("Name") == false))
+        {
+            SceneManager.LoadScene("0.1_intro");
+        }
+
+        
     }
 
 

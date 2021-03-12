@@ -8,8 +8,6 @@ using Random = UnityEngine.Random;
 
 public class EventManager : MonoBehaviour
 {
-
-
     GameManager gm;
     LifeTime lifetime;
     ADManager adm;
@@ -143,88 +141,52 @@ public class EventManager : MonoBehaviour
         }
     }
 
-        /*void _EventManagement()
-        {
-            if (Event_Popup.activeSelf == false)
-            {
-                if (lifetime.timeMonth == 4&&lifetime.timeDay == 5 && lifetime.timeHour == 13)      //4월 5일 13시
-                {
-                    Event_Bath();
-                }
+    void Event_Bath()
+    {
+        text_Bath.text = "목욕 하는날!";
+        Event_Popup.SetActive(true);
+    }
 
-                if (lifetime.timeMonth == 1 && lifetime.timeDay == 15 && lifetime.timeHour == 9)    //1월 15일 9시
-                {
-                    Event_Hospiter();
-                }
+    void Event_Hospiter()
+    {
+        text_Hospiter.text = "첫 건강검전 받는날!";
+        Event_Popup.SetActive(true);
+    }
 
-                if (lifetime.timeMonth == 6 && lifetime.timeDay == 1&&lifetime.timeHour == 19)      //6월 1일 19시
-                {
-                    Event_ToothLose();
-                }
+    void Event_ToothLose()
+    {
+        text_ToothLose.text = "빠진 젖니를 발견했습니다";
+        Event_Popup.SetActive(true);
+    }
 
-                if (lifetime.timeDay == RandomTime_1)                                               //랜덤일 0시
-                {
-                    Event_RandomEvent_1();
-                }
+    void Event_RandomEvent_1()
+    {
 
-                if (lifetime.timeDay == RandomTime_2)                                               //랜덤일 0시
-                {
-                    Event_RandomEvent_2();
-                }
-            }
-        }
-        */
+        text_RandomEvent.text = EventList[RandomNumber - 1];
+        Event_Popup.SetActive(true);
 
-        void Event_Bath()
-        {
-            text_Bath.text = "목욕 하는날!";
-            Event_Popup.SetActive(true);
-        }
+        RandomTime_1 = Random.Range(0, 20);
+        RandomNumber = Random.Range(0, ListLength);
 
-        void Event_Hospiter()
-        {
-            text_Hospiter.text = "첫 건강검전 받는날!";
-            Event_Popup.SetActive(true);
-        }
+    }
+    void Event_RandomEvent_2()
+    {
+        text_RandomEvent.text = EventList[RandomNumber - 1];
+        Event_Popup.SetActive(true);
 
-        void Event_ToothLose()
-        {
-            text_ToothLose.text = "빠진 젖니를 발견했습니다";
-            Event_Popup.SetActive(true);
-        }
+        RandomTime_2 = Random.Range(21, 40);
+        RandomNumber = Random.Range(0, ListLength);
 
-        void Event_RandomEvent_1()
-        {
+    }
+    void Event_RandomEvent_3()
+    {
+        text_RandomEvent.text = EventList[RandomNumber - 1];
+        Event_Popup.SetActive(true);
 
-            text_RandomEvent.text = EventList[RandomNumber - 1];
-            Event_Popup.SetActive(true);
+        RandomTime_3 = Random.Range(41, 59);
+        RandomNumber = Random.Range(0, ListLength);
 
-            RandomTime_1 = Random.Range(0, 20);
-            RandomNumber = Random.Range(0, ListLength);
-
-        }
-        void Event_RandomEvent_2()
-        {
-            text_RandomEvent.text = EventList[RandomNumber - 1];
-            Event_Popup.SetActive(true);
-
-            RandomTime_2 = Random.Range(21, 40);
-            RandomNumber = Random.Range(0, ListLength);
-
-        }
-        void Event_RandomEvent_3()
-        {
-            text_RandomEvent.text = EventList[RandomNumber - 1];
-            Event_Popup.SetActive(true);
-
-            RandomTime_3 = Random.Range(41, 59);
-            RandomNumber = Random.Range(0, ListLength);
-
-        }
-
-
-    
-
+    }
 
     public void showad()
     {
@@ -232,4 +194,39 @@ public class EventManager : MonoBehaviour
         Event_Popup.SetActive(false);
     }
 
+
+    // #####################################################################################################################
+
+    void Save()
+    {
+        SaveData saveData = new SaveData();
+
+        saveData.RandomNumber = RandomNumber;
+        saveData.RandomTime_1 = RandomTime_1;    
+        saveData.RandomTime_2 = RandomTime_2;    
+        saveData.RandomTime_3 = RandomTime_3;    
+
+    string path = Application.persistentDataPath + "/save.xml";
+        XmlManager.XmlSave<SaveData>(saveData, path);
+    }
+
+    void Load()
+    {
+        SaveData saveData = new SaveData();
+        string path = Application.persistentDataPath + "/save.xml";
+        saveData = XmlManager.XmlLoad<SaveData>(path);
+
+        RandomNumber = saveData.RandomNumber;
+        RandomTime_1 = saveData.RandomTime_1;
+        RandomTime_2 = saveData.RandomTime_2;
+        RandomTime_3 = saveData.RandomTime_3;
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
+    // #####################################################################################################################
 }

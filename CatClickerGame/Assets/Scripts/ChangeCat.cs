@@ -5,66 +5,39 @@ using UnityEngine;
 public class ChangeCat : MonoBehaviour
 {
 
-    public GameObject prefabCat1;
-    public GameObject prefabCat2;
-    public GameObject prefabCat3;
+    private SpriteRenderer spriteRenderer;
+    public Sprite[] sprites;
 
     LifeTime lifetime;
 
-
     void Start()
     {
-        lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();        
+        lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = sprites[0];
+
+        StartCoroutine("_ChangeCat");
+
     }
 
-    void Update()
+    IEnumerator _ChangeCat()
     {
-        
-        _ChangeCat();
+        if (lifetime.timeYear == 0 && lifetime.timeMonth == 0)
+        {
+            spriteRenderer.sprite = sprites[0];
+            yield return null;
+        }
+        else if (lifetime.timeYear == 0 && lifetime.timeMonth == 6)
+        {
+            spriteRenderer.sprite = sprites[1];
+            yield return null;
+        }
+        else if (lifetime.timeYear == 1 && lifetime.timeMonth == 0)
+        {
+            spriteRenderer.sprite = sprites[2];
+            yield return null;
+        }
     }
 
-    void _ChangeCat()
-    {
-        if (lifetime.timeYear == 0&&lifetime.timeMonth == 0)
-        {
-            if ((GameObject.Find(prefabCat1.name + "(Clone)") == false))
-            {
-                SpriteRenderer sr = GetComponent<SpriteRenderer>();
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
-                ChangeSprite_Cat_1();
-            }
-        }
-        else if (lifetime.timeYear == 0&&lifetime.timeMonth == 1)
-        {
-
-            if ((GameObject.Find(prefabCat1.name + "(Clone)") == true)&& (GameObject.Find(prefabCat2.name+"(Clone)") == false))
-            {   
-                ChangeSprite_Cat_2();
-                Destroy((GameObject.Find(prefabCat1.name + "(Clone)")), 0f);
-                
-            }
-        }
-        else if (lifetime.timeYear == 1)
-        {
-            if ((GameObject.Find(prefabCat2.name + "(Clone)") == true)&& (GameObject.Find(prefabCat3.name+ "(Clone)") == true))
-            {
-                Destroy((GameObject.Find(prefabCat2.name + "(Clone)")), 0f);
-                ChangeSprite_Cat_3();
-            }
-            
-        }
-    }
-    void ChangeSprite_Cat_1()
-    {
-        Instantiate(prefabCat1, transform.position, Quaternion.identity);
-    }
-    void ChangeSprite_Cat_2()
-    {       
-        Instantiate(prefabCat2, transform.position, Quaternion.identity);
-    }
-    void ChangeSprite_Cat_3()
-    {       
-        Instantiate(prefabCat3, transform.position, Quaternion.identity);
-    }
-    
 }
