@@ -43,10 +43,10 @@
 
 9. 추가할 내용
 
-   1. ~~값 지정~~
-   2. 이름, 생일 지어주기 + 인트로(주워오기)
-   3. 움직이는 모션 추가
-   4. 리워드 재화로 할 수 있는 것
+   - [x] 값 지정
+   - [x] 이름, 성별 지어주기 + 인트로(주워오기)
+   - [ ] 움직이는 모션 추가
+   - [ ] 리워드 재화로 할 수 있는 것
    
    
 
@@ -105,33 +105,33 @@
 
 #### 조정해야 할 변수 값 정리
 
-| 게임오브젝트                 | 변수 **명**             | 변수 값   | 설명                                              |
-| ---------------------------- | ----------------------- | --------- | ------------------------------------------------- |
-| **GameManager**              | ~~HeartIncreaseAmount~~ | ~~수식~~  | ~~heartIncreaseLevel * 3.3~~                      |
-|                              | ~~HeartIncreasePrice~~  | ~~수식~~  | ~~Mathf.Pow(3,heartIncreaseLevel)*5~~             |
-|                              | ~~FoodPirce~~           | ~~수식~~  | ~~100*HeartIncreaseLevel~~                        |
-|                              | ~~Food_lifeTime~~       | ~~30~~    | ~~food프리팹이 사라지는데 걸리는 시간~~           |
-| **CatManager**               | ~~PlayPrice~~           | ~~100~~   |                                                   |
-|                              | ~~TouchPirce~~          | ~~100~~   |                                                   |
-|                              | ~~WashPirce~~           | ~~300~~   |                                                   |
-|                              | ~~HungrylerpSpeed~~     | ~~수식~~  | ~~lerpSpeed*0.6~~                                 |
-|                              | ~~LerpSpeed~~           | ~~100~~   | ~~bar 증감 속도 조절~~                            |
-| **ToyManager_Toy**           | ~~ToyCreatePrice~~      | ~~100~~   |                                                   |
-|                              | ~~alpha~~               | ~~3~~     | ~~alpha : 가격 차이를 두기 위한 값~~              |
-|                              | ~~ToyIncreaseAmount~~   | ~~수식~~  | ~~ToyIncreaseLevel* 10 *alpha~~                   |
-|                              | ~~ToyIncreasePirce~~    | ~~수식~~  | ~~Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha~~ |
-| ~~**ToyManager_Scratcher**~~ | ~~ToyCreatePrice~~      | ~~500~~   |                                                   |
-|                              | ~~alpha~~               | ~~9~~     |                                                   |
-|                              | ~~ToyIncreaseAmount~~   | ~~수식~~  | ~~ToyIncreaseLevel* 10 *alpha~~                   |
-|                              | ~~ToyIncreasePirce~~    | ~~수식~~  | ~~Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha~~ |
-| ~~**ToyManager_Box**~~       | ~~ToyCreatePrice~~      | ~~1500~~  |                                                   |
-|                              | ~~alpha~~               | ~~21~~    |                                                   |
-|                              | ~~ToyIncreaseAmount~~   | ~~수식~~  | ~~ToyIncreaseLevel* 10 *alpha~~                   |
-|                              | ~~ToyIncreasePirce~~    | ~~수식~~  | ~~Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha~~ |
-| ~~**ToyManager_CatTower**~~  | ~~ToyCreatePrice~~      | ~~10000~~ |                                                   |
-|                              | ~~alpha~~               | ~~30~~    |                                                   |
-|                              | ~~ToyIncreaseAmount~~   | ~~수식~~  | ~~ToyIncreaseLevel* 10 *alpha~~                   |
-|                              | ~~ToyIncreasePirce~~    | ~~수식~~  | ~~Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha~~ |
-| **(PT)Text_timer**           | ~~TimeSpeed~~           | ~~8~~     | ~~몇초당 1시간(인게임시간)으로 할 지~~            |
-| ~~**ADManager**~~            | ~~backup_leftTime~~     | ~~300~~   | ~~다음광고까지 걸리는 시간(초)~~                  |
+| 게임오브젝트             | 변수 **명**         | 변수 값 | 설명                                          |
+| ------------------------ | ------------------- | ------- | --------------------------------------------- |
+| **GameManager**          | HeartIncreaseAmount | 수식    | heartIncreaseLevel * 3.3                      |
+|                          | HeartIncreasePrice  | 수식    | Mathf.Pow(3,heartIncreaseLevel)*5             |
+|                          | FoodPirce           | 수식    | 100*HeartIncreaseLevel                        |
+|                          | Food_lifeTime       | 30      | food프리팹이 사라지는데 걸리는 시간           |
+| **CatManager**           | PlayPrice           | 100     |                                               |
+|                          | TouchPirce          | 100     |                                               |
+|                          | WashPirce           | 300     |                                               |
+|                          | HungrylerpSpeed     | 수식    | lerpSpeed*0.6                                 |
+|                          | LerpSpeed           | 100     | bar 증감 속도 조절                            |
+| **ToyManager_Toy**       | ToyCreatePrice      | 100     |                                               |
+|                          | alpha               | 3       | alpha : 가격 차이를 두기 위한 값              |
+|                          | ToyIncreaseAmount   | 수식    | ToyIncreaseLevel* 10 *alpha                   |
+|                          | ToyIncreasePirce    | 수식    | Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha |
+| **ToyManager_Scratcher** | ToyCreatePrice      | 500     |                                               |
+|                          | alpha               | 9       |                                               |
+|                          | ToyIncreaseAmount   | 수식    | ToyIncreaseLevel* 10 *alpha                   |
+|                          | ToyIncreasePirce    | 수식    | Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha |
+| **ToyManager_Box**       | ToyCreatePrice      | 1500    |                                               |
+|                          | alpha               | 21      |                                               |
+|                          | ToyIncreaseAmount   | 수식    | ToyIncreaseLevel* 10 *alpha                   |
+|                          | ToyIncreasePirce    | 수식    | Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha |
+| **ToyManager_CatTower**  | ToyCreatePrice      | 10000   |                                               |
+|                          | alpha               | 30      |                                               |
+|                          | ToyIncreaseAmount   | 수식    | ToyIncreaseLevel* 10 *alpha                   |
+|                          | ToyIncreasePirce    | 수식    | Mathf.Pow(2,ToyIncreaseLevel)* *alpha* *alpha |
+| **(PT)Text_timer**       | TimeSpeed           | 8       | 몇초당 1시간(인게임시간)으로 할 지            |
+| **ADManager**            | backup_leftTime     | 300     | 다음광고까지 걸리는 시간(초)                  |
 
