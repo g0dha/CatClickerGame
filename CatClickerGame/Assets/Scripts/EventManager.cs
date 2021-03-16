@@ -12,6 +12,7 @@ public class EventManager : MonoBehaviour
     LifeTime lifetime;
     ADManager adm;
 
+
     List<string> EventList;
     int ListLength;
     public int RandomNumber;
@@ -37,6 +38,13 @@ public class EventManager : MonoBehaviour
 
     void Start()
     {
+        string path = Application.persistentDataPath + "/save.xml";
+
+        if (System.IO.File.Exists(path))
+        {
+            Load();
+        }
+
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();
         adm = GameObject.Find("ADManager").GetComponent<ADManager>();
@@ -114,6 +122,7 @@ public class EventManager : MonoBehaviour
     {
         if (Event_Popup.activeSelf == false)
         {
+
             if (lifetime.dt.ToString("MMddHH") == "040513")
             {
                 Event_Bath();

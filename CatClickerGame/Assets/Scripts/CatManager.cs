@@ -42,6 +42,13 @@ public class CatManager : MonoBehaviour
 
     void Start()
     {
+        string path = Application.persistentDataPath + "/save.xml";
+
+        if (System.IO.File.Exists(path))
+        {
+            Load();
+        }
+
         toy = GameObject.Find("ToyManager_Toy").GetComponent<ToyManager>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 

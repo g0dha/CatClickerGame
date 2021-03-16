@@ -28,7 +28,14 @@ public class ToyManager : MonoBehaviour
     // #####################################################################################################################
 
     void Start()
-    {       
+    {
+        string path = Application.persistentDataPath + "/save.xml";
+
+        if (System.IO.File.Exists(path))
+        {
+            Load();
+        }
+        
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
     }

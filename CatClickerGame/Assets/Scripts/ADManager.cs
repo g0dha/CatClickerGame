@@ -28,7 +28,14 @@ public class ADManager : MonoBehaviour
 
 
     void Start()
-    {        
+    {
+        string path = Application.persistentDataPath + "/save.xml";
+
+        if (System.IO.File.Exists(path))
+        {
+            Load();
+        }
+
         reward_dia = 0;
         text_reward_dia.text = reward_dia.ToString();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();

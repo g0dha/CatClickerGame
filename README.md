@@ -9,8 +9,8 @@
 
 5. 시간 ➡ 실제 시간 받아서 해보기.
    
-   1. **낮(6시~15시)/저녁(15시~20시)/밤(20시~6시)**
-   2. **20초당 1시간(1일=8분/1달=2시간/1년=48시간) 조정가능**
+   1. **낮(6시~15시)/저녁(16시~19시)/밤(20시~6시)**
+   2. ~~20초당 1시간(1일=8분/1달=2시간/1년=48시간) 조정가능~~ ➡ **현실시간반영으로 변경**
    
 6. 기능
    1. **하트모으기 : 패널을 제외한 화면을 터치할 시 하트 획득**
@@ -31,11 +31,11 @@
    
 7. 씬
 
-   1. ~~시작화면~~
+   1. 시작화면
    2. 인트로영상
    3. 인게임화면
 
-8. **스테이터스**
+8. **스테이터스**(점점 감소)
 
    1. **배고픔 : 밥 주면 회복**
    2. **깨끗함 : 냥빨**
@@ -47,7 +47,9 @@
    - [x] 이름, 성별 지어주기 + 인트로(주워오기)
    - [ ] 움직이는 모션 추가
    - [ ] 리워드 재화로 할 수 있는 것
-   
+   - [ ] 성장조건
+   - [x] 스크롤바
+
    
 
 #### 고양이 성장 및 이벤트 정리
@@ -71,12 +73,12 @@
 
 #### 오토클릭 종류 - 5초에 1번씩 획득
 
-| 종류             | 금액 | 성능 | 위치            | 기타                  |
-| ---------------- | ---- | ---- | --------------- | --------------------- |
-| **스크래쳐**     |      |      | **가운데**      |                       |
-| **미캉상자**     |      |      | **왼쪽**        |                       |
-| **낚싯대장난감** |      |      | **오른쪽 아래** | **[놀아주기] 활성화** |
-| **캣타워**       |      |      | **오른쪽**      |                       |
+| 종류             | 금액  | 위치          | 기타                  |
+| ---------------- | ----- | ------------- | --------------------- |
+| **스크래쳐**     | 100   | **가운데**    |                       |
+| **미캉상자**     | 500   | **왼쪽**      |                       |
+| **낚싯대장난감** | 1500  | **왼쪽 아래** | **[놀아주기] 활성화** |
+| **캣타워**       | 10000 | **오른쪽**    |                       |
 
 
 
@@ -85,18 +87,18 @@
 |               | 스크립트         | 변수                                                         | 함수                                                         | 게임오브젝트                                                 | UI                                                           | 기타                         |
 | ------------- | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------- |
 | 배경          |                  |                                                              |                                                              | Background<br />Background_room<br />Image_dish              | Panel_Top(PT) <br />Panel_Button(PB)                         |                              |
-| 배경변화      | ChangeBackgorund | public GameObject prefabSky1;<br />public GameObject prefabSky2;<br />public GameObject prefabSky3;<br />public int nowTime;<br />LifeTime lifetime; | Start() <br />Update() <br />IEnumerator _ChangeBackground()<br />ChangeSprite_Background_1() <br />ChangeSprite_Background_2() <br />ChangeSprite_Background_3() | Background                                                   |                                                              | 시간에 따라 배경변화         |
+| 배경변화      | ChangeBackgorund | private SpriteRenderer spriteRenderer;<br/>    public Sprite[] sprites;<br/><br/>    public int nowTime;<br/>    <br/>    LifeTime lifetime; | Start() <br />Update() <br />IEnumerator _ChangeBackground() | Background                                                   |                                                              | 시간에 따라 배경변화         |
 | 캐릭터        | HeartMove        | public Vector2 point;                                        | Start() <br />Update()                                       |                                                              |                                                              |                              |
-| 성장          | ChangeCat        | public GameObject prefabCat1;<br/>    public GameObject prefabCat2;<br/>    public GameObject prefabCat3;<br/><br/>    LifeTime lifetime; | Start()<br />Update()<br />_ChangeCat()<br />ChangeSprite_Cat_1()<br />ChangeSprite_Cat_2()<br />ChangeSprite_Cat_3() | Cat                                                          |                                                              |                              |
+| 성장          | ChangeCat        | private SpriteRenderer spriteRenderer;<br/>    public Sprite[] sprites;<br/><br/>    LifeTime lifetime; | Start()<br />IEnumerator _ChangeCat()                        | Cat                                                          |                                                              |                              |
 | GM            | GameManager      | public long heart;<br />public long heartIncreaseAmount;<br />public Text textHeart; <br />public GameObject prefabHeart; | Start() <br />Update() <br />ShowInfo() <br />HeartIncrease() | GameManager                                                  |                                                              |                              |
-| 시간계산      | LifeTime         | public float LimitTime;<br />public float ingameTime;<br />public Text textTimer;<br />public float timeSpeed; <br />int timeYear;<br />int timeMonth;<br />int timeDay;<br />int timeHour; | Start() <br />Update() <br />addLifeTime() <br />CalTime() <br />ShowInfo() |                                                              | Text_timer(PT) <br />Image_itmer_space(PT)                   |                              |
+| 시간계산      | LifeTime         | public int timeYear;<br/>    public int timeMonth;<br/>    public int timeDay;<br/>    public int timeHour;<br/><br/>    public DateTime dt;<br/>    public Text text_Date;<br/>    public Text text_PlayTime;<br/><br/>    DateTime startDate;<br/>    DateTime now;<br/>    public double PlayTime;<br/>    string StartDate;<br/><br/>    String LastTime; | Start() <br />Update() <br />_PlayTime()                     |                                                              | Text_timer(PT) <br />Image_itmer_space(PT)                   |                              |
 | 먹이주기      | GameManager      | public long foodPrice;<br />public Button foodButton;<br />public GameObject prefabFoodDish;<br />public int food_lifeTime; | ButtonActiveCheck() <br />feedPrice()<br />ChangeSprite_Food() |                                                              | Button_food(PB)                                              | 10초뒤에 먹이(이미지) 사라짐 |
 | 업그레이드    | GameManager      | public long heart;<br />public long heartIncreaseAmount;<br />public long heartIncreaseLevel;<br />public long heartIncreasePrice;<br />public Text textHeart;public Text textHeartIncreasePrice;<br />public Text textHeartUpgradePrice;<br />public Button HeartIncreaseButton; | HeartIncrease() <br />HeartIncreaseLevelUpgrade()  <br />HeartIncreaseUpdatePanelText() <br />HeartIncreaseUpdatePriceText() <br />ButtonActiveCheck() |                                                              | Button_HeartIncrease(PB) <br />Panel_HeartIncreasePriceUpgrade |                              |
 | 장난감        | ToyManager       | public long ToyCreatePrice;<br/>    public long ToyIncreaseAmount;<br/>    public long ToyIncreaseLevel;<br/>    public long ToyIncreasePrice;<br/>    public string ToyName;<br/><br/>    public Text textToyIncreasePrice;<br/>    public Text textToyUpgradePrice;<br/>    public Button ToyIncreaseButton;<br/><br/>    public GameObject prefabToy;<br/><br/><br/>    GameManager gm;<br/><br/>    public Vector2 point; | Start()<br />Update()<br />IEnumerator autoClick()<br />ToyCreateButton()<br />public void ToyIncreaseLevelUpgrade()<br />ToyIncreaseUpdatePanelText()<br /> | ToyManager_Box<br />ToyManager_Scratcher<br />ToyManager_CatTower<br />ToyManager_Toy | Panel_Toy<br />Button_Toy(PB)                                |                              |
 | 고양이관리    | CatManager       | ToyManager toy;<br/>    GameManager gm;<br/><br/>    public int PlayPrice;<br/>    public Button PlayButton;<br/>    public Text textPlay;<br/>    public Image imagePlay;<br/>    public float PlaylerpSpeed;<br/>public int TouchPrice;<br/>    public Button TouchButton;<br/>    public Text textTouch;<br/>    public int WashPrice;<br/>    public Button WashButton;<br/>    public Text textWash;<br/>    public Image imageWash;<br/>    public float WashlerpSpeed;<br/><br/>    public Button HungryButton;<br/>    public Image imageHungry;<br/>    public float HungrylerpSpeed;<br/><br/>    public float lerpSpeed; | Start()<br />Update()<br />ButtonActiveCheck()<br />_PlayBtton()<br />_TouchBtton()<br />_WashBtton()<br />_HungryBtton()<br />FunnyStatus()<br />WashStatus()<br />HungryStatus() | CatManager                                                   | Panel_Management<br />Panel_Status<br />Button_Management(PB)<br />Button_Food(PB) |                              |
 | 광고넣기      | ADManager        |                                                              | Start()<br />AD_Initialize()<br />AD_Request<br />Show_RewardVideo<br /> | ADManager                                                    |                                                              | 리워드 광고                  |
 | 광고 불러오기 | GameManager      | public Button adButton;<br/>    public float leftTime;<br/>    public float backup_leftTime;<br/>    public Text textleftTime;<br/>    ADManager adm; | Start()<br />ButtonActiveCheck()<br />showad()<br />IEnumerator rewardVideo()<br />IEnumerator decreaseTime() |                                                              | Button_Ad(PB)                                                |                              |
-| 이벤트처리    | EvnetManager     | GameManager gm;<br/>    LifeTime lifetime;<br/>    ADManager adm;<br/><br/>List<string> EventList;<br/>    int ListLength;<br/>    public int RandomNumber;<br />    public GameObject Event_Popup;<br/>    int FirstEvent_RandomTime_1;<br/>    int FirstEvent_RandomTime_2;<br/>    public int RandomTime_1;    <br/>    public int RandomTime_2;    <br/>    public Button button_Yes;<br/>    public Button button_No;<br/><br/>    public Text text_Bath;<br/>    public Text text_Hospiter;<br/>    public Text text_ToothLose;<br/>    public Text text_RandomEvent; | Start()<br />Update()<br />arrlist_EventText()<br />_EventManagement()<br />Event_Bath()<br />Event_Hospiter()<br />Event_ToothLose()<br />Event_RandomEvent_1()<br />Event_RandomEvent_2<br />showad() | EventManager                                                 | Panel_Event                                                  | 이벤트내용 추가하기          |
+| 이벤트처리    | EvnetManager     | GameManager gm;<br/>    LifeTime lifetime;<br/>    ADManager adm;<br/><br/>    List<string> EventList;<br/>    int ListLength;<br/>    public int RandomNumber;<br/><br/>    public GameObject Event_Popup;<br/>    int FirstEvent_RandomTime_1;<br/>    int FirstEvent_RandomTime_2;<br/>    int FirstEvent_RandomTime_3;<br/>    public int RandomTime_1;    //0~20분<br/>    public int RandomTime_2;    //21~40분<br/>    public int RandomTime_3;    //41~59분<br/><br/>    public Button button_Yes;<br/>    public Button button_No;<br/><br/>    public Text text_Bath;<br/>    public Text text_Hospiter;<br/>    public Text text_ToothLose;<br/>    public Text text_RandomEvent; | Start()<br />Update()<br />arrlist_EventText()<br />_EventManagement()<br />Event_Bath()<br />Event_Hospiter()<br />Event_ToothLose()<br />Event_RandomEvent_1()<br />Event_RandomEvent_2<br />Event_RandomEvent_3<br />showad() | EventManager                                                 | Panel_Event                                                  | 이벤트내용 추가하기          |
 | 화면전환      | GameManager      | public GameObject Panel_Exit;                                | Update()<br />ExitGame()<br />Exit_Yes()<br />Exit_No()      | Title<br />Background                                        | Button_Start<br />Image_catface                              | Scene0                       |
 |               | StartScene       | public Vector2 point;<br/>    public Vector2 EndPosition;<br/><br/>    public float DownSpeed;<br/>    public float alpha;<br/><br/>    public GameObject button_Start;<br/>    public GameObject CatFace; | Start()<br />Update()<br />IEnumerator MoveTitle()<br />Pop_Image()<br />Pop_Button()<br />ChangePlayGameScene() |                                                              | Panel_Exit                                                   | Scene1                       |
 | 인트로        | Intro_animation  | public float StopTime;<br/><br/>    private SpriteRenderer spriteRenderer;<br/>    public Sprite[] sprites;<br/>    public Sprite sprites_2;<br/><br/>    public GameObject speech;<br/><br/>    public GameObject PanelName;<br/>    public InputField textName;<br/>    public static string text_CatName;<br/><br/>    public GameObject PanelGender;<br/>    //public Button button_male;<br/>    //public Button button_female;<br/>    public int Gender_value;<br/><br/>    public GameObject PanelInfo;<br/>    public Text textCatInfo; | Start()<br />Update()<br />IEnumerator Genderbutton_male()<br />_button_female()<br />PopInfo()<br />_button_Yes()<br />_button_No()<br /> | Image_speech<br />IntroManager                               | Panel_Name<br />Gender<br />Panel_Info                       |                              |

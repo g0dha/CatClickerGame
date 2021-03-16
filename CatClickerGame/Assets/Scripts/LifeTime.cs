@@ -20,13 +20,14 @@ public class LifeTime : MonoBehaviour
     public int timeDay;
     public int timeHour;
 
-    public DateTime dt = DateTime.Now;
+    public DateTime dt;
     public Text text_Date;
     public Text text_PlayTime;
 
     DateTime startDate;
     DateTime now;
     public double PlayTime;
+    //public double PlayTime_m;
     string StartDate;
 
     String LastTime;
@@ -48,6 +49,7 @@ public class LifeTime : MonoBehaviour
 
     void Update()
     {
+        DateTime dt = DateTime.Now;
         text_Date.text = dt.ToString("yyyy년 MM월 dd일\nHH시 mm분");
         DateTime now = Convert.ToDateTime(dt);
         _PlayTime();
@@ -57,8 +59,9 @@ public class LifeTime : MonoBehaviour
     void _PlayTime()
     {
         PlayTime = (now - startDate).TotalDays;
-
         text_PlayTime.text = "D + " +PlayTime.ToString();
+
+        //PlayTime_m = (now - startDate).TotalMinutes;
 
 
     }

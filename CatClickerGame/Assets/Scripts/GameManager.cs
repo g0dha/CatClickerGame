@@ -44,13 +44,16 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
         string path = Application.persistentDataPath + "/save.xml";
+        
         if (System.IO.File.Exists(path))
         {
             Load();
         }
 
+        /*heartIncreaseAmount = 1;
+        heartIncreaseLevel = 1;
+        heartIncreasePrice = 10;*/
 
         PlayerPrefs.SetString("GameStartTime", System.DateTime.Now.ToString());
 
@@ -62,12 +65,12 @@ public class GameManager : MonoBehaviour
         }
         else if (PlayerPrefs.GetInt("Gender") == 2)
         {
-            CatInfo.text = PlayerPrefs.GetString("Name")+ "  /  암컷";
+            CatInfo.text = PlayerPrefs.GetString("Name") + "  /  암컷";
         }
 
 
         leftTime = 0f;
-        
+
     }
 
 
@@ -256,6 +259,7 @@ public class GameManager : MonoBehaviour
 
     public void Exit_Yes()
     {
+        Save(); //
         Application.Quit();
     }
 
@@ -276,10 +280,8 @@ public class GameManager : MonoBehaviour
         saveData.heartIncreaseAmount = heartIncreaseAmount;
         saveData.heartIncreaseLevel = heartIncreaseLevel;
         saveData.heartIncreasePrice = heartIncreasePrice;
-
         saveData.foodPrice = foodPrice;
         saveData.food_lifeTime = food_lifeTime;
-
         saveData.leftTime = leftTime;
         saveData.backup_leftTime = backup_leftTime;
 
@@ -297,19 +299,17 @@ public class GameManager : MonoBehaviour
         heartIncreaseAmount = saveData.heartIncreaseAmount;
         heartIncreaseLevel = saveData.heartIncreaseLevel;
         heartIncreasePrice = saveData.heartIncreasePrice;
-
         foodPrice = saveData.foodPrice;
         food_lifeTime = saveData.food_lifeTime;
-
         leftTime = saveData.leftTime;
         backup_leftTime = saveData.backup_leftTime;
 
     }
-
+    /*
     private void OnApplicationQuit()
     {
         Save();
-    }
+    }*/
 
     // #####################################################################################################################
 

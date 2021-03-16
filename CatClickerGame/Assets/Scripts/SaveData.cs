@@ -5,10 +5,8 @@ public class SaveData
     public long heartIncreaseAmount;
     public long heartIncreaseLevel;
     public long heartIncreasePrice;
-
     public long foodPrice;
     public int food_lifeTime;
-
     public float leftTime;
     public float backup_leftTime;
 
