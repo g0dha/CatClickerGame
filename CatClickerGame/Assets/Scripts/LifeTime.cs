@@ -20,7 +20,7 @@ public class LifeTime : MonoBehaviour
     public int timeDay;
     public int timeHour;
 
-    public DateTime dt;
+    public DateTime dt = DateTime.Now; 
     public Text text_Date;
     public Text text_PlayTime;
 
@@ -43,7 +43,6 @@ public class LifeTime : MonoBehaviour
         StartDate = (string)PlayerPrefs.GetString("GameStartTime");
         
         DateTime startDate = Convert.ToDateTime(StartDate);
-        Debug.Log(startDate);
 
     }
 

@@ -38,12 +38,7 @@ public class EventManager : MonoBehaviour
 
     void Start()
     {
-        string path = Application.persistentDataPath + "/save.xml";
-
-        if (System.IO.File.Exists(path))
-        {
-            Load();
-        }
+        //Load();
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();
@@ -203,9 +198,9 @@ public class EventManager : MonoBehaviour
         Event_Popup.SetActive(false);
     }
 
-
+    
     // #####################################################################################################################
-
+    /*
     void Save()
     {
         SaveData saveData = new SaveData();
@@ -218,7 +213,7 @@ public class EventManager : MonoBehaviour
     string path = Application.persistentDataPath + "/save.xml";
         XmlManager.XmlSave<SaveData>(saveData, path);
     }
-
+    */
     void Load()
     {
         SaveData saveData = new SaveData();
@@ -232,10 +227,6 @@ public class EventManager : MonoBehaviour
 
     }
 
-    private void OnApplicationQuit()
-    {
-        Save();
-    }
-
+    
     // #####################################################################################################################
 }

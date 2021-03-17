@@ -14,8 +14,6 @@ ScriptsOnlyBuild:
     - ToyManager
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
-    GoogleMobileAds.dll:
-    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -273,7 +271,7 @@ ScriptsOnlyBuild:
     className: HeartMove
   - hash:
       serializedVersion: 2
-      Hash: 12d6cd64edd2b8e796cde7af14727c32
+      Hash: 8e1b038cf9058a9e82fc8a6a53380317
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -549,7 +547,7 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: 116a16c9fb8fe305e9d0a5a25bbfac97
+      Hash: 71359faf296c445e50a9d6f08d8b8617
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Intro_animation
@@ -840,4 +838,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/0_Start.unity
   - Assets/Scenes/1_Playing.unity
   - Assets/Scenes/0.1_intro.unity
-  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_41.apk
+  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_60.apk

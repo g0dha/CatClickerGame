@@ -22,6 +22,7 @@ public class Intro_animation : MonoBehaviour
 
     public GameObject PanelInfo;
     public Text textCatInfo;
+    public string stringCatInfo;
 
 
     void Start()
@@ -39,8 +40,8 @@ public class Intro_animation : MonoBehaviour
         PopSpeech();
         PopInfo();
 
-        PlayerPrefs.SetString("Name", textName.text);
-        PlayerPrefs.SetInt("Gender", Gender_value);
+        //PlayerPrefs.SetString("Name", textName.text);
+        //PlayerPrefs.SetInt("Gender", Gender_value);
     }
 
     IEnumerator _changeLight()
@@ -104,21 +105,38 @@ public class Intro_animation : MonoBehaviour
     {        
         if (Gender_value == 1)
         {
-            textCatInfo.text = PlayerPrefs.GetString("Name") + " / 수컷";
+            //textCatInfo.text = PlayerPrefs.GetString("Name") + " / 수컷";
+            textCatInfo.text = textName.text + " / 수컷";
+            stringCatInfo = textCatInfo.text;
+            Debug.Log(stringCatInfo);
         }
         else if (Gender_value == 2)
         {
-            textCatInfo.text = PlayerPrefs.GetString("Name") + " / 암컷";
+            //textCatInfo.text = PlayerPrefs.GetString("Name") + " / 암컷";
+            textCatInfo.text = textName.text + " / 암컷";
+            stringCatInfo = textCatInfo.text;
         }
     }
 
     public void _button_Yes()
     {
+        Save();
         SceneManager.LoadScene("1_Playing");
     }
 
     public void _button_No()
     {
         SceneManager.LoadScene("0.1_intro");
+    }
+
+    void Save()
+    {
+        SaveData saveData = new SaveData();
+
+        saveData.stringCatInfo = stringCatInfo;
+        //Debug.Log(stringCatInfo);
+
+        string path = Application.persistentDataPath + "/save.xml";
+        XmlManager.XmlSave<SaveData>(saveData, path);
     }
 }

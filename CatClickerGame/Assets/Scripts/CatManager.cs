@@ -42,12 +42,8 @@ public class CatManager : MonoBehaviour
 
     void Start()
     {
-        string path = Application.persistentDataPath + "/save.xml";
-
-        if (System.IO.File.Exists(path))
-        {
-            Load();
-        }
+        //Load();
+        
 
         toy = GameObject.Find("ToyManager_Toy").GetComponent<ToyManager>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -185,7 +181,7 @@ public class CatManager : MonoBehaviour
     }
 
     // #####################################################################################################################
-
+    /*
     void Save()
     {
         SaveData saveData = new SaveData();
@@ -201,7 +197,7 @@ public class CatManager : MonoBehaviour
     string path = Application.persistentDataPath + "/save.xml";
         XmlManager.XmlSave<SaveData>(saveData, path);
     }
-
+    */
     void Load()
     {
         SaveData saveData = new SaveData();
@@ -216,11 +212,6 @@ public class CatManager : MonoBehaviour
         HungrylerpSpeed = saveData.HungrylerpSpeed;
         lerpSpeed = saveData.lerpSpeed;
 
-    }
-
-    private void OnApplicationQuit()
-    {
-        Save();
     }
 
     // #####################################################################################################################

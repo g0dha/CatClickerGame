@@ -29,19 +29,14 @@ public class ADManager : MonoBehaviour
 
     void Start()
     {
-        string path = Application.persistentDataPath + "/save.xml";
-
-        if (System.IO.File.Exists(path))
-        {
-            Load();
-        }
+        //Load();
 
         reward_dia = 0;
         text_reward_dia.text = reward_dia.ToString();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         AD_Initialize();
-        
+
 
     }
 
@@ -134,9 +129,9 @@ public class ADManager : MonoBehaviour
     public void H_RewardVideoLeftApplication(object sender, EventArgs args)
     {
     }
-
+    
     // #####################################################################################################################
-
+    /*
     void Save()
     {
         SaveData saveData = new SaveData();
@@ -146,7 +141,7 @@ public class ADManager : MonoBehaviour
         string path = Application.persistentDataPath + "/save.xml";
         XmlManager.XmlSave<SaveData>(saveData, path);
     }
-
+    */
     void Load()
     {
         SaveData saveData = new SaveData();
@@ -155,11 +150,6 @@ public class ADManager : MonoBehaviour
 
         reward_dia = saveData.reward_dia;
 
-    }
-
-    private void OnApplicationQuit()
-    {
-        Save();
     }
 
     // #####################################################################################################################

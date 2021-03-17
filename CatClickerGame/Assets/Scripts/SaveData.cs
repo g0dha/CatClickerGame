@@ -1,6 +1,8 @@
 ﻿[System.Serializable]
 public class SaveData
 {
+    public string stringCatInfo;
+
     public long heart;
     public long heartIncreaseAmount;
     public long heartIncreaseLevel;
@@ -12,12 +14,34 @@ public class SaveData
 
     public int reward_dia;
 
-    public int alpha;
-    public long ToyCreatePrice;
-    public long ToyIncreaseAmount;
-    public long ToyIncreaseLevel;
-    public long ToyIncreasePrice;
-    public string ToyName;
+    
+    public int alpha1;
+    public long ToyCreatePrice1;
+    public long ToyIncreaseAmount1;
+    public long ToyIncreaseLevel1;
+    public long ToyIncreasePrice1;
+    public string ToyName1;
+
+    public int alpha2;
+    public long ToyCreatePrice2;
+    public long ToyIncreaseAmount2;
+    public long ToyIncreaseLevel2;
+    public long ToyIncreasePrice2;
+    public string ToyName2;
+
+    public int alpha3;
+    public long ToyCreatePrice3;
+    public long ToyIncreaseAmount3;
+    public long ToyIncreaseLevel3;
+    public long ToyIncreasePrice3;
+    public string ToyName3;
+
+    public int alpha4;
+    public long ToyCreatePrice4;
+    public long ToyIncreaseAmount4;
+    public long ToyIncreaseLevel4;
+    public long ToyIncreasePrice4;
+    public string ToyName4;
 
     //List<string> EventList;
     //int ListLength;

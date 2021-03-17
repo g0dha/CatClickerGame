@@ -317,7 +317,7 @@ MonoBehaviour:
   ToyIncreaseButton: {fileID: 1445307526}
   prefabToy: {fileID: 1323573268180444011, guid: 0ae3c06637b02f144ab3ed987cd2c768,
     type: 3}
-  point: {x: -2, y: 0.25}
+  point: {x: -2, y: -1.08}
 --- !u!4 &84758416
 Transform:
   m_ObjectHideFlags: 0
@@ -2787,7 +2787,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501471077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: -0.94, z: 0}
+  m_LocalPosition: {x: -0.08, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3381,7 +3381,7 @@ MonoBehaviour:
   backup_leftTime: 300
   textleftTime: {fileID: 1232929084}
   Panel_Exit: {fileID: 355500333}
-  CatName: {fileID: 899130651}
+  stringCatInfo_gm: 
   CatInfo: {fileID: 899130651}
 --- !u!4 &635019736
 Transform:
@@ -3886,7 +3886,7 @@ MonoBehaviour:
   ToyIncreaseButton: {fileID: 970100820}
   prefabToy: {fileID: 8271715515362594066, guid: b68de1910b64d02488a22efdd5979319,
     type: 3}
-  point: {x: -1.21, y: -0.67}
+  point: {x: -1.21, y: -2}
 --- !u!4 &782716169
 Transform:
   m_ObjectHideFlags: 0
@@ -3941,7 +3941,7 @@ MonoBehaviour:
   ToyIncreaseButton: {fileID: 652608666}
   prefabToy: {fileID: 2972713866033674692, guid: 190079ba668e55748b4c170b956940d4,
     type: 3}
-  point: {x: 1.66, y: 1.75}
+  point: {x: 1.66, y: 0.42}
 --- !u!4 &803643723
 Transform:
   m_ObjectHideFlags: 0
@@ -8644,7 +8644,7 @@ MonoBehaviour:
   ToyIncreaseButton: {fileID: 485792429}
   prefabToy: {fileID: 9096930484692359033, guid: 469fa3b17eadc2648a8bd57a1b07e4b5,
     type: 3}
-  point: {x: -0.6, y: 0.25}
+  point: {x: -0.6, y: -1.08}
 --- !u!4 &1856716728
 Transform:
   m_ObjectHideFlags: 0
@@ -9078,7 +9078,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 398c4341321c2004086f6b164d5c6a18, type: 3}
     m_FontSize: 70
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 7
     m_MaxSize: 80
     m_Alignment: 4
