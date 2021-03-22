@@ -1,8 +1,6 @@
 ﻿[System.Serializable]
 public class SaveData
 {
-    public string stringCatInfo;
-
     public long heart;
     public long heartIncreaseAmount;
     public long heartIncreaseLevel;
@@ -14,7 +12,9 @@ public class SaveData
 
     public int reward_dia;
 
-    
+    public string stringCatInfo;
+
+    public int ToyState1;
     public int alpha1;
     public long ToyCreatePrice1;
     public long ToyIncreaseAmount1;
@@ -22,6 +22,7 @@ public class SaveData
     public long ToyIncreasePrice1;
     public string ToyName1;
 
+    public int ToyState2;
     public int alpha2;
     public long ToyCreatePrice2;
     public long ToyIncreaseAmount2;
@@ -29,6 +30,7 @@ public class SaveData
     public long ToyIncreasePrice2;
     public string ToyName2;
 
+    public int ToyState3;
     public int alpha3;
     public long ToyCreatePrice3;
     public long ToyIncreaseAmount3;
@@ -36,6 +38,7 @@ public class SaveData
     public long ToyIncreasePrice3;
     public string ToyName3;
 
+    public int ToyState4;
     public int alpha4;
     public long ToyCreatePrice4;
     public long ToyIncreaseAmount4;

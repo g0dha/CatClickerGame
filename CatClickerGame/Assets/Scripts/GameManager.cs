@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -49,21 +50,6 @@ public class GameManager : MonoBehaviour
     // #####################################################################################################################
     void Awake()
     {
-        heartIncreaseAmount = 1;
-        heartIncreaseLevel = 1;
-        heartIncreasePrice = 10;
-        foodPrice = 100;
-        food_lifeTime = 30;
-        backup_leftTime = 300;
-    }
-
-    void Start()
-    {
-        Load();
-
-
-        //PlayerPrefs.SetString("GameStartTime", System.DateTime.Now.ToString());
-
         adm = GameObject.Find("ADManager").GetComponent<ADManager>();
         tm1 = GameObject.Find("ToyManager_Toy").GetComponent<ToyManager>();
         tm2 = GameObject.Find("ToyManager_Scratcher").GetComponent<ToyManager>();
@@ -72,19 +58,27 @@ public class GameManager : MonoBehaviour
         em = GameObject.Find("EventManager").GetComponent<EventManager>();
         cm = GameObject.Find("CatManager").GetComponent<CatManager>();
 
-        //Debug.Log(tm1.alpha);
-        //Debug.Log(tm2.alpha);
+        SaveData saveData = new SaveData();
+        string path = Application.persistentDataPath + "/save.xml";
+        saveData = XmlManager.XmlLoad<SaveData>(path);
 
+        //intro_animation
+        stringCatInfo_gm = saveData.stringCatInfo;
+        heart = saveData.heart;
+        Debug.Log("Awake heart = " + heart);
+
+    }
+
+    void Start()
+    {        
+        if (heart == 0&&heartIncreaseLevel==1)
+        {            
+            Save();
+        }
+            
+        Load();
         
         CatInfo.text = stringCatInfo_gm;
-        /*if (PlayerPrefs.GetInt("Gender") == 1)
-        {
-            CatInfo.text = PlayerPrefs.GetString("Name") + "  /  수컷";
-        }
-        else if (PlayerPrefs.GetInt("Gender") == 2)
-        {
-            CatInfo.text = PlayerPrefs.GetString("Name") + "  /  암컷";
-        }*/
 
         leftTime = 0f;
 
@@ -102,7 +96,6 @@ public class GameManager : MonoBehaviour
         HeartIncreaseUpdatePriceText();
 
         ButtonActiveCheck();
-
         _textFoodPrice();
 
         ExitGame();
@@ -278,11 +271,7 @@ public class GameManager : MonoBehaviour
 
     public void Exit_Yes()
     {
-       
-        Save();
-        Debug.Log("save clear");
-        Application.Quit();
-        
+        Application.Quit();        
     }
 
     public void Exit_No()
@@ -291,15 +280,26 @@ public class GameManager : MonoBehaviour
         Panel_Exit.SetActive(false);
     }
 
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
 
     // #####################################################################################################################
-    
+
     void Save()
     {
+        Debug.Log("save ing..");
         SaveData saveData = new SaveData();
+
+        //intro_animation
+        saveData.stringCatInfo = stringCatInfo_gm;
+
 
         //GameManager
         saveData.heart = heart;
+        Debug.Log("save heart = " + heart);
         saveData.heartIncreaseAmount = heartIncreaseAmount;
         saveData.heartIncreaseLevel = heartIncreaseLevel;
         saveData.heartIncreasePrice = heartIncreasePrice;
@@ -309,6 +309,7 @@ public class GameManager : MonoBehaviour
         saveData.backup_leftTime = backup_leftTime;
 
         //ToyManager_Toy
+        saveData.ToyState1 = tm1.ToyState;
         saveData.alpha1 = tm1.alpha;
         saveData.ToyCreatePrice1 = tm1.ToyCreatePrice;
         saveData.ToyIncreaseAmount1 = tm1.ToyIncreaseAmount;
@@ -317,6 +318,7 @@ public class GameManager : MonoBehaviour
         saveData.ToyName1 = tm1.ToyName;
 
         //ToyManager_Scratcher
+        saveData.ToyState2 = tm2.ToyState;
         saveData.alpha2 = tm2.alpha;
         saveData.ToyCreatePrice2 = tm2.ToyCreatePrice;
         saveData.ToyIncreaseAmount2 = tm2.ToyIncreaseAmount;
@@ -325,6 +327,7 @@ public class GameManager : MonoBehaviour
         saveData.ToyName2 = tm2.ToyName;
 
         //ToyManager_Box
+        saveData.ToyState3 = tm3.ToyState;
         saveData.alpha3 = tm3.alpha;
         saveData.ToyCreatePrice3 = tm3.ToyCreatePrice;
         saveData.ToyIncreaseAmount3 = tm3.ToyIncreaseAmount;
@@ -333,6 +336,7 @@ public class GameManager : MonoBehaviour
         saveData.ToyName3 = tm3.ToyName;
 
         //ToyManager_CatTower
+        saveData.ToyState4 = tm4.ToyState;
         saveData.alpha4 = tm4.alpha;
         saveData.ToyCreatePrice4 = tm4.ToyCreatePrice;
         saveData.ToyIncreaseAmount4 = tm4.ToyIncreaseAmount;
@@ -365,16 +369,17 @@ public class GameManager : MonoBehaviour
 
     void Load()
     {
+
         SaveData saveData = new SaveData();
         string path = Application.persistentDataPath + "/save.xml";
         saveData = XmlManager.XmlLoad<SaveData>(path);
 
-
+        //intro_animation
         stringCatInfo_gm = saveData.stringCatInfo;
-        //Debug.Log(stringCatInfo_gm);
 
         //GameManager
         heart = saveData.heart;
+        Debug.Log("load heart = " + heart);
         heartIncreaseAmount = saveData.heartIncreaseAmount;
         heartIncreaseLevel = saveData.heartIncreaseLevel;
         heartIncreasePrice = saveData.heartIncreasePrice;
@@ -382,66 +387,9 @@ public class GameManager : MonoBehaviour
         food_lifeTime = saveData.food_lifeTime;
         leftTime = saveData.leftTime;
         backup_leftTime = saveData.backup_leftTime;
-
-        /*
-        //ToyManager_Toy
-        tm1.alpha = saveData.alpha1;
-        tm1.ToyCreatePrice = saveData.ToyCreatePrice1;
-        tm1.ToyIncreaseAmount = saveData.ToyIncreaseAmount1;
-        tm1.ToyIncreaseLevel = saveData.ToyIncreaseLevel1;
-        tm1.ToyIncreasePrice = saveData.ToyIncreasePrice1;
-        tm1.ToyName = saveData.ToyName1;
-        
-        //ToyManager_Scratcher
-        tm2.alpha = saveData.alpha2;
-        tm2.ToyCreatePrice = saveData.ToyCreatePrice2;
-        tm2.ToyIncreaseAmount = saveData.ToyIncreaseAmount2;
-        tm2.ToyIncreaseLevel = saveData.ToyIncreaseLevel2;
-        tm2.ToyIncreasePrice = saveData.ToyIncreasePrice2;
-        tm2.ToyName = saveData.ToyName2;
-
-        //ToyManager_Box
-        tm3.alpha = saveData.alpha3;
-        tm3.ToyCreatePrice = saveData.ToyCreatePrice3;
-        tm3.ToyIncreaseAmount = saveData.ToyIncreaseAmount3;
-        tm3.ToyIncreaseLevel = saveData.ToyIncreaseLevel3;
-        tm3.ToyIncreasePrice = saveData.ToyIncreasePrice3;
-        tm3.ToyName = saveData.ToyName3;
-
-        //ToyManager_CatTower
-        tm4.alpha = saveData.alpha4;
-        tm4.ToyCreatePrice = saveData.ToyCreatePrice4;
-        tm4.ToyIncreaseAmount = saveData.ToyIncreaseAmount4;
-        tm4.ToyIncreaseLevel = saveData.ToyIncreaseLevel4;
-        tm4.ToyIncreasePrice = saveData.ToyIncreasePrice4;
-        tm4.ToyName = saveData.ToyName4;
-        
-
-        //EventManager
-        em.RandomNumber = saveData.RandomNumber;
-        em.RandomTime_1 = saveData.RandomTime_1;
-        em.RandomTime_2 = saveData.RandomTime_2;
-        em.RandomTime_3 = saveData.RandomTime_3;
-
-        //ADManager
-        adm.reward_dia = saveData.reward_dia;
-
-        //CatManager
-        cm.PlayPrice = saveData.PlayPrice;
-        cm.PlaylerpSpeed = saveData.PlaylerpSpeed;
-        cm.TouchPrice = saveData.TouchPrice;
-        cm.WashPrice = saveData.WashPrice;
-        cm.WashlerpSpeed = saveData.WashlerpSpeed;
-        cm.HungrylerpSpeed = saveData.HungrylerpSpeed;
-        cm.lerpSpeed = saveData.lerpSpeed;
-        */
     }
     
-    /*private void OnApplicationQuit()
-    {
-        Debug.Log("Save");
-        Save();
-    }*/
+    
     
     // #####################################################################################################################
 

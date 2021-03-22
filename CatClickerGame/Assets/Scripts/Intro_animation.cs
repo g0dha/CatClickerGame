@@ -40,8 +40,6 @@ public class Intro_animation : MonoBehaviour
         PopSpeech();
         PopInfo();
 
-        //PlayerPrefs.SetString("Name", textName.text);
-        //PlayerPrefs.SetInt("Gender", Gender_value);
     }
 
     IEnumerator _changeLight()
@@ -105,14 +103,12 @@ public class Intro_animation : MonoBehaviour
     {        
         if (Gender_value == 1)
         {
-            //textCatInfo.text = PlayerPrefs.GetString("Name") + " / 수컷";
             textCatInfo.text = textName.text + " / 수컷";
             stringCatInfo = textCatInfo.text;
             Debug.Log(stringCatInfo);
         }
         else if (Gender_value == 2)
         {
-            //textCatInfo.text = PlayerPrefs.GetString("Name") + " / 암컷";
             textCatInfo.text = textName.text + " / 암컷";
             stringCatInfo = textCatInfo.text;
         }
@@ -132,9 +128,8 @@ public class Intro_animation : MonoBehaviour
     void Save()
     {
         SaveData saveData = new SaveData();
-
+        
         saveData.stringCatInfo = stringCatInfo;
-        //Debug.Log(stringCatInfo);
 
         string path = Application.persistentDataPath + "/save.xml";
         XmlManager.XmlSave<SaveData>(saveData, path);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.IO;
 
 public class CatManager : MonoBehaviour
 {
@@ -39,14 +40,19 @@ public class CatManager : MonoBehaviour
 
 
     // #####################################################################################################################
+    void Awake()
+    {
+        toy = GameObject.Find("ToyManager_Toy").GetComponent<ToyManager>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     void Start()
     {
-        //Load();
-        
-
-        toy = GameObject.Find("ToyManager_Toy").GetComponent<ToyManager>();
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        string path = Application.persistentDataPath + "/save.xml";
+        if (System.IO.File.Exists(path))
+        {
+            Load();
+        }
 
         textPlay.text = PlayPrice.ToString();
         textTouch.text = TouchPrice.ToString();
@@ -200,6 +206,7 @@ public class CatManager : MonoBehaviour
     */
     void Load()
     {
+
         SaveData saveData = new SaveData();
         string path = Application.persistentDataPath + "/save.xml";
         saveData = XmlManager.XmlLoad<SaveData>(path);

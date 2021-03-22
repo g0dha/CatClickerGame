@@ -309,9 +309,10 @@ MonoBehaviour:
   alpha: 21
   ToyCreatePrice: 1500
   ToyIncreaseAmount: 1
-  ToyIncreaseLevel: 1
+  ToyIncreaseLevel: 0
   ToyIncreasePrice: 10
   ToyName: "\uBBF8\uCE89\uC0C1\uC790"
+  ToyState: 0
   textToyIncreasePrice: {fileID: 115438102}
   textToyUpgradePrice: {fileID: 478947121}
   ToyIncreaseButton: {fileID: 1445307526}
@@ -3878,9 +3879,10 @@ MonoBehaviour:
   alpha: 3
   ToyCreatePrice: 100
   ToyIncreaseAmount: 1
-  ToyIncreaseLevel: 1
+  ToyIncreaseLevel: 0
   ToyIncreasePrice: 10
   ToyName: "\uC7A5\uB09C\uAC10"
+  ToyState: 0
   textToyIncreasePrice: {fileID: 85527048}
   textToyUpgradePrice: {fileID: 102457937}
   ToyIncreaseButton: {fileID: 970100820}
@@ -3933,9 +3935,10 @@ MonoBehaviour:
   alpha: 30
   ToyCreatePrice: 10000
   ToyIncreaseAmount: 1
-  ToyIncreaseLevel: 1
+  ToyIncreaseLevel: 0
   ToyIncreasePrice: 10
   ToyName: "\uCEA3\uD0C0\uC6CC"
+  ToyState: 0
   textToyIncreasePrice: {fileID: 1008619824}
   textToyUpgradePrice: {fileID: 965783962}
   ToyIncreaseButton: {fileID: 652608666}
@@ -5165,8 +5168,6 @@ MonoBehaviour:
   RandomTime_1: 0
   RandomTime_2: 0
   RandomTime_3: 0
-  button_Yes: {fileID: 1433378533}
-  button_No: {fileID: 684160825}
   text_Bath: {fileID: 2003102371}
   text_Hospiter: {fileID: 2003102371}
   text_ToothLose: {fileID: 2003102371}
@@ -8636,9 +8637,10 @@ MonoBehaviour:
   alpha: 9
   ToyCreatePrice: 500
   ToyIncreaseAmount: 1
-  ToyIncreaseLevel: 1
+  ToyIncreaseLevel: 0
   ToyIncreasePrice: 10
   ToyName: "\uC2A4\uD06C\uB798\uCCD0"
+  ToyState: 0
   textToyIncreasePrice: {fileID: 261244875}
   textToyUpgradePrice: {fileID: 1637186527}
   ToyIncreaseButton: {fileID: 485792429}
@@ -9113,7 +9115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2045169359
 MonoBehaviour:
   m_ObjectHideFlags: 0

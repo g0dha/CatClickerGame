@@ -24,9 +24,7 @@ public class StartScene : MonoBehaviour
         {
             Load();
         }
-
         
-
         EndPosition = new Vector2(point.x, point.y);
         DownSpeed = alpha * Time.deltaTime;
         CatFace.SetActive(false);
@@ -73,35 +71,28 @@ public class StartScene : MonoBehaviour
 
     public void ChangePlayGameScene()
     {
-        if (!(stringCatInfo_sc.Length==0))
-        {
-            Debug.Log("게임화면");
-            SceneManager.LoadScene("1_Playing");
-        }
-        else if (stringCatInfo_sc.Length==0)
+
+        if (stringCatInfo_sc == null)
         {
             Debug.Log("인트로화면");
             SceneManager.LoadScene("0.1_intro");
         }
         else
         {
-            SceneManager.LoadScene("0.1_intro");
+            Debug.Log("게임화면");
+            SceneManager.LoadScene("1_Playing");
         }
-
+        
 
     }
     
     void Load()
     {
         SaveData saveData = new SaveData();
-                Debug.Log("1");
         string path = Application.persistentDataPath + "/save.xml";
-                Debug.Log("2");
         saveData = XmlManager.XmlLoad<SaveData>(path);
-                Debug.Log("3");
 
         stringCatInfo_sc = saveData.stringCatInfo;
-                Debug.Log("4");
         
     }
 

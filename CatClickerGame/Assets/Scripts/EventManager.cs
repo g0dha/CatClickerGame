@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
+using System.IO;
 
 public class EventManager : MonoBehaviour
 {
@@ -25,8 +26,8 @@ public class EventManager : MonoBehaviour
     public int RandomTime_2;    //21~40분
     public int RandomTime_3;    //41~59분
 
-    public Button button_Yes;
-    public Button button_No;
+    //public Button button_Yes;
+    //public Button button_No;
 
     public Text text_Bath;
     public Text text_Hospiter;
@@ -35,14 +36,22 @@ public class EventManager : MonoBehaviour
 
 
     // #####################################################################################################################
-
-    void Start()
+    void Awake()
     {
-        //Load();
-
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();
         adm = GameObject.Find("ADManager").GetComponent<ADManager>();
+    }
+
+    void Start()
+    {
+        string path = Application.persistentDataPath + "/save.xml";
+        if (System.IO.File.Exists(path))
+        {
+            Load();
+        }
+
+        
 
         EventList = new List<string>();
 
@@ -216,6 +225,7 @@ public class EventManager : MonoBehaviour
     */
     void Load()
     {
+
         SaveData saveData = new SaveData();
         string path = Application.persistentDataPath + "/save.xml";
         saveData = XmlManager.XmlLoad<SaveData>(path);

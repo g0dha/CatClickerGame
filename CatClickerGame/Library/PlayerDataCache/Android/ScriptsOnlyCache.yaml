@@ -14,6 +14,8 @@ ScriptsOnlyBuild:
     - ToyManager
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
+    GoogleMobileAds.dll:
+    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -505,7 +507,7 @@ ScriptsOnlyBuild:
     className: Countdown
   - hash:
       serializedVersion: 2
-      Hash: ef825e30ac71de709c1a1e3d0adae006
+      Hash: 333bb7cd1a979ce27b94535fc3625544
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ToyManager
@@ -721,7 +723,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 3e05603d408f08c2f39a35b438d1e822
+      Hash: b384fdd05bcbb1ac342d92a3691a15be
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EventManager
@@ -838,4 +840,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/0_Start.unity
   - Assets/Scenes/1_Playing.unity
   - Assets/Scenes/0.1_intro.unity
-  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_60.apk
+  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_70.apk
