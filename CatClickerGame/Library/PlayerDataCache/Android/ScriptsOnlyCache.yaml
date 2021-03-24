@@ -273,7 +273,7 @@ ScriptsOnlyBuild:
     className: HeartMove
   - hash:
       serializedVersion: 2
-      Hash: 8e1b038cf9058a9e82fc8a6a53380317
+      Hash: d7b2ee26164b876eb9600e322b2ad3d3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -549,7 +549,7 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: 71359faf296c445e50a9d6f08d8b8617
+      Hash: 4c5d7e30039ca9c269cf61fb73bd1566
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Intro_animation
@@ -657,7 +657,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 761d3ea8b3506512e66290a25f450501
+      Hash: b97421d6f034bcfd05b2cc53f1e381dd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LifeTime
@@ -840,4 +840,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/0_Start.unity
   - Assets/Scenes/1_Playing.unity
   - Assets/Scenes/0.1_intro.unity
-  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_70.apk
+  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_71.apk

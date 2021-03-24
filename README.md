@@ -116,8 +116,10 @@
 | **CatManager**           | PlayPrice           | 100     |                                               |
 |                          | TouchPirce          | 100     |                                               |
 |                          | WashPirce           | 300     |                                               |
-|                          | HungrylerpSpeed     | 수식    | lerpSpeed*0.6                                 |
-|                          | LerpSpeed           | 100     | bar 증감 속도 조절                            |
+|                          | PlaylerpSpeed       | 수식    | Time.deltaTime/lerpSpeed                      |
+|                          | WashlerpSpeed       | 수식    | Time.deltaTime/lerpSpeed*0.01                 |
+|                          | HungrylerpSpeed     | 수식    | Time.deltaTime/lerpSpeed*0.6                  |
+|                          | LerpSpeed           | 500     | bar 증감 속도 조절                            |
 | **ToyManager_Toy**       | ToyCreatePrice      | 100     |                                               |
 |                          | alpha               | 3       | alpha : 가격 차이를 두기 위한 값              |
 |                          | ToyIncreaseAmount   | 수식    | ToyIncreaseLevel* 10 *alpha                   |

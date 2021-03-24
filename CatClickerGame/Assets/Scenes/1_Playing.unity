@@ -3384,6 +3384,8 @@ MonoBehaviour:
   Panel_Exit: {fileID: 355500333}
   stringCatInfo_gm: 
   CatInfo: {fileID: 899130651}
+  str_startDate_gm: 
+  text_PlayTime: {fileID: 246851964}
 --- !u!4 &635019736
 Transform:
   m_ObjectHideFlags: 0
@@ -3415,8 +3417,6 @@ MonoBehaviour:
   timeDay: 0
   timeHour: 0
   text_Date: {fileID: 1960829075}
-  text_PlayTime: {fileID: 246851964}
-  PlayTime: 0
 --- !u!1 &646849520
 GameObject:
   m_ObjectHideFlags: 0
@@ -9115,7 +9115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2045169359
 MonoBehaviour:
   m_ObjectHideFlags: 0

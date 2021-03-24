@@ -66,7 +66,7 @@ public class CatManager : MonoBehaviour
     void Update()
     {
         PlaylerpSpeed += Time.deltaTime / lerpSpeed;
-        WashlerpSpeed += Time.deltaTime / lerpSpeed;
+        WashlerpSpeed += Time.deltaTime / lerpSpeed*0.01f;
         HungrylerpSpeed += Time.deltaTime / lerpSpeed*0.6f;
 
         ButtonActiveCheck();

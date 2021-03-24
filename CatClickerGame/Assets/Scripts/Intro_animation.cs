@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading;
 using UnityEngine.SceneManagement;
+
 
 public class Intro_animation : MonoBehaviour
 {
@@ -24,11 +27,17 @@ public class Intro_animation : MonoBehaviour
     public Text textCatInfo;
     public string stringCatInfo;
 
+    public DateTime startDate = DateTime.Now;
+    public string str_startdate;
+
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[0];
+        
+        DateTime startDate = DateTime.Now;
+        str_startdate = startDate.ToString("yyyyMMdd");
 
         StartCoroutine("_changeLight");
         
@@ -36,6 +45,7 @@ public class Intro_animation : MonoBehaviour
 
     void Update()
     {
+        
         StopTime += Time.deltaTime;
         PopSpeech();
         PopInfo();
@@ -130,6 +140,7 @@ public class Intro_animation : MonoBehaviour
         SaveData saveData = new SaveData();
         
         saveData.stringCatInfo = stringCatInfo;
+        saveData.str_startdate = str_startdate;
 
         string path = Application.persistentDataPath + "/save.xml";
         XmlManager.XmlSave<SaveData>(saveData, path);

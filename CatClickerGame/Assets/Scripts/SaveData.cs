@@ -13,6 +13,7 @@ public class SaveData
     public int reward_dia;
 
     public string stringCatInfo;
+    public string str_startdate;
 
     public int ToyState1;
     public int alpha1;

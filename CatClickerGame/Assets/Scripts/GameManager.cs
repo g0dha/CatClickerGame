@@ -36,6 +36,12 @@ public class GameManager : MonoBehaviour
     public string stringCatInfo_gm;
     public Text CatInfo;
 
+    public TimeSpan PlayTime;
+    DateTime StartDate;
+    public string str_startDate_gm;
+    public Text text_PlayTime;
+
+
     ADManager adm;
     ToyManager tm1;
     ToyManager tm2;
@@ -43,6 +49,7 @@ public class GameManager : MonoBehaviour
     ToyManager tm4;
     EventManager em;
     CatManager cm;
+    LifeTime lifetime;
 
 
 
@@ -57,6 +64,7 @@ public class GameManager : MonoBehaviour
         tm4 = GameObject.Find("ToyManager_CatTower").GetComponent<ToyManager>();
         em = GameObject.Find("EventManager").GetComponent<EventManager>();
         cm = GameObject.Find("CatManager").GetComponent<CatManager>();
+        lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();
 
         SaveData saveData = new SaveData();
         string path = Application.persistentDataPath + "/save.xml";
@@ -64,28 +72,28 @@ public class GameManager : MonoBehaviour
 
         //intro_animation
         stringCatInfo_gm = saveData.stringCatInfo;
+        str_startDate_gm = saveData.str_startdate;
         heart = saveData.heart;
-        Debug.Log("Awake heart = " + heart);
 
     }
 
     void Start()
-    {        
+    {
         if (heart == 0&&heartIncreaseLevel==1)
         {            
             Save();
         }
             
         Load();
-        
+
         CatInfo.text = stringCatInfo_gm;
 
         leftTime = 0f;
 
+        StartDate = DateTime.ParseExact(str_startDate_gm, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+
+
     }
-
-    
-
 
     void Update()
     {
@@ -97,14 +105,12 @@ public class GameManager : MonoBehaviour
 
         ButtonActiveCheck();
         _textFoodPrice();
+        playtime();
 
         ExitGame();
 
 
     }
-
-
-
 
     // #####################################################################################################################
 
@@ -257,6 +263,17 @@ public class GameManager : MonoBehaviour
 
     // #####################################################################################################################
 
+    void playtime()
+    {
+        PlayTime = lifetime.dt - StartDate;
+        Debug.Log(lifetime.dt);
+        Debug.Log(StartDate);
+        Debug.Log(PlayTime);
+        text_PlayTime.text = "D + " + PlayTime.TotalDays.ToString("###");
+    }
+
+    // #####################################################################################################################
+
     void ExitGame()
     {
         if (Application.platform == RuntimePlatform.Android)
@@ -285,8 +302,9 @@ public class GameManager : MonoBehaviour
         Save();
     }
 
-
     // #####################################################################################################################
+
+    
 
     void Save()
     {
@@ -295,6 +313,7 @@ public class GameManager : MonoBehaviour
 
         //intro_animation
         saveData.stringCatInfo = stringCatInfo_gm;
+        saveData.str_startdate = str_startDate_gm;
 
 
         //GameManager
@@ -376,6 +395,7 @@ public class GameManager : MonoBehaviour
 
         //intro_animation
         stringCatInfo_gm = saveData.stringCatInfo;
+        str_startDate_gm = saveData.str_startdate;
 
         //GameManager
         heart = saveData.heart;

@@ -22,15 +22,7 @@ public class LifeTime : MonoBehaviour
 
     public DateTime dt = DateTime.Now; 
     public Text text_Date;
-    public Text text_PlayTime;
-
-    DateTime startDate;
-    DateTime now;
-    public double PlayTime;
-    //public double PlayTime_m;
-    string StartDate;
-
-    String LastTime;
+   
 
     void Start()
     {
@@ -38,33 +30,11 @@ public class LifeTime : MonoBehaviour
         timeMonth = dt.Month;
         timeDay = dt.Day;
         timeHour = dt.Hour;
-
-        
-        StartDate = (string)PlayerPrefs.GetString("GameStartTime");
-        
-        DateTime startDate = Convert.ToDateTime(StartDate);
-
     }
 
     void Update()
     {
         DateTime dt = DateTime.Now;
         text_Date.text = dt.ToString("yyyy년 MM월 dd일\nHH시 mm분");
-        DateTime now = Convert.ToDateTime(dt);
-        _PlayTime();
-
     }
-
-    void _PlayTime()
-    {
-        PlayTime = (now - startDate).TotalDays;
-        text_PlayTime.text = "D + " +PlayTime.ToString();
-
-        //PlayTime_m = (now - startDate).TotalMinutes;
-
-
-    }
-
-
-
 }

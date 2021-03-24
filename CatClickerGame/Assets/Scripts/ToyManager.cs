@@ -76,15 +76,7 @@ public class ToyManager : MonoBehaviour
 
     public void ToyCreateButton()
     {
-        /*if (GameObject.Find(prefabToy.name + "(Clone)") == false)
-        {
-            if (gm.heart >= ToyCreatePrice)
-            {
-                gm.heart -= ToyCreatePrice;
-                Instantiate(prefabToy, point, Quaternion.identity);
-            }
-            StartCoroutine(autoClick());
-        } */
+        
         if (ToyState==0)
         {
             if (gm.heart >= ToyCreatePrice)
@@ -102,18 +94,7 @@ public class ToyManager : MonoBehaviour
 
     public void ToyIncreaseLevelUpgrade()
     {
-        /*if (GameObject.Find(prefabToy.name + "(Clone)") == true)
-        {
-            if (gm.heart >= ToyIncreasePrice)
-            {
-                gm.heart -= ToyIncreasePrice;
-                ToyIncreaseLevel += 1;
-                ToyIncreaseAmount += ToyIncreaseLevel* 10 *alpha;
-                ToyIncreasePrice += (long)(Mathf.Pow(2,ToyIncreaseLevel)*alpha*alpha);
-
-            }
-
-        }*/
+        
 
         if (ToyState == 1)
         {
@@ -137,15 +118,7 @@ public class ToyManager : MonoBehaviour
 
     void ToyIncreaseUpdatePriceText()
     {
-        /*if (GameObject.Find(prefabToy.name + "(Clone)") == false)
-        {
-            textToyUpgradePrice.text = "설치 <" + ToyCreatePrice.ToString() + ">";
-        }
-
-        if (GameObject.Find(prefabToy.name + "(Clone)") == true)
-        {
-            textToyUpgradePrice.text = ToyIncreasePrice.ToString();
-        }*/
+        
         if (ToyState==0)
         {
             textToyUpgradePrice.text = "설치 <" + ToyCreatePrice.ToString() + ">";
@@ -161,28 +134,7 @@ public class ToyManager : MonoBehaviour
 
     void ButtonActiveCheck()
     {
-        /*if (GameObject.Find(prefabToy.name + "(Clone)") == false)
-        {
-            if (gm.heart >= ToyCreatePrice)
-            {
-                ToyIncreaseButton.interactable = true;
-            }
-            else
-            {
-                ToyIncreaseButton.interactable = false;
-            }
-        }
-        else
-        {
-            if (gm.heart >= ToyIncreasePrice)
-            {
-                ToyIncreaseButton.interactable = true;
-            }
-            else
-            {
-                ToyIncreaseButton.interactable = false;
-            }
-        }*/
+        
         if (ToyState==0)
         {
             if (gm.heart >= ToyCreatePrice)
