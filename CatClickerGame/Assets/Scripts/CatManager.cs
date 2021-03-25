@@ -36,6 +36,12 @@ public class CatManager : MonoBehaviour
 
     public float lerpSpeed;
 
+    //cat hp 추가 -> 병원 가기
+    public float CatHP;
+    public GameObject Event_hospital;
+    public Text textHospital;
+    public Image imageHP;
+
 
 
 
@@ -44,6 +50,8 @@ public class CatManager : MonoBehaviour
     {
         toy = GameObject.Find("ToyManager_Toy").GetComponent<ToyManager>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+
     }
 
     void Start()
@@ -66,14 +74,15 @@ public class CatManager : MonoBehaviour
     void Update()
     {
         PlaylerpSpeed += Time.deltaTime / lerpSpeed;
-        WashlerpSpeed += Time.deltaTime / lerpSpeed*0.01f;
-        HungrylerpSpeed += Time.deltaTime / lerpSpeed*0.6f;
+        WashlerpSpeed += Time.deltaTime / (lerpSpeed*24);
+        HungrylerpSpeed += Time.deltaTime / (lerpSpeed*2);
 
         ButtonActiveCheck();
 
         FunnyStatus();
         WashStatus();
         HungryStatus();
+        HPStatus();
     }
 
     // #####################################################################################################################
@@ -124,7 +133,8 @@ public class CatManager : MonoBehaviour
             PlaylerpSpeed -= 0.2f;
             if (PlaylerpSpeed < 0)
             {
-                PlaylerpSpeed = 0;
+                PlaylerpSpeed = 0.0f;
+                CatHP -= 1;
             }
         }
     }
@@ -138,7 +148,7 @@ public class CatManager : MonoBehaviour
             PlaylerpSpeed -= 0.2f;
             if (PlaylerpSpeed < 0)
             {
-                PlaylerpSpeed = 0;                
+                PlaylerpSpeed = 0.0f; // CatHP -= 1 중복 생략
             }
 
         }
@@ -149,10 +159,15 @@ public class CatManager : MonoBehaviour
         if (gm.heart >= WashPrice)
         {
             gm.heart -= WashPrice;
-            WashlerpSpeed -= 0.2f;
-            if (WashlerpSpeed < 0)
+            WashlerpSpeed =0.0f;
+            if (WashlerpSpeed <0)
             {
-                WashlerpSpeed = 0;                
+                WashlerpSpeed = 0.0f;
+            }
+            if (WashlerpSpeed >1)
+            {
+                WashlerpSpeed = 1;
+                CatHP -= 1;
             }
         }
     }
@@ -165,6 +180,7 @@ public class CatManager : MonoBehaviour
             if (HungrylerpSpeed < 0)
             {
                 HungrylerpSpeed = 0.0f;
+                CatHP -= 1;
             }
         }
     }
@@ -172,38 +188,69 @@ public class CatManager : MonoBehaviour
 
 
     void FunnyStatus()
-    {        
+    {
+        if (PlaylerpSpeed < 0)
+        {
+            PlaylerpSpeed = 0.0f;
+            CatHP -= 0.1f;
+        }
         imagePlay.fillAmount = Mathf.Lerp(1f, 0f, PlaylerpSpeed);
     }
    
     void WashStatus()
     {
+        if (WashlerpSpeed > 1)
+        {
+            WashlerpSpeed = 1;
+            CatHP -= 0.1f;
+        }
         imageWash.fillAmount = Mathf.Lerp(0f, 1f, WashlerpSpeed);
     }
 
     void HungryStatus()
     {
+        if (HungrylerpSpeed < 0)
+        {
+            HungrylerpSpeed = 0.0f;
+            CatHP -= 0.1f;
+        }
         imageHungry.fillAmount = Mathf.Lerp(1f, 0f, HungrylerpSpeed);
     }
 
-    // #####################################################################################################################
-    /*
-    void Save()
+    void HPStatus()
     {
-        SaveData saveData = new SaveData();
+        imageHP.fillAmount = Mathf.Lerp(0f, 1f, CatHP);
 
-        saveData.PlayPrice = PlayPrice;
-        saveData.PlaylerpSpeed = PlaylerpSpeed;
-        saveData.TouchPrice = TouchPrice;
-        saveData.WashPrice = WashPrice;
-        saveData.WashlerpSpeed = WashlerpSpeed;
-        saveData.HungrylerpSpeed = HungrylerpSpeed;
-        saveData.lerpSpeed = lerpSpeed;
-
-    string path = Application.persistentDataPath + "/save.xml";
-        XmlManager.XmlSave<SaveData>(saveData, path);
+        if (CatHP == 0)
+        {
+            Hospital();
+        }
     }
-    */
+
+    void Hospital()
+    {
+        if (CatHP == 0)
+        {
+            Event_hospital.SetActive(true);
+            textHospital.text = "[" + gm.stringCatInfo_gm + "] 가 아프다.\n병원에 데려가자\n\n진료비 10000";
+
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                Event_hospital.SetActive(false);
+                gm.heart -= 10000;
+                //회복
+                CatHP = 1;
+                HungrylerpSpeed = 0.5f;
+                PlaylerpSpeed = 0.5f;
+                WashlerpSpeed = 0.5f;
+            }
+            
+        }
+    }
+
+    // #####################################################################################################################
+
     void Load()
     {
 
@@ -218,6 +265,7 @@ public class CatManager : MonoBehaviour
         WashlerpSpeed = saveData.WashlerpSpeed;
         HungrylerpSpeed = saveData.HungrylerpSpeed;
         lerpSpeed = saveData.lerpSpeed;
+        CatHP = saveData.CatHP;
 
     }
 

@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         //intro_animation
         stringCatInfo_gm = saveData.stringCatInfo;
         str_startDate_gm = saveData.str_startdate;
+
         heart = saveData.heart;
 
     }
@@ -380,6 +381,7 @@ public class GameManager : MonoBehaviour
         saveData.WashlerpSpeed = cm.WashlerpSpeed;
         saveData.HungrylerpSpeed = cm.HungrylerpSpeed;
         saveData.lerpSpeed = cm.lerpSpeed;
+        saveData.CatHP = cm.CatHP;
 
 
         string path = Application.persistentDataPath + "/save.xml";

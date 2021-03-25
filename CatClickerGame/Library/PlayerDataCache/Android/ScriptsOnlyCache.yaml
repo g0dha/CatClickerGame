@@ -441,7 +441,7 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 435c9719a85a162b2714dc7ada8c6ad8
+      Hash: f28d1f2f5abd0beaeffd7f55b41162ba
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CatManager
@@ -840,4 +840,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/0_Start.unity
   - Assets/Scenes/1_Playing.unity
   - Assets/Scenes/0.1_intro.unity
-  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_71.apk
+  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_72.apk

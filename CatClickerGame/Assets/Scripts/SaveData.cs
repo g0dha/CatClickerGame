@@ -61,4 +61,5 @@ public class SaveData
     public float WashlerpSpeed;
     public float HungrylerpSpeed;
     public float lerpSpeed;
+    public float CatHP;
 }
