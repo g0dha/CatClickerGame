@@ -15,9 +15,6 @@ public class LifeTime : MonoBehaviour
      
      */
 
-    public int timeYear;
-    public int timeMonth;
-    public int timeDay;
     public int timeHour;
 
     public DateTime dt = DateTime.Now; 
@@ -26,9 +23,6 @@ public class LifeTime : MonoBehaviour
 
     void Start()
     {
-        timeYear = dt.Year;
-        timeMonth = dt.Month;
-        timeDay = dt.Day;
         timeHour = dt.Hour;
     }
 

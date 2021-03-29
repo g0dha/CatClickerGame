@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
 
         leftTime = 0f;
 
-        StartDate = DateTime.ParseExact(str_startDate_gm, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+        StartDate = DateTime.ParseExact(str_startDate_gm, "yyyyMMddhh", System.Globalization.CultureInfo.InvariantCulture);
 
 
     }
@@ -267,9 +267,7 @@ public class GameManager : MonoBehaviour
     void playtime()
     {
         PlayTime = lifetime.dt - StartDate;
-        Debug.Log(lifetime.dt);
-        Debug.Log(StartDate);
-        Debug.Log(PlayTime);
+
         text_PlayTime.text = "D + " + PlayTime.TotalDays.ToString("###");
     }
 
@@ -319,7 +317,6 @@ public class GameManager : MonoBehaviour
 
         //GameManager
         saveData.heart = heart;
-        Debug.Log("save heart = " + heart);
         saveData.heartIncreaseAmount = heartIncreaseAmount;
         saveData.heartIncreaseLevel = heartIncreaseLevel;
         saveData.heartIncreasePrice = heartIncreasePrice;
@@ -401,7 +398,6 @@ public class GameManager : MonoBehaviour
 
         //GameManager
         heart = saveData.heart;
-        Debug.Log("load heart = " + heart);
         heartIncreaseAmount = saveData.heartIncreaseAmount;
         heartIncreaseLevel = saveData.heartIncreaseLevel;
         heartIncreasePrice = saveData.heartIncreasePrice;

@@ -20,10 +20,10 @@ public class ADManager : MonoBehaviour
     //string m_Ad_UnitId_Reward = "ca-app-pub-3379886564047452/5206353743";
     string m_Ad_UnitId_Reward = "ca-app-pub-3940256099942544/5224354917";   //TEST ID
 
-    public int reward_dia;
+    public long reward_dia;
     public Text text_reward_dia;
-    public int RandomValue_dia;
-    public int RandomValue_heart;
+    public long RandomValue_dia;
+    public long RandomValue_heart;
     GameManager gm;
 
 
@@ -39,8 +39,7 @@ public class ADManager : MonoBehaviour
         {
             Load();
         }
-
-        reward_dia = 0;
+                
         text_reward_dia.text = reward_dia.ToString();
         
 

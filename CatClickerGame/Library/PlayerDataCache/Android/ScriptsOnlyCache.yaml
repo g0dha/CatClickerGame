@@ -657,7 +657,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: b97421d6f034bcfd05b2cc53f1e381dd
+      Hash: d4b9dee8e3546a711dfd30c9f672ba6f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LifeTime
@@ -687,7 +687,7 @@ ScriptsOnlyBuild:
     className: ApplicationQuit
   - hash:
       serializedVersion: 2
-      Hash: a360e449ca6b4aeea582b88fa7385451
+      Hash: 84f000acda082095bef9a2504ce6e9a4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ADManager
@@ -840,4 +840,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/0_Start.unity
   - Assets/Scenes/1_Playing.unity
   - Assets/Scenes/0.1_intro.unity
-  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_72.apk
+  playerPath: C:/Users/gkwjd/Desktop/game/CatClickerGame/CATGAME_74.apk

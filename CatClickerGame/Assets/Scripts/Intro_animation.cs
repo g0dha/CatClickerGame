@@ -37,7 +37,8 @@ public class Intro_animation : MonoBehaviour
         spriteRenderer.sprite = sprites[0];
         
         DateTime startDate = DateTime.Now;
-        str_startdate = startDate.ToString("yyyyMMdd");
+        str_startdate = startDate.ToString("yyyyMMddhh");
+        Debug.Log(str_startdate);
 
         StartCoroutine("_changeLight");
         
@@ -115,7 +116,6 @@ public class Intro_animation : MonoBehaviour
         {
             textCatInfo.text = textName.text + " / 수컷";
             stringCatInfo = textCatInfo.text;
-            Debug.Log(stringCatInfo);
         }
         else if (Gender_value == 2)
         {

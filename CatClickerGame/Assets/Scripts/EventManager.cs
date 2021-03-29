@@ -10,8 +10,8 @@ using System.IO;
 public class EventManager : MonoBehaviour
 {
     GameManager gm;
-    LifeTime lifetime;
     ADManager adm;
+    LifeTime lifetime;
 
 
     List<string> EventList;
@@ -39,8 +39,8 @@ public class EventManager : MonoBehaviour
     void Awake()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();
         adm = GameObject.Find("ADManager").GetComponent<ADManager>();
+        lifetime = GameObject.Find("GameManager").GetComponent<LifeTime>();
     }
 
     void Start()
@@ -127,27 +127,27 @@ public class EventManager : MonoBehaviour
         if (Event_Popup.activeSelf == false)
         {
 
-            if (lifetime.dt.ToString("MMddHH") == "040513")
+            if (gm.PlayTime.TotalDays.ToString("######")=="125")   // 040513
             {
                 Event_Bath();
             }
-            if (lifetime.dt.ToString("MMddHH") == "011509")
+            if (gm.PlayTime.TotalDays.ToString("######") == "45") //"011509")
             {
                 Event_Hospiter();
             }
-            if (lifetime.dt.ToString("MMddHH") == "060119")
+            if (gm.PlayTime.TotalDays.ToString("######") == "181") //"060119")
             {
                 Event_ToothLose();
             }
-            if (lifetime.dt.ToString("HH") == RandomTime_1.ToString())
+            if (lifetime.dt.ToString("mm") == RandomTime_1.ToString())
             {
                 Event_RandomEvent_1();
             }
-            if (lifetime.dt.ToString("HH") == RandomTime_2.ToString())
+            if (lifetime.dt.ToString("mm") == RandomTime_2.ToString())
             {
                 Event_RandomEvent_2();
             }
-            if (lifetime.dt.ToString("HH") == RandomTime_3.ToString())
+            if (lifetime.dt.ToString("mm") == RandomTime_3.ToString())
             {
                 Event_RandomEvent_3();
             }

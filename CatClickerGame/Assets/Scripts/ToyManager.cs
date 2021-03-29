@@ -23,6 +23,7 @@ public class ToyManager : MonoBehaviour
 
 
     GameManager gm;
+    ADManager adm;
 
     public Vector2 point;
 
@@ -33,6 +34,7 @@ public class ToyManager : MonoBehaviour
     void Awake()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        adm = GameObject.Find("ADManager").GetComponent<ADManager>();
     }
 
     void Start()
@@ -79,9 +81,9 @@ public class ToyManager : MonoBehaviour
         
         if (ToyState==0)
         {
-            if (gm.heart >= ToyCreatePrice)
+            if (adm.reward_dia >= ToyCreatePrice)
             {
-                gm.heart -= ToyCreatePrice;
+                adm.reward_dia -= ToyCreatePrice;
                 ToyIncreaseLevel += 1;
                 ToyState = 1;
                 Instantiate(prefabToy, point, Quaternion.identity);
@@ -121,7 +123,7 @@ public class ToyManager : MonoBehaviour
         
         if (ToyState==0)
         {
-            textToyUpgradePrice.text = "설치 <" + ToyCreatePrice.ToString() + ">";
+            textToyUpgradePrice.text = "설치 <" + ToyCreatePrice.ToString() + "다이아>";
         }
 
         else if (ToyState==1)
@@ -137,7 +139,7 @@ public class ToyManager : MonoBehaviour
         
         if (ToyState==0)
         {
-            if (gm.heart >= ToyCreatePrice)
+            if (adm.reward_dia >= ToyCreatePrice)
             {
                 ToyIncreaseButton.interactable = true;
             }

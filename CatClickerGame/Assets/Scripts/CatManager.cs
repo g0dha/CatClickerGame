@@ -73,7 +73,7 @@ public class CatManager : MonoBehaviour
 
     void Update()
     {
-        PlaylerpSpeed += Time.deltaTime / lerpSpeed;
+        
         WashlerpSpeed += Time.deltaTime / (lerpSpeed*24);
         HungrylerpSpeed += Time.deltaTime / (lerpSpeed*2);
 
@@ -134,7 +134,6 @@ public class CatManager : MonoBehaviour
             if (PlaylerpSpeed < 0)
             {
                 PlaylerpSpeed = 0.0f;
-                CatHP -= 1;
             }
         }
     }
@@ -145,11 +144,8 @@ public class CatManager : MonoBehaviour
         {
             gm.heart -= TouchPrice;
 
-            PlaylerpSpeed -= 0.2f;
-            if (PlaylerpSpeed < 0)
-            {
-                PlaylerpSpeed = 0.0f; // CatHP -= 1 중복 생략
-            }
+            PlaylerpSpeed = 0.0f;
+            
 
         }
     }
@@ -159,16 +155,9 @@ public class CatManager : MonoBehaviour
         if (gm.heart >= WashPrice)
         {
             gm.heart -= WashPrice;
-            WashlerpSpeed =0.0f;
-            if (WashlerpSpeed <0)
-            {
-                WashlerpSpeed = 0.0f;
-            }
-            if (WashlerpSpeed >1)
-            {
-                WashlerpSpeed = 1;
-                CatHP -= 1;
-            }
+            WashlerpSpeed = 0.0f;
+            
+            
         }
     }
 
@@ -176,12 +165,8 @@ public class CatManager : MonoBehaviour
     {
         if (HungrylerpSpeed > 0)
         {
-            HungrylerpSpeed -= 0.2f;
-            if (HungrylerpSpeed < 0)
-            {
-                HungrylerpSpeed = 0.0f;
-                CatHP -= 1;
-            }
+            HungrylerpSpeed = 0.0f;
+            
         }
     }
 
@@ -189,10 +174,15 @@ public class CatManager : MonoBehaviour
 
     void FunnyStatus()
     {
-        if (PlaylerpSpeed < 0)
+        if (PlaylerpSpeed<=1)
         {
-            PlaylerpSpeed = 0.0f;
+            PlaylerpSpeed += Time.deltaTime / lerpSpeed;
+        }
+        if (PlaylerpSpeed > 1)
+        {            
             CatHP -= 0.1f;
+            PlaylerpSpeed = 1.0f;
+            
         }
         imagePlay.fillAmount = Mathf.Lerp(1f, 0f, PlaylerpSpeed);
     }
@@ -201,7 +191,7 @@ public class CatManager : MonoBehaviour
     {
         if (WashlerpSpeed > 1)
         {
-            WashlerpSpeed = 1;
+            WashlerpSpeed = 1.0f;
             CatHP -= 0.1f;
         }
         imageWash.fillAmount = Mathf.Lerp(0f, 1f, WashlerpSpeed);
@@ -209,9 +199,9 @@ public class CatManager : MonoBehaviour
 
     void HungryStatus()
     {
-        if (HungrylerpSpeed < 0)
+        if (HungrylerpSpeed >1)
         {
-            HungrylerpSpeed = 0.0f;
+            HungrylerpSpeed = 1.0f;
             CatHP -= 0.1f;
         }
         imageHungry.fillAmount = Mathf.Lerp(1f, 0f, HungrylerpSpeed);
@@ -221,8 +211,9 @@ public class CatManager : MonoBehaviour
     {
         imageHP.fillAmount = Mathf.Lerp(0f, 1f, CatHP);
 
-        if (CatHP == 0)
+        if (CatHP <= 0)
         {
+            CatHP = 0;
             Hospital();
         }
     }
