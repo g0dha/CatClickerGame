@@ -42,6 +42,9 @@ public class CatManager : MonoBehaviour
     public Text textHospital;
     public Image imageHP;
 
+    public float Elapsedtime_cm;
+
+
 
 
 
@@ -51,7 +54,7 @@ public class CatManager : MonoBehaviour
         toy = GameObject.Find("ToyManager_Toy").GetComponent<ToyManager>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-
+        
     }
 
     void Start()
@@ -68,14 +71,16 @@ public class CatManager : MonoBehaviour
 
         HungryButton = gm.foodButton;
 
+
+        //Elapsedtime_cm = (float)(gm.Elapsedtime.TotalSeconds / 100);
+        //Debug.Log(Elapsedtime_cm);
+
+
     }
 
 
     void Update()
-    {
-        
-        WashlerpSpeed += Time.deltaTime / (lerpSpeed*24);
-        HungrylerpSpeed += Time.deltaTime / (lerpSpeed*2);
+    {              
 
         ButtonActiveCheck();
 
@@ -174,24 +179,36 @@ public class CatManager : MonoBehaviour
 
     void FunnyStatus()
     {
-        if (PlaylerpSpeed<=1)
+        if (Elapsedtime_cm==0)
         {
-            PlaylerpSpeed += Time.deltaTime / lerpSpeed;
+            Elapsedtime_cm = (float)(gm.Elapsedtime.TotalSeconds / 100);
+            Debug.Log(Elapsedtime_cm);
         }
-        if (PlaylerpSpeed > 1)
-        {            
+        
+        if (PlaylerpSpeed<1)
+        {
+            PlaylerpSpeed += (Time.deltaTime+Elapsedtime_cm) / lerpSpeed;
+
+        }
+        else if (PlaylerpSpeed >= 1.01f)
+        {
             CatHP -= 0.1f;
-            PlaylerpSpeed = 1.0f;
+            PlaylerpSpeed = 1.00f;
             
+
         }
         imagePlay.fillAmount = Mathf.Lerp(1f, 0f, PlaylerpSpeed);
     }
    
     void WashStatus()
     {
-        if (WashlerpSpeed > 1)
+        if (WashlerpSpeed < 1)
         {
-            WashlerpSpeed = 1.0f;
+            WashlerpSpeed += (Time.deltaTime + Elapsedtime_cm) / (lerpSpeed * 24);
+        }
+        else if (WashlerpSpeed >= 1.01f)
+        {
+            WashlerpSpeed = 1.00f;
             CatHP -= 0.1f;
         }
         imageWash.fillAmount = Mathf.Lerp(0f, 1f, WashlerpSpeed);
@@ -199,9 +216,13 @@ public class CatManager : MonoBehaviour
 
     void HungryStatus()
     {
-        if (HungrylerpSpeed >1)
+        if (HungrylerpSpeed <1)
         {
-            HungrylerpSpeed = 1.0f;
+            HungrylerpSpeed += (Time.deltaTime + Elapsedtime_cm) / (lerpSpeed * 2);
+        }
+        else if (HungrylerpSpeed >=1.01f)
+        {
+            HungrylerpSpeed = 1.00f;
             CatHP -= 0.1f;
         }
         imageHungry.fillAmount = Mathf.Lerp(1f, 0f, HungrylerpSpeed);
@@ -220,31 +241,34 @@ public class CatManager : MonoBehaviour
 
     void Hospital()
     {
-        if (CatHP == 0)
+
+        Event_hospital.SetActive(true);
+        textHospital.text = "[" + gm.stringCatInfo_gm + "] 가 아프다.\n병원에 데려가자\n\n진료비 10000";
+
+
+        if (Input.GetMouseButtonDown(0))
         {
-            Event_hospital.SetActive(true);
-            textHospital.text = "[" + gm.stringCatInfo_gm + "] 가 아프다.\n병원에 데려가자\n\n진료비 10000";
-
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                Event_hospital.SetActive(false);
-                gm.heart -= 10000;
-                //회복
-                CatHP = 1;
-                HungrylerpSpeed = 0.5f;
-                PlaylerpSpeed = 0.5f;
-                WashlerpSpeed = 0.5f;
-            }
-            
+            Event_hospital.SetActive(false);
+            gm.heart -= 10000;
+            //회복
+            CatHP = 1;
+            HungrylerpSpeed = 0.5f;
+            PlaylerpSpeed = 0.5f;
+            WashlerpSpeed = 0.5f;
         }
+
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        Elapsedtime_cm = 0;
     }
 
     // #####################################################################################################################
 
     void Load()
     {
-
         SaveData saveData = new SaveData();
         string path = Application.persistentDataPath + "/save.xml";
         saveData = XmlManager.XmlLoad<SaveData>(path);

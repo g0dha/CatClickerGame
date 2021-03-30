@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     public string str_startDate_gm;
     public Text text_PlayTime;
 
+    DateTime EndTime;
+    public string str_EndTime;
+    public TimeSpan Elapsedtime;
 
     ADManager adm;
     ToyManager tm1;
@@ -92,7 +95,7 @@ public class GameManager : MonoBehaviour
         leftTime = 0f;
 
         StartDate = DateTime.ParseExact(str_startDate_gm, "yyyyMMddhh", System.Globalization.CultureInfo.InvariantCulture);
-
+        EndTime = DateTime.ParseExact(str_EndTime, "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
 
     }
 
@@ -267,8 +270,11 @@ public class GameManager : MonoBehaviour
     void playtime()
     {
         PlayTime = lifetime.dt - StartDate;
-
         text_PlayTime.text = "D + " + PlayTime.TotalDays.ToString("###");
+
+
+        Elapsedtime = lifetime.dt - EndTime;
+
     }
 
     // #####################################################################################################################
@@ -298,6 +304,7 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        str_EndTime = lifetime.dt.ToString("yyyyMMddHHmmss");
         Save();
     }
 
@@ -309,6 +316,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("save ing..");
         SaveData saveData = new SaveData();
+
+        saveData.str_EndTime = str_EndTime;
 
         //intro_animation
         saveData.stringCatInfo = stringCatInfo_gm;
@@ -391,6 +400,8 @@ public class GameManager : MonoBehaviour
         SaveData saveData = new SaveData();
         string path = Application.persistentDataPath + "/save.xml";
         saveData = XmlManager.XmlLoad<SaveData>(path);
+
+        str_EndTime = saveData.str_EndTime;
 
         //intro_animation
         stringCatInfo_gm = saveData.stringCatInfo;

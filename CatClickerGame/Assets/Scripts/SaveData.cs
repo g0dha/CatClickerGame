@@ -10,6 +10,8 @@ public class SaveData
     public float leftTime;
     public float backup_leftTime;
 
+    public string str_EndTime;
+
     public long reward_dia;
 
     public string stringCatInfo;

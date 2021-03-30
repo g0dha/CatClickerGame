@@ -17,7 +17,7 @@ public class LifeTime : MonoBehaviour
 
     public int timeHour;
 
-    public DateTime dt = DateTime.Now; 
+    public DateTime dt;
     public Text text_Date;
    
 
@@ -28,7 +28,7 @@ public class LifeTime : MonoBehaviour
 
     void Update()
     {
-        DateTime dt = DateTime.Now;
+        dt = DateTime.Now;
         text_Date.text = dt.ToString("yyyy년 MM월 dd일\nHH시 mm분");
     }
 }

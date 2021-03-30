@@ -3461,6 +3461,7 @@ MonoBehaviour:
   CatInfo: {fileID: 899130651}
   str_startDate_gm: 
   text_PlayTime: {fileID: 246851964}
+  str_EndTime: 
 --- !u!4 &635019736
 Transform:
   m_ObjectHideFlags: 0
@@ -7481,11 +7482,12 @@ MonoBehaviour:
   HungryButton: {fileID: 367903374}
   imageHungry: {fileID: 102402361}
   HungrylerpSpeed: 0
-  lerpSpeed: 50000
+  lerpSpeed: 36000
   CatHP: 1
   Event_hospital: {fileID: 1399536874}
   textHospital: {fileID: 1174211674}
   imageHP: {fileID: 117220475}
+  Elapsedtime_cm: 0
 --- !u!4 &1580668315
 Transform:
   m_ObjectHideFlags: 0
