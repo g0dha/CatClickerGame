@@ -13,7 +13,7 @@ public class StartScene : MonoBehaviour
     public float alpha;
 
     public GameObject button_Start;
-    public GameObject CatFace;
+    //public GameObject CatFace;
     private string stringCatInfo_sc;
 
 
@@ -27,7 +27,7 @@ public class StartScene : MonoBehaviour
         
         EndPosition = new Vector2(point.x, point.y);
         DownSpeed = alpha * Time.deltaTime;
-        CatFace.SetActive(false);
+        //CatFace.SetActive(false);
         button_Start.SetActive(false);
     }
 
@@ -35,7 +35,7 @@ public class StartScene : MonoBehaviour
     {
         StartCoroutine("MoveTitle");
 
-        Pop_Image();
+        //Pop_Image();
         Pop_Button();
     }
 
@@ -53,17 +53,17 @@ public class StartScene : MonoBehaviour
         }
     }
 
-    void Pop_Image()
+    /*void Pop_Image()
     {
         if (transform.position.y == EndPosition.y)
         {
             CatFace.SetActive(true);
         }
-    }
+    }*/
 
     void Pop_Button()
     {
-        if ((transform.position.y == EndPosition.y) && (CatFace.activeSelf == true))
+        if ((transform.position.y == EndPosition.y))
         {
             button_Start.SetActive(true);
         }

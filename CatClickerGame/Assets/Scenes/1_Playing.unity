@@ -5242,9 +5242,7 @@ MonoBehaviour:
   RandomTime_1: 0
   RandomTime_2: 0
   RandomTime_3: 0
-  text_Bath: {fileID: 2003102371}
-  text_Hospiter: {fileID: 2003102371}
-  text_ToothLose: {fileID: 2003102371}
+  text_event: {fileID: 2003102371}
   text_RandomEvent: {fileID: 2003102371}
 --- !u!4 &1064928883
 Transform:

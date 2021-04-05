@@ -95,8 +95,10 @@ public class GameManager : MonoBehaviour
         leftTime = 0f;
 
         StartDate = DateTime.ParseExact(str_startDate_gm, "yyyyMMddhh", System.Globalization.CultureInfo.InvariantCulture);
-        EndTime = DateTime.ParseExact(str_EndTime, "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
-
+        if (str_EndTime.Length!=0)
+        {
+            EndTime = DateTime.ParseExact(str_EndTime, "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
+        }
     }
 
     void Update()

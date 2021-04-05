@@ -26,12 +26,7 @@ public class EventManager : MonoBehaviour
     public int RandomTime_2;    //21~40분
     public int RandomTime_3;    //41~59분
 
-    //public Button button_Yes;
-    //public Button button_No;
-
-    public Text text_Bath;
-    public Text text_Hospiter;
-    public Text text_ToothLose;
+    public Text text_event;
     public Text text_RandomEvent;
 
 
@@ -139,6 +134,12 @@ public class EventManager : MonoBehaviour
             {
                 Event_ToothLose();
             }
+            if (gm.PlayTime.TotalDays.ToString("######") == "222") //"060119")
+            {
+                Event_Neutralization();
+            }
+
+            //랜덤이벤트
             if (lifetime.dt.ToString("mm") == RandomTime_1.ToString())
             {
                 Event_RandomEvent_1();
@@ -156,19 +157,25 @@ public class EventManager : MonoBehaviour
 
     void Event_Bath()
     {
-        text_Bath.text = "목욕 하는날!";
+        text_event.text = "목욕 하는날!";
         Event_Popup.SetActive(true);
     }
 
     void Event_Hospiter()
     {
-        text_Hospiter.text = "첫 건강검전 받는날!";
+        text_event.text = "첫 건강검전 받는날!";
         Event_Popup.SetActive(true);
     }
 
     void Event_ToothLose()
     {
-        text_ToothLose.text = "빠진 젖니를 발견했습니다";
+        text_event.text = "빠진 젖니를 발견했습니다";
+        Event_Popup.SetActive(true);
+    }
+
+    void Event_Neutralization()
+    {
+        text_event.text = "중성화 수술을 할까요?";
         Event_Popup.SetActive(true);
     }
 
@@ -209,20 +216,7 @@ public class EventManager : MonoBehaviour
 
     
     // #####################################################################################################################
-    /*
-    void Save()
-    {
-        SaveData saveData = new SaveData();
 
-        saveData.RandomNumber = RandomNumber;
-        saveData.RandomTime_1 = RandomTime_1;    
-        saveData.RandomTime_2 = RandomTime_2;    
-        saveData.RandomTime_3 = RandomTime_3;    
-
-    string path = Application.persistentDataPath + "/save.xml";
-        XmlManager.XmlSave<SaveData>(saveData, path);
-    }
-    */
     void Load()
     {
 

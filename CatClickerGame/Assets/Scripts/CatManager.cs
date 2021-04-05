@@ -43,6 +43,9 @@ public class CatManager : MonoBehaviour
     public Image imageHP;
 
     public float Elapsedtime_cm;
+    float temp_elap_play;
+    float temp_elap_wash;
+    float temp_elap_hungry;
 
 
 
@@ -70,11 +73,6 @@ public class CatManager : MonoBehaviour
         textWash.text = WashPrice.ToString();
 
         HungryButton = gm.foodButton;
-
-
-        //Elapsedtime_cm = (float)(gm.Elapsedtime.TotalSeconds / 100);
-        //Debug.Log(Elapsedtime_cm);
-
 
     }
 
@@ -181,13 +179,23 @@ public class CatManager : MonoBehaviour
     {
         if (Elapsedtime_cm==0)
         {
-            Elapsedtime_cm = (float)(gm.Elapsedtime.TotalSeconds / 100);
-            Debug.Log(Elapsedtime_cm);
+            Elapsedtime_cm = (float)(gm.Elapsedtime.TotalSeconds*0.8);
+            temp_elap_play = 1;
+            temp_elap_wash = 1;
+            temp_elap_hungry = 1;
         }
         
         if (PlaylerpSpeed<1)
         {
-            PlaylerpSpeed += (Time.deltaTime+Elapsedtime_cm) / lerpSpeed;
+            if (temp_elap_play == 0)
+            {
+                PlaylerpSpeed +=Time.deltaTime / lerpSpeed;
+            }
+            else if(temp_elap_play==1)
+            {
+                PlaylerpSpeed += (Time.deltaTime+ Elapsedtime_cm) / lerpSpeed;
+                temp_elap_play = 0;
+            }
 
         }
         else if (PlaylerpSpeed >= 1.01f)
@@ -204,7 +212,15 @@ public class CatManager : MonoBehaviour
     {
         if (WashlerpSpeed < 1)
         {
-            WashlerpSpeed += (Time.deltaTime + Elapsedtime_cm) / (lerpSpeed * 24);
+            if (temp_elap_wash == 0)
+            {
+                WashlerpSpeed += (Time.deltaTime / (lerpSpeed * 24));
+            }
+            else if(temp_elap_wash==1)
+            {
+                WashlerpSpeed += (Time.deltaTime + Elapsedtime_cm) / (lerpSpeed * 24);
+                temp_elap_wash = 0;
+            }
         }
         else if (WashlerpSpeed >= 1.01f)
         {
@@ -218,7 +234,15 @@ public class CatManager : MonoBehaviour
     {
         if (HungrylerpSpeed <1)
         {
-            HungrylerpSpeed += (Time.deltaTime + Elapsedtime_cm) / (lerpSpeed * 2);
+            if (temp_elap_hungry == 0)
+            {
+                HungrylerpSpeed += (Time.deltaTime / (lerpSpeed * 2));
+            }
+            else if(temp_elap_hungry==1)
+            {
+                HungrylerpSpeed += (Time.deltaTime+ Elapsedtime_cm) / (lerpSpeed * 2);
+                temp_elap_hungry = 0;
+            }
         }
         else if (HungrylerpSpeed >=1.01f)
         {

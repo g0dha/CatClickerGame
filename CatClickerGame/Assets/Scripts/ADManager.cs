@@ -17,8 +17,8 @@ public class ADManager : MonoBehaviour
     // AdMob 에서 발급된 AppID
     string m_App_Id = "ca-app-pub-3379886564047452~7923375790";
     // AdMob 에서 각 광고단위로 발급된 UnitID 중 리워드광고 ID
-    //string m_Ad_UnitId_Reward = "ca-app-pub-3379886564047452/5206353743";
-    string m_Ad_UnitId_Reward = "ca-app-pub-3940256099942544/5224354917";   //TEST ID
+    string m_Ad_UnitId_Reward = "ca-app-pub-3379886564047452/5206353743";
+    //string m_Ad_UnitId_Reward = "ca-app-pub-3940256099942544/5224354917";   //TEST ID
 
     public long reward_dia;
     public Text text_reward_dia;
