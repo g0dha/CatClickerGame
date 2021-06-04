@@ -52,6 +52,8 @@ public class ToyManager : MonoBehaviour
             ToyState = 1;
             Instantiate(prefabToy, point, Quaternion.identity);
         }
+
+        StartCoroutine("autoClick");
     }
 
     void Update()
@@ -59,6 +61,7 @@ public class ToyManager : MonoBehaviour
         ButtonActiveCheck();
         ToyIncreaseUpdatePanelText();
         ToyIncreaseUpdatePriceText();
+        
 
     }
 
@@ -66,8 +69,7 @@ public class ToyManager : MonoBehaviour
 
     IEnumerator autoClick()
     {
-
-        while (true)
+        while (ToyState==1)
         {
             gm.heart += ToyIncreaseAmount;
 
@@ -88,7 +90,7 @@ public class ToyManager : MonoBehaviour
                 ToyState = 1;
                 Instantiate(prefabToy, point, Quaternion.identity);
             }
-            StartCoroutine(autoClick());
+            //StartCoroutine(autoClick());
         }
 
     }
@@ -96,12 +98,12 @@ public class ToyManager : MonoBehaviour
 
     public void ToyIncreaseLevelUpgrade()
     {
-        
 
         if (ToyState == 1)
         {
             if (gm.heart >= ToyIncreasePrice)
             {
+                Instantiate(prefabToy, point, Quaternion.identity);
                 gm.heart -= ToyIncreasePrice;
                 ToyIncreaseLevel += 1;
                 ToyIncreaseAmount += ToyIncreaseLevel * 10 * alpha;

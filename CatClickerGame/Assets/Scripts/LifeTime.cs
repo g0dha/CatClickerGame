@@ -23,12 +23,12 @@ public class LifeTime : MonoBehaviour
 
     void Start()
     {
-        timeHour = dt.Hour;
     }
 
     void Update()
     {
         dt = DateTime.Now;
+        timeHour = dt.Hour;
         text_Date.text = dt.ToString("yyyy년 MM월 dd일\nHH시 mm분");
     }
 }
